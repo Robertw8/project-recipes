@@ -10,12 +10,12 @@
   },
   "devDependencies": {
     "glob": "^8.1.0",
+    "sass": "^1.65.1",
     "vite": "^4.0.5"
   },
   "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",
   "dependencies": {
-    "sass": "^1.65.1",
     "vite-plugin-full-reload": "^1.0.5",
     "vite-plugin-html-inject": "^1.0.1"
   }
