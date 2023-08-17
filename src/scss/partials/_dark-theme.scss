@@ -1,0 +1,51 @@
+#theme-switcher {
+  position: relative;
+  display: inline-block;
+  width: 47px;
+  height: 20px;
+  border-radius: 10px;
+  box-shadow: 7px 5px 15px 0px #a09ea066;
+}
+
+#theme-switcher input {
+  display: block;
+  width: 0;
+  height: 0;
+  position: absolute;
+  z-index: -1;
+  opacity: 0;
+}
+
+#theme-switcher span {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: $color-theme-switch-disabled;
+  transition: 0.4s;
+  border-radius: 34px;
+  box-shadow: 4px 4px 15px rgba(243, 243, 243, 0.25);
+}
+#theme-switcher span:before {
+  content: '';
+  position: absolute;
+  height: 17px;
+  width: 17px;
+  left: 2px;
+  bottom: 2px;
+  background-color: $color-white;
+  transition: 0.2s;
+  border-radius: 50%;
+}
+
+#theme-switcher input:checked + span {
+  background: linear-gradient(#9bb537, #9bb537);
+  box-shadow: 4px 4px 15px rgba(243, 243, 243, 0.25);
+}
+
+#theme-switcher input:checked + span:before {
+  box-shadow: 4px 4px 15px rgba(243, 243, 243, 0.25);
+  transform: translateX(26px);
+}

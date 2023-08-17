@@ -1,13 +1,17 @@
-@import "./typography";
-@import "../utilities/variables";
+@import './typography';
+@import '../utilities/variables';
 
 html {
   scroll-behavior: smooth;
 }
 
 body {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   color: $color-black;
+}
+
+body.dark-theme {
+  background-color: $dark-theme;
 }
 
 .container {
