@@ -2,14 +2,10 @@
   padding-top: 90px;
 }
 
-.container
+.hero-container
 {
   display: flex;
   flex-direction: column;
-
-  @media screen and (min-width: $tablet) {
-
-  }
 
   @media screen and (min-width: $desktop) {
     flex-direction: row;
@@ -45,6 +41,10 @@
   }
 }
 
+.dark-theme .hero-title {
+  color: $color-white;
+}
+
 .hero-text {
   font-size: 14px;
   font-weight: 400;
@@ -55,6 +55,10 @@
     font-size: 16px;
     margin-bottom: 32px;
   }
+}
+
+.dark-theme .hero-text {
+  color: $color-white;
 }
 
 .hero-btn {
@@ -81,6 +85,11 @@
 
     margin-bottom: 64px;
   }
+}
+
+.dark-theme .hero-btn {
+  color: $color-white;
+  background-color: $color-black;
 }
 
 .hero-img-wrap {
