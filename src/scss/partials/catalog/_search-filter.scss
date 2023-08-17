@@ -17,6 +17,7 @@
   font-size: 12px;
   line-height: calc(14 / 12);
   display: block;
+  user-select: none;
 
   @media screen and (min-width: $tablet) {
     font-size: 14px;
@@ -36,6 +37,11 @@
 
   outline: none;
   @include radius-15;
+  transition-duration: $dur-secondary;
+
+  &:focus {
+    border-color: $color-green;
+  }
 
   @media screen and (min-width: $tablet) {
     font-size: 16px;
@@ -66,6 +72,8 @@
   border: 1px solid $color-black-20;
   cursor: pointer;
   margin-top: 8px;
+  transition-duration: $dur-secondary;
+  user-select: none;
 }
 
 .extra-default {
@@ -87,10 +95,11 @@
   width: 100%;
   max-height: 176px;
   overflow-y: auto;
+  overflow-x: hidden;
   background-color: $color-white;
   @include radius-15;
   box-shadow: 0px 4px 36px 0px #00000005;
-  transition-duration: 300ms;
+  transition-duration: $dur-secondary;
   z-index: 10;
   transform-origin: top;
 
@@ -99,6 +108,8 @@
   -moz-transform: scaleY(0);
   -ms-transform: scaleY(0);
   -o-transform: scaleY(0);
+
+  @include scrollbar-primary;
 }
 
 .extra-options-item {
@@ -109,6 +120,16 @@
   font-size: 14px;
   line-height: calc(18 / 14);
   color: $color-black-30;
+  transition-duration: $dur-secondary;
+
+  &:hover {
+    color: $color-green;
+    transform: translateX(1px);
+    -webkit-transform: translateX(1px);
+    -moz-transform: translateX(1px);
+    -ms-transform: translateX(1px);
+    -o-transform: translateX(1px);
+}
 
   @media screen and (min-width: $tablet) {
     font-size: 16px;
@@ -119,7 +140,7 @@
 .search-icon {
   position: absolute;
   left: 18px;
-  top: 50%;
+  top: 55%;
   fill: $color-black-50;
   pointer-events: none;
 }
@@ -127,7 +148,7 @@
 .arrow-down {
   stroke: $color-black-50;
   fill: transparent;
-  transition-duration: 300ms;
+  transition-duration: $dur-primary;
 }
 
 .reset-btn-container {
@@ -143,6 +164,10 @@
   background-color: transparent;
   gap: 4px;
   margin-left: auto;
+
+  &:is(:hover, :focus) .reset-text {
+    color: $color-green;
+  }
 }
 
 .reset-icon {
@@ -152,17 +177,20 @@
 .reset-text {
   @include filter-text;
   font-size: 12px;
+  transition-duration: $dur-secondary;
 }
 
 .opened {
+  border-color: $color-green;
 
   .arrow-down {
-    transform: rotate(180deg)  ;
-    -webkit-transform: rotate(180deg)  ;
-    -moz-transform: rotate(180deg)  ;
-    -ms-transform: rotate(180deg)  ;
-    -o-transform: rotate(180deg)  ;
-}
+    transform: rotateX(180deg);
+    -webkit-transform: rotateX(180deg);
+    -moz-transform: rotateX(180deg);
+    -ms-transform: rotateX(180deg);
+    -o-transform: rotateX(180deg);
+    stroke: $color-green;
+  }
 }
 
 .opened-list {
