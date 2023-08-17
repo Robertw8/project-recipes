@@ -1,0 +1,58 @@
+.example-pseudo {
+  // ... якісь стилі
+
+  &:is(:hover, :focus) {
+    // ... стилі при ховері та фокусі
+  }
+
+  &::before {
+    // ... стилі псевдоелементу
+  }
+}
+
+.example-media {
+  // ... якісь стилі
+
+  @media screen and (min-width: $tablet) {
+    // ... адаптивні стилі
+  }
+}
+
+//! Зручно, але сильно але захоплюйтесь
+.parent {
+  // ... стилі батьківського селектору
+
+  .child {
+    // ... стилі дочірнього селектору
+  }
+}
+
+//? Як використовувати змінні кольорів
+
+.example-color {
+  color: $color-white;
+  background-color: $color-black;
+}
+
+//? Як використовувати змінні брикпоінтів
+.example-breakpoint {
+  // ... стилі для мобілки
+
+  @media screen and (max-width: $mobile) {
+    // ... стилі для viewport менше 375px
+  }
+
+  @media screen and (min-width: $tablet) {
+    // ... стилі для таблетки
+  }
+
+  @media screen and (min-width: $desktop) {
+    // ... стилі для десктопу
+  }
+}
+
+//? Як використовувати міксини
+.example-text {
+  @include filter-text;
+  // ... Перезаписуєте після @include стилі під потреби
+}

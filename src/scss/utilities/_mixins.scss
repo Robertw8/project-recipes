@@ -6,7 +6,3 @@
   color: $color-black-50;
 }
 
-.example-text {
-  @include filter-text;
-  // ... Перезаписуєте після @include стилі під потреби
-}
