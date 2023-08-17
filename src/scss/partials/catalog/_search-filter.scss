@@ -99,6 +99,8 @@
   -moz-transform: scaleY(0);
   -ms-transform: scaleY(0);
   -o-transform: scaleY(0);
+
+  @include scrollbar-primary;
 }
 
 .extra-options-item {
