@@ -1,0 +1,30 @@
+//? Colors
+$color-white: #F8F8F8;
+$color-white-50: #F8F8F880;
+$color-white-10: #F8F8F81A;
+$color-black: #050505;
+$color-black-80: #050505CC;
+$color-black-50: #05050533;
+$color-black-30: #0505054D;
+$color-green: #9BB537;
+$color-yellow: #EEA10C;
+$color-grey: #D9D9D9;
+$color-theme-switch-disabled: #CECDCD;
+
+// .example-color {
+//   color: $color-white;
+//   background-color: $color-black;
+// }
+
+//? Breakpoints
+$mobile: 375px;
+$tablet: 768px;
+$desktop: 1280px;
+
+// .example-breakpoint {
+//   width: 100%;
+
+//   @media screen and (min-width: $tablet) {
+//     width: 50%;
+//   }
+// }

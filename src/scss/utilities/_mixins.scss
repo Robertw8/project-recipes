@@ -1,0 +1,12 @@
+@mixin filter-text {
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: calc(20 / 16);
+  color: $color-black-50;
+}
+
+.example-text {
+  @include filter-text;
+  // ... Перезаписуєте після @include стилі під потреби
+}
