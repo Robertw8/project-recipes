@@ -16,20 +16,15 @@
 
 @mixin scrollbar-primary {
   &::-webkit-scrollbar {
-      width: 5px;
+      width: 6px;
     }
 
     &::-webkit-scrollbar-track {
-      background: $color-black-20;
-      border-radius: 15px;
-      -webkit-border-radius: 15px;
-      -moz-border-radius: 15px;
-      -ms-border-radius: 15px;
-      -o-border-radius: 15px;
+      background: transparent;
     }
 
     &::-webkit-scrollbar-thumb {
-      background: $color-black-30;
+      background: $color-black-10;
       border-radius: 15px;
       -webkit-border-radius: 15px;
       -moz-border-radius: 15px;
