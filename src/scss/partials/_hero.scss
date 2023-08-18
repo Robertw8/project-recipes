@@ -1,3 +1,183 @@
-.test-hero {
-  color: brown;
+.hero {
+  padding-top: 90px;
+}
+
+.hero-container {
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: $desktop) {
+    flex-direction: row;
+    gap: 32px;
+  }
+}
+
+.hero-text-wrap {
+  width: 335px;
+
+  @media screen and (min-width: $tablet) {
+    width: 446px;
+  }
+}
+
+.hero-title {
+  font-family: "Inter", sans-serif;
+  font-size: 26px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 14px;
+  line-height: 120%;
+
+  .hero-item {
+    font-style: oblique;
+    font-weight: 400;
+    color: $color-green;
+  }
+
+  @media screen and (min-width: $tablet) {
+    font-size: 36px;
+    margin-bottom: 16px;
+  }
+}
+
+.dark-theme .hero-title {
+  color: $color-white;
+}
+
+.hero-text {
+  font-size: 14px;
+  font-weight: 400;
+  margin-bottom: 28px;
+  line-height: 1.3em;
+
+  @media screen and (min-width: $tablet) {
+    font-size: 16px;
+    margin-bottom: 32px;
+  }
+}
+
+.dark-theme .hero-text {
+  color: $color-white;
+}
+
+.hero-btn {
+  width: 111px;
+  height: 37px;
+  font-size: 14px;
+  border: 1px solid $color-green;
+  background-color: $color-white;
+  font-weight: 500;
+  border-radius: 12px;
+  margin-bottom: 48px;
+  padding: 10px 20px;
+
+  &:focus, &:hover {
+    background-color: $color-green;
+    color: $color-white;
+  }
+
+  @media screen and (min-width: $tablet) {
+    width: 127px;
+    height: 45px;
+    font-size: 15px;
+    @include radius-15;
+
+    margin-bottom: 64px;
+  }
+}
+
+.dark-theme .hero-btn {
+  color: $color-white;
+  background-color: $color-black;
+}
+
+
+//swiper style
+.hero-img-wrap {
+  display: flex;
+  flex-direction: row;
+  width: 850px;
+  height: 448px;
+  margin-left: 100px;
+  margin-bottom: 50px;
+
+  @media screen and (min-width: $tablet) {
+    //width: 400px;
+  }
+}
+
+.swiper-slide-wrp {
+  display: flex;
+  gap: 16px;
+}
+
+.cook-card-wrap {
+  width: 137px;
+  height: 442px;
+
+  .cook-card {
+    @include radius-15;
+    object-fit: cover;
+    //background-size: cover;
+    //overflow: hidden;
+  }
+}
+
+.dish-card-wrap {
+  background-color: $color-black;
+  @include radius-15;
+  width: 350px;
+  display: flex;
+
+  .dish-card {
+    object-fit: contain;
+  }
+
+  .dish-text {
+    position: absolute;
+
+
+    .dish-name {
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 1.16em;
+      text-transform: uppercase;
+      color: $color-white;
+      margin: 380px 0 0 50px;
+      //position: relative;
+      //top: 85%;
+      //right: 90%;
+      //display: block;
+      //width: 305px;
+      //justify-content: center;
+
+    }
+
+    .dish-area {
+      font-size: 12px;
+      color: $color-white;
+      margin: 0 0 0 150px;
+      //position: relative;
+      //top: 85%;
+      //right: 50%;
+      //width: 275px;
+
+    }
+  }
+}
+
+.dish-big-wrap {
+  background-color: $color-black;
+  @include radius-15;
+  width: 350px;
+  margin-right: 16px;
+  overflow: hidden;
+
+  .dish-big {
+    object-fit: cover;
+    object-position: 50% 100%;
+  }
+}
+
+.page {
 }

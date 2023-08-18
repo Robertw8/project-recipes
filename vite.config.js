@@ -7,7 +7,10 @@ export default defineConfig({
   root: 'src',
   build: {
     rollupOptions: {
-      input: glob.sync('./src/*.html'),
+      input: {
+        main: './src/index.html',
+        favorites: './src/favorites.html',
+      },
     },
     outDir: '../dist',
   },
