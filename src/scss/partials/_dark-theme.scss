@@ -1,0 +1,59 @@
+#theme-switcher {
+  display: inline-block;
+
+  & input {
+    display: block;
+    width: 0;
+    height: 0;
+    margin: 0;
+    z-index: -1;
+    opacity: 0;
+    &:focus,
+    &:hover {
+      & + span {
+        outline: 2px solid #9bb537;
+      }
+    }
+
+    &:checked:focus,
+    &:checked:hover {
+      & + span {
+        outline: 2px solid #f8f8f8;
+      }
+    }
+  }
+
+  & span {
+    display: block;
+    width: 46px;
+    height: 20px;
+    box-shadow: 7px 5px 15px 0px rgba(160, 158, 160, 0.4);
+    position: relative;
+    cursor: pointer;
+    background-color: $color-theme-switch-disabled;
+    transition: 0.2s;
+    border-radius: 34px;
+  }
+
+  & span:before {
+    content: '';
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    left: 1px;
+    bottom: 1px;
+    background-color: #f8f8f8;
+    transition: 0.2s;
+    border-radius: 50%;
+  }
+
+  & input:checked + span {
+    background: linear-gradient(#9bb537, #9bb537);
+    box-shadow: none;
+  }
+
+  & input:checked + span:before {
+    box-shadow: 4px 4px 15px rgba(243, 243, 243, 0.25);
+    transform: translateX(26px);
+  }
+}
