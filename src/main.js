@@ -1,5 +1,8 @@
-
-import { getImageApi, createMarkup, renderElement } from './js/popular-recipes.js';
+import {
+  getImageApi,
+  createMarkup,
+  renderElement,
+} from './js/popular-recipes.js';
 renderElement();
 
 import { setLocalStorageTheme, setThemeOnClick } from './js/dark-theme';
@@ -8,4 +11,9 @@ import { filtersList, onFilterItemClick } from './js/search-filter';
 
 filtersList?.addEventListener('click', onFilterItemClick);
 
-import './js/slider-events.js'
+import './js/slider-events.js';
+
+//? Універсальний запит
+import { exampleRequest } from './js/test.js';
+
+exampleRequest();
