@@ -1,4 +1,11 @@
-const filtersList = document.querySelector('.extra-filters-list');
+import { render } from 'sass';
+import { getRequestsService } from './API/api-service';
+
+const extraFilterRefs = {
+  filtersList: document.querySelector('.extra-filters-list'),
+  areaFilter: document.querySelector('#area-filter'),
+  ingredientsFilter: document.querySelector('#ingredients-filter'),
+};
 
 const onFilterItemClick = e => {
   try {
@@ -10,4 +17,13 @@ const onFilterItemClick = e => {
   }
 };
 
-export { filtersList, onFilterItemClick };
+const renderAreaOptions = (data, elem) => {
+  elem?.insertAdjacentHTML(
+    'beforeend',
+    data
+      .map(item => `<li class="extra-options-item">${item.name}</li>`)
+      .join('')
+  );
+};
+
+export { extraFilterRefs, onFilterItemClick, renderAreaOptions };

@@ -1,3 +1,91 @@
-.test-recipe-popup {
-  color: lightblue;
+// .test-recipe-popup {
+//   color: lightblue;
+// }
+
+
+.recipe-backdrop {
+  
+  // position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 100;
+  overflow: auto;
+  background-color: rgba(5,5,5,.5);
+}
+
+.recipe-backdrop.visible {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+ 
+}
+
+.modal {
+  z-index: 100;
+  transition-delay: 0.15s;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -30%);
+  
+}
+.recipe-content {
+  width: 335px;
+  padding: 40px 20px;
+  border-radius: 15px;
+  background-color: $color-white;
+  
+  
+  @media screen and (min-width: $tablet){
+    width: 531px;
+    padding: 32px;
+  }
+}
+
+.recipe-btn-close {
+  cursor: pointer;
+  position: fixed;
+  border: none;
+  float: right;
+  font-size: 20px;
+  font-weight: 700;
+  top: 14px;
+  right: 14px;
+  background-color:$color-white;
+  
+}
+
+.recipe-backdrop.visible .recipe-content {
+  opacity: 1;
+  transition-delay: 300ms;
+}
+
+.reciepe-close-icon {
+  stroke: $color-black;
+  
+}
+.modal-recipe-btn{
+  column-gap: 14px;
+    display: flex;
+}
+
+.favorite-btn {
+  background-color: $color-green;
+  color: $color-white;
+  border:$color-green;
+  border-radius: 15px;
+  padding: 12px 24px;
+  font-size: 14px;
+}
+
+.give-rating-btn {
+  color: $color-black;
+  border: 1px solid $color-green;
+   background-color: rgba(0, 0, 0, 0);
+  border-radius: 15px;
+  padding: 12px 24px;
+  font-size: 14px;
+  font-weight: 500;
 }
