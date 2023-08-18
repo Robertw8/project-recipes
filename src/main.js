@@ -1,3 +1,5 @@
+import { getRequestsService } from './js/API/api-service.js';
+
 import {
   getImageApi,
   createMarkup,
@@ -5,15 +7,23 @@ import {
 } from './js/popular-recipes.js';
 renderElement();
 
-import { setLocalStorageTheme, setThemeOnClick } from './js/dark-theme';
+import { setLocalStorageTheme, setThemeOnClick } from './js/dark-theme.js';
 
-import { filtersList, onFilterItemClick } from './js/search-filter';
+import {
+  extraFilterRefs,
+  onFilterItemClick,
+  renderAreaOptions,
+} from './js/search-filter';
 
-filtersList?.addEventListener('click', onFilterItemClick);
+getRequestsService('areas').then(area => {
+  renderAreaOptions(area, extraFilterRefs.areaFilter);
+});
+
+getRequestsService('ingredients').then(ingredient => {
+  renderAreaOptions(ingredient, extraFilterRefs.ingredientsFilter);
+});
+
+extraFilterRefs.filtersList?.addEventListener('click', onFilterItemClick);
 
 import './js/slider-events.js';
-
-//? Універсальний запит
-import { exampleRequest } from './js/test.js';
-
-exampleRequest();
+import { render } from 'sass';
