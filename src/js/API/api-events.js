@@ -5,7 +5,8 @@ const URL = 'https://tasty-treats-backend.p.goit.global/api/events';
 
 const getEvents = async () => {
   try {
-    return await axios.get(`${URL}`);
+    const response = await axios.get(`${URL}`);
+    return response.data;
   } catch (error) {
     console.log(error);
     // Notiflix.Notify.failure('Sorry ERROR. Please try again.');
