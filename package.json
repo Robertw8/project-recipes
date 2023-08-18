@@ -11,7 +11,7 @@
   "devDependencies": {
     "glob": "^8.1.0",
     "sass": "^1.65.1",
-    "vite": "^4.0.5"
+    "vite": "^4.4.9"
   },
   "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",

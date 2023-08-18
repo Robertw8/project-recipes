@@ -9,6 +9,30 @@ renderElement();
 
 import { setLocalStorageTheme, setThemeOnClick } from './js/dark-theme.js';
 
+import './js/slider-events.js'
+
+
+import { renderRecipes }  from './js/recipes-render';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+import {openModalButton, modalRecipe, modal, closeModalButton, closeEsc, modalBackDrop, closeModal, openModal } from './js/modal-recipe';
+
 import {
   extraFilterRefs,
   onFilterItemClick,

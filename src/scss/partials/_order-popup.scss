@@ -1,3 +1,254 @@
-.test-order {
-  color: lightsalmon;
+body.show-modal-order-now {
+  overflow: hidden;
+}
+
+body.show-modal-order-now .order-now-modal {
+  transform: scale(1);
+}
+
+body.show-modal-order-now .order-now-backdrop {
+  opacity: 1;
+  visibility: visible;
+  pointer-events: initial;
+}
+
+.order-now-backdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(46, 47, 66, 0.4);
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+
+  overflow: auto;
+  z-index: 2;
+  background: rgba(22, 22, 22, 0.9);
+}
+
+.order-now-modal {
+  display: flex;
+  flex-direction: column;
+  max-width: 320px;
+  opacity: 1;
+  padding: 28px 20px;
+  background-color: $color-white;
+  border-radius: 15px;
+  transform: scale(1.1);
+  // overflow: hidden;
+
+  width: 335px;
+  height: 582px;
+  margin: auto;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .14), 0 1px 3px rgba(0, 0, 0, .12), 0 2px 1px rgba(0, 0, 0, .2);
+}
+
+.order-now-modal-title {
+  margin: 0;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: $color-black;
+  overflow: hidden;
+}
+
+@media screen and (min-width: 375px) {
+  .order-now-modal-title {
+    margin-bottom: 40px;
+  }
+
+  .order-now-modal-form input,
+  textarea {
+    width: 270px;
+  }
+
+  .order-now-modal-form textarea {
+    margin-bottom: 40px;
+  }
+}
+
+@media screen and (max-width: 375px) {
+  .order-now-modal-title {
+    margin-bottom: 15px;
+  }
+
+  .order-now-modal-form input,
+  textarea {
+    width: 250px;
+  }
+
+  .order-now-modal-form textarea {
+    margin-bottom: 15px;
+  }
+}
+
+.order-now-modal-close-btn {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+.order-now-modal-form {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.order-now-modal-form label:not(:last-of-type) {
+  margin-bottom: 16px;
+}
+
+.order-now-modal-form span {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 14px;
+  line-height: 1.2;
+  color: rgba(5, 5, 5, 0.5);
+}
+
+.order-now-modal-form-input {
+  padding: 14px 18px;
+  height: 43px;
+}
+
+.order-now-modal-form input,
+textarea {
+  border-radius: 15px;
+  border: 1px solid rgba(5, 5, 5, 0.2);
+}
+
+.order-now-modal-form textarea {
+  padding: 14px 18px;
+  height: 100px;
+  resize: none;
+}
+
+.order-now-modal-form textarea:hover,
+.order-now-modal-form textarea:focus {
+  border: 1px solid $color-green;
+}
+
+.dark-theme .order-now-modal-form textarea:is(:hover, :focus) {
+  border: 1px solid $color-green;
+}
+
+input {
+  outline: none;
+}
+
+.comment-textarea {
+  outline: none;
+}
+
+.order-now-modal-form button {
+  width: 100%;
+  padding: 15px 0;
+  font-size: 14px;
+  border: none;
+  border-radius: 15px;
+  background: $color-green;
+  color: $color-white;
+  cursor: pointer;
+}
+
+.order-now-modal-form button:hover,
+.order-now-modal-form button:focus {
+  color: rgba(248, 248, 248, 1);
+}
+
+.order-now-modal-close-img {
+  stroke: $color-black;
+}
+
+.order-now-modal-close-img:hover {
+  stroke: $color-green;
+}
+
+@media screen and (max-width: 320px) {
+  .order-now-modal {
+    width: 100%;
+  }
+
+  .order-now-modal-form input,
+  textarea {
+    width: 100%;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .order-now-modal-form input {
+    width: 270px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .order-now-modal {
+    max-width: none;
+    max-height: none;
+    width: 440px;
+    height: 632px;
+    padding: 40px;
+  }
+
+  .order-now-modal-form input,
+  textarea {
+    width: 360px;
+    border-radius: 15px;
+    border: 1px solid rgba(5, 5, 5, 0.2);
+  }
+
+  .order-now-modal-form-input {
+    height: 48px;
+
+  }
+
+  .order-now-modal-close-img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.order-now-modal-form-input:hover,
+.order-now-modal-form-input:focus {
+  border: 1px solid $color-green;
+}
+
+.dark-theme .order-now-modal-form-input:is(:hover, :focus) {
+
+  border: 1px solid $color-green;
+}
+
+.dark-theme .order-now-modal-form input,
+.dark-theme .order-now-modal-form textarea {
+  background-color: rgba(5, 5, 5, 1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.dark-theme .order-now-modal-form input:focus,
+.dark-theme .order-now-modal-form textarea:focus {
+  border-color: $color-green;
+  background-color: rgba(5, 5, 5, 1);
+}
+
+.dark-theme .order-now-modal-form span {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.dark-theme .order-now-modal-form input::placeholder,
+.dark-theme .order-now-modal-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.5);
 }
