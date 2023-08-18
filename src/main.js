@@ -1,6 +1,8 @@
-import { testFn } from './js/test';
+
+import { getImageApi, createMarkup, renderElement } from './js/popular-recipes.js';
+renderElement();
+
 import { setLocalStorageTheme, setThemeOnClick } from './js/dark-theme';
-// testFn();
 
 import { filtersList, onFilterItemClick } from './js/search-filter';
 
