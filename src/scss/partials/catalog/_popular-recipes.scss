@@ -51,6 +51,20 @@ margin-bottom: 8px;
   color: $color-black-80;
 }
 
+ .dark-theme .popular-title {
+  color: $color-white;
+}
+
+ .dark-theme .popular-recipes-text {
+ color: $color-white;
+
+}
+
+.dark-theme .popular-recipes-title {
+  color: $color-white;
+  
+}
+
 @media screen and (min-width: $tablet) {
 
   .section-popular-recipes {
