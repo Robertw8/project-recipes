@@ -6,3 +6,49 @@
   color: $color-black-50;
 }
 
+@mixin radius-15 {
+  border-radius: 15px;
+  -webkit-border-radius: 15px;
+  -moz-border-radius: 15px;
+  -ms-border-radius: 15px;
+  -o-border-radius: 15px;
+}
+
+@mixin scrollbar-primary {
+  &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+      border-radius: 15px;
+      -webkit-border-radius: 15px;
+      -moz-border-radius: 15px;
+      -ms-border-radius: 15px;
+      -o-border-radius: 15px;
+      margin: 10px 0;
+}
+
+    &::-webkit-scrollbar-thumb {
+      background: $color-black-10;
+      border-radius: 15px;
+      -webkit-border-radius: 15px;
+      -moz-border-radius: 15px;
+      -ms-border-radius: 15px;
+      -o-border-radius: 15px;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: $color-black-30;
+    }
+}
+
+@mixin scrollbar-dark-theme {
+    &::-webkit-scrollbar-thumb {
+      background: $color-white-dark-theme-10;
+    }
+
+    &::-webkit-scrollbar-thumb:hover {
+      background: $color-white-dark-theme-30;
+    }
+}
