@@ -23,7 +23,7 @@ const onFilterItemClick = e => {
   }
 };
 
-const renderAreaOptions = (data, elem) => {
+const renderFilterOptions = (data, elem) => {
   elem?.insertAdjacentHTML(
     'beforeend',
     data
@@ -59,7 +59,7 @@ const onResetBtnClick = () => {
 export {
   extraFilterRefs,
   onFilterItemClick,
-  renderAreaOptions,
+  renderFilterOptions,
   onSearchInput,
   onResetBtnClick,
 };

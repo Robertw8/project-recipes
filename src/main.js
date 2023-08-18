@@ -27,17 +27,17 @@ import {
 import {
   extraFilterRefs,
   onFilterItemClick,
-  renderAreaOptions,
+  renderFilterOptions,
   onSearchInput,
   onResetBtnClick,
 } from './js/search-filter';
 
 getRequestsService('areas').then(area => {
-  renderAreaOptions(area, extraFilterRefs.areaFilter);
+  renderFilterOptions(area, extraFilterRefs.areaFilter);
 });
 
 getRequestsService('ingredients').then(ingredient => {
-  renderAreaOptions(ingredient, extraFilterRefs.ingredientsFilter);
+  renderFilterOptions(ingredient, extraFilterRefs.ingredientsFilter);
 });
 
 extraFilterRefs.filtersList?.addEventListener('click', onFilterItemClick);
