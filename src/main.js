@@ -12,6 +12,9 @@ import { setLocalStorageTheme, setThemeOnClick } from './js/dark-theme.js';
 import './js/slider-events.js'
 
 
+import { renderRecipes }  from './js/recipes-render';
+
+
 
 
 
@@ -45,3 +48,4 @@ getRequestsService('ingredients').then(ingredient => {
 });
 
 extraFilterRefs.filtersList?.addEventListener('click', onFilterItemClick);
+

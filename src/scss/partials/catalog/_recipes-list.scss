@@ -1,3 +1,47 @@
-.test-list {
-  color: gold;
+.recipe-list { 
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px 16px;
+}
+.recipe-item {
+  width: 250px;
+  height: 287px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+}
+.recipe-img {
+  object-fit: cover;
+}
+.recipe-wrap {
+  padding: 16px 16px;
+  position: absolute;
+  top: 0;
+}
+.recipe-favorite-btn {
+  background-color: transparent;
+  border: none;
+  margin-bottom: 176px;
+  display: block;
+  margin-left: auto;
+}
+.recipe-favorite-icon {
+display: flex;
+justify-content: center;
+align-items: center;
+}
+.recipe-name {
+}
+.recipe-description {
+  
+}
+.recipe-rating-wrap {
+  display: flex;
+  justify-content:space-between;
+}
+.recipe-rating {
+}
+.recipe-stars {
+}
+.recipe-see {
 }
