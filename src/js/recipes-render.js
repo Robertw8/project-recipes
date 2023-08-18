@@ -1,15 +1,16 @@
-import { getRecipes } from "./API/api-recipes";
+import { getRecipes } from './API/api-recipes';
 const recipeListEl = document.querySelector('.recipe-list');
 
 export async function renderRecipes() {
- try {
+  try {
     const response = await getRecipes();
     const recipesArr = response.data.results;
-    const markup = recipesArr.map(({rating, title, id, description, preview}) => {
+    const markup = recipesArr
+      .map(({ rating, title, id, description, preview }) => {
         return `
-        <li class="recipe-item">
-        <img class="recipe-img" loading="lazy" 
-            src="${preview}" 
+        <li class="recipe-item" data-title="${title}">
+        <img class="recipe-img" loading="lazy"
+            src="${preview}"
             alt="${id}">
         <div class="recipe-wrap">
             <button type="button" class="recipe-favorite-btn">
@@ -23,13 +24,14 @@ export async function renderRecipes() {
             </div>
         </div>
     </li>
-        `
-    }).join('');
+        `;
+      })
+      .join('');
     const recipeListEl = document.querySelector('.recipe-list');
     recipeListEl.insertAdjacentHTML('beforeend', markup);
- } catch (error) {
-console.log(error)
- }
+  } catch (error) {
+    console.log(error);
+  }
 }
 
-renderRecipes()
+renderRecipes();

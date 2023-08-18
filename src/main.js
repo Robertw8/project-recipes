@@ -9,34 +9,27 @@ renderElement();
 
 import { setLocalStorageTheme, setThemeOnClick } from './js/dark-theme.js';
 
-import './js/slider-events.js'
+import './js/slider-events.js';
 
+import { renderRecipes } from './js/recipes-render';
 
-import { renderRecipes }  from './js/recipes-render';
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-import {openModalButton, modalRecipe, modal, closeModalButton, closeEsc, modalBackDrop, closeModal, openModal } from './js/modal-recipe';
+import {
+  openModalButton,
+  modalRecipe,
+  modal,
+  closeModalButton,
+  closeEsc,
+  modalBackDrop,
+  closeModal,
+  openModal,
+} from './js/modal-recipe';
 
 import {
   extraFilterRefs,
   onFilterItemClick,
   renderAreaOptions,
+  onSearchInput,
+  onResetBtnClick,
 } from './js/search-filter';
 
 getRequestsService('areas').then(area => {
@@ -48,5 +41,7 @@ getRequestsService('ingredients').then(ingredient => {
 });
 
 extraFilterRefs.filtersList?.addEventListener('click', onFilterItemClick);
+extraFilterRefs.input?.addEventListener('input', onSearchInput);
+extraFilterRefs.resetBtn?.addEventListener('click', onResetBtnClick);
 
 import './js/slider-events.js';
