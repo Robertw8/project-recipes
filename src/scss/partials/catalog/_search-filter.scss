@@ -1,3 +1,52 @@
+.dark-theme {
+  .search-label {
+    color: $color-white-dark-theme-50;
+  }
+
+  .search-input {
+    color: $color-white-dark-theme-50;
+    border-color: $color-white-dark-theme-20;
+
+    &::placeholder,
+    &::-webkit-input-placeholder {
+      color: $color-white-dark-theme-50;
+    }
+  }
+
+  .search-icon {
+    fill: $color-white-dark-theme-50;
+  }
+
+  .extra-select {
+    border-color: $color-white-dark-theme-20;
+  }
+
+  .selected-option {
+    color: $color-white-dark-theme-50;
+  }
+
+  .arrow-down {
+    stroke: $color-white-dark-theme-50;
+  }
+
+  .reset-text {
+    color: $color-white-dark-theme-50;
+  }
+
+  .extra-options-list {
+    background-color: $color-black;
+    @include scrollbar-dark-theme;
+  }
+
+  .extra-options-item {
+    color: $color-white-dark-theme-30;
+  }
+
+  .current-option {
+    color: $color-white;
+  }
+}
+
 .search-filter {
   margin-left: 40px;
 
@@ -38,9 +87,22 @@
   outline: none;
   @include radius-15;
   transition-duration: $dur-secondary;
+  background: transparent;
 
   &:focus {
     border-color: $color-green;
+  }
+
+  &::placeholder
+  ,::-webkit-input-placeholder {
+    @include filter-text;
+    font-size: 14px;
+    line-height: calc(18 / 14);
+
+    @media screen and (min-width: $tablet) {
+      font-size: 16px;
+      line-height: calc(20 / 16);
+    }
   }
 
   @media screen and (min-width: $tablet) {
@@ -58,9 +120,6 @@
   @media screen and (min-width: 768px) {
     flex-wrap: nowrap;
   }
-}
-
-.extra-filters-item {
 }
 
 .extra-select {
@@ -85,7 +144,6 @@
   @include filter-text;
   font-size: 14px;
   line-height: calc(18 / 14);
-  font-weight: 600;
 }
 
 .extra-options-list {
@@ -159,13 +217,13 @@
 .reset-btn {
   display: flex;
   align-items: center;
-  padding: 0;
+  padding: 5px;
   border: none;
   background-color: transparent;
   gap: 4px;
   margin-left: auto;
 
-  &:is(:hover, :focus) .reset-text {
+  &:hover .reset-text {
     color: $color-green;
   }
 }
@@ -180,8 +238,12 @@
   transition-duration: $dur-secondary;
 }
 
+.current-option {
+  color: $color-black;
+}
+
 .opened {
-  border-color: $color-green;
+  border-color: $color-green !important;
 
   .arrow-down {
     transform: rotateX(180deg);
@@ -199,8 +261,4 @@
   -moz-transform: scaleY(1);
   -ms-transform: scaleY(1);
   -o-transform: scaleY(1);
-}
-
-.current-option {
-  color: $color-black;
 }
