@@ -1,4 +1,3 @@
-import { render } from 'sass';
 import { getRequestsService } from './API/api-service';
 
 const extraFilterRefs = {
@@ -10,8 +9,11 @@ const extraFilterRefs = {
 const onFilterItemClick = e => {
   try {
     const item = e.target.closest('.extra-filters-item');
-    item.querySelector('.extra-select').classList.toggle('opened');
-    item.querySelector('.extra-options-list').classList.toggle('opened-list');
+    const select = item.querySelector('.extra-select');
+    const list = item.querySelector('.extra-options-list');
+
+    select.classList.toggle('opened');
+    list.classList.toggle('opened-list');
   } catch (error) {
     return;
   }

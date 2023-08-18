@@ -26,4 +26,3 @@ getRequestsService('ingredients').then(ingredient => {
 extraFilterRefs.filtersList?.addEventListener('click', onFilterItemClick);
 
 import './js/slider-events.js';
-import { render } from 'sass';
