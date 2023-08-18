@@ -1,66 +1,26 @@
-<!-- 
-<div class="modal">
-    <div class="order-modal">
-        <h2 class="order-modal-title">Order Now</h2>
-        <button class="modal-btn-close" type="button">
-            <svg class="modal-svg" width="20px" height="20px">
-                <use href="images/sprite.svg#icon-cross"></use>
-            </svg>
-        </button>
-        
-       <div class="order-now-form">
-        <form class="order-now-modal-form">
-            <label>
-                <span class="lable-name">Name</span>
-                <input class="order-now-modal-form-input" type="text" name="name" placeholder="Enter your name" required />
-            </label>
-            <label>
-                <span class="lable-phone">Phone number</span>
-                <input class="order-now-modal-form-input" type="tel" name="phone" placeholder="+38-XXX-XXX-XX-XX"
-                    pattern="\+38\d{10}" required />
-        
-        
-            </label>
-            <label>
-                <span class="lable-email">Email</span>
-                <input class="order-now-modal-form-input" type="email" name="email" placeholder="Enter your email" required />
-            </label>
-            <label>
-                <span class="lable-comment">Comment</span>
-                <textarea name="comment" placeholder="Your text here"></textarea>
-            </label>
-            <button type="submit">Send</button>
-        </form>
-       </div>
-
-      
-       
-    </div>
-</div> -->
-
 <div class="order-now-backdrop js-backdrop">
     <div class="order-now-modal">
-        <h2 class="order-now-modal__title">Order Now</h2>
-        <button class="order-now-modal__close-btn" type="button">
-            <svg class="order-now-modal-close__img" width="32" height="32">
-                <use href="./img/sprite.svg#icon-cross"></use>
+        <h2 class="order-now-modal-title">Order Now</h2>
+        <button class="order-now-modal-close-btn" type="button">
+            <svg class="order-now-modal-close-img" width="32" height="32">
+                <use href="images/sprite.svg#icon-cross"></use>
             </svg>
         </button>
         <div class="order-now-form-wrap">
             <form class="order-now-modal-form">
                 <label for="name">
                     <span class="label-name-order-now">Name</span>
-                    <input class="order-now-modal-form__input" name="name" type="text" placeholder="Your name" value=""
+                    <input class="order-now-modal-form-input" name="name" type="text" placeholder="Your name" value=""
                         required />
                 </label>
                 <label for="phone">
                     <span label-phone-order-now>Phone number</span>
-                    <input class="order-now-modal-form__input" type="tel" name="phone" value=""
+                    <input class="order-now-modal-form-input" type="tel" name="phone" value=""
                         placeholder="+38 (000) 000 00 00" pattern="\+38\d{10}" required />
                 </label>
                 <label for="email">
                     <span label-email-order-now>Email</span>
-                    <input class="order-now-modal-form__input" name="email" type="email" placeholder="Your email"
+                    <input class="order-now-modal-form-input" name="email" type="email" placeholder="Your email"
                         value="" name="email" required />
                 </label>
                 <label for="comment">
