@@ -21,9 +21,11 @@ body.show-modal-order-now .order-now-backdrop {
   justify-content: center;
   width: 100vw;
   height: 100vh;
-  position: fixed;
   background-color: rgba(46, 47, 66, 0.4);
   visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+
   overflow: auto;
   z-index: 2;
   background: rgba(22, 22, 22, 0.9);
@@ -48,7 +50,6 @@ body.show-modal-order-now .order-now-backdrop {
   left: 50%;
   transform: translate(-50%, -50%);
   box-shadow: 0 1px 1px rgba(0, 0, 0, .14), 0 1px 3px rgba(0, 0, 0, .12), 0 2px 1px rgba(0, 0, 0, .2);
-  
 }
 
 .order-now-modal-title {
@@ -134,7 +135,6 @@ textarea {
   padding: 14px 18px;
   height: 100px;
   resize: none;
-  
 }
 
 .order-now-modal-form textarea:hover,
@@ -163,7 +163,6 @@ input {
   background: $color-green;
   color: $color-white;
   cursor: pointer;
-  
 }
 
 .order-now-modal-form button:hover,
@@ -173,7 +172,6 @@ input {
 
 .order-now-modal-close-img {
   stroke: $color-black;
- 
 }
 
 .order-now-modal-close-img:hover {
@@ -215,7 +213,7 @@ input {
 
   .order-now-modal-form-input {
     height: 48px;
-   
+
   }
 
   .order-now-modal-close-img {
@@ -229,7 +227,8 @@ input {
   border: 1px solid $color-green;
 }
 
-.dark-theme .order-now-modal-form__input:is(:hover, :focus) {
+.dark-theme .order-now-modal-form-input:is(:hover, :focus) {
+
   border: 1px solid $color-green;
 }
 
