@@ -1,10 +1,13 @@
 .hero {
-  padding-top: 90px;
+  max-width: 1280px;
+  padding: 90px 100px 0 100px;
+  overflow: hidden;
 }
 
 .hero-container {
   display: flex;
   flex-direction: column;
+  width: 1400px;
 
   @media screen and (min-width: $desktop) {
     flex-direction: row;
@@ -17,6 +20,10 @@
 
   @media screen and (min-width: $tablet) {
     width: 446px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    margin-top: 65px;
   }
 }
 
@@ -53,6 +60,7 @@
   @media screen and (min-width: $tablet) {
     font-size: 16px;
     margin-bottom: 32px;
+    width: 408px;
   }
 }
 
@@ -96,9 +104,9 @@
 .hero-img-wrap {
   display: flex;
   flex-direction: row;
-  width: 850px;
+  width: 871px; // 871
   height: 448px;
-  margin-left: 100px;
+  //margin-left: 200px; // 0
   margin-bottom: 50px;
 
   @media screen and (min-width: $tablet) {
@@ -118,66 +126,65 @@
   .cook-card {
     @include radius-15;
     object-fit: cover;
-    //background-size: cover;
-    //overflow: hidden;
   }
 }
 
 .dish-card-wrap {
   background-color: $color-black;
   @include radius-15;
-  width: 350px;
+  width: 351px;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 
   .dish-card {
     object-fit: contain;
+    width: 262px;
+    height: 262px;
+    //margin-bottom: 32px;
   }
 
-  .dish-text {
-    position: absolute;
+  .dish-name {
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.16em;
+    text-transform: uppercase;
+    color: $color-white-50;
+    margin-bottom: 8px;
+  }
 
-
-    .dish-name {
-      font-size: 14px;
-      font-weight: 500;
-      line-height: 1.16em;
-      text-transform: uppercase;
-      color: $color-white;
-      margin: 380px 0 0 50px;
-      //position: relative;
-      //top: 85%;
-      //right: 90%;
-      //display: block;
-      //width: 305px;
-      //justify-content: center;
-
-    }
-
-    .dish-area {
-      font-size: 12px;
-      color: $color-white;
-      margin: 0 0 0 150px;
-      //position: relative;
-      //top: 85%;
-      //right: 50%;
-      //width: 275px;
-
-    }
+  .dish-area {
+    font-size: 12px;
+    color: $color-white-10;
   }
 }
 
 .dish-big-wrap {
   background-color: $color-black;
   @include radius-15;
-  width: 350px;
+  height: 442px;
+  width: 351px;
   margin-right: 16px;
   overflow: hidden;
 
   .dish-big {
+    display: block;
+    height: 150%;
+    //width: 200%;
     object-fit: cover;
-    object-position: 50% 100%;
+    object-position: 50% 10%;
+    //width: 1500px;
   }
 }
 
-.page {
+.swiper-pagination {
+  //position: ;
+//  top: 10px;
+//  right: 10px;
+//  width: auto !important;
+//  left: auto !important;
+//  margin: 0;
+
+  margin-top: 450px;
 }
