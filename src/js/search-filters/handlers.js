@@ -3,6 +3,7 @@ import { getRecipes } from '../API/api-recipes';
 import { renderFilteredRecipes } from './markup';
 import { queryParams } from './requests';
 import { executeRequest } from './requests';
+import { Toast } from '../utilities/sweetalert';
 
 const onFilterItemClick = e => {
   try {
@@ -42,6 +43,11 @@ const onResetBtnClick = async () => {
   const items = recipeList?.querySelectorAll('.recipe-item');
 
   items?.forEach(item => item.classList.remove('d-none'));
+
+  await Toast.fire({
+    icon: 'question',
+    title: 'The filters have been reset',
+  });
 };
 
 const onSearchInput = e => {

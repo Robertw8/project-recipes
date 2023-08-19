@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { renderFilteredRecipes } from './markup';
+import { Toast } from '../utilities/sweetalert';
 
 const queryParams = {
   queryParam: '',
@@ -43,7 +44,10 @@ const executeRequest = async () => {
 
     renderFilteredRecipes(response.data.results);
   } catch (error) {
-    // Swal.fire();
+    await Toast.fire({
+      icon: 'error',
+      title: 'Something went wrong. Reload the page and try again',
+    });
     console.log(error);
   }
 };

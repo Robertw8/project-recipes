@@ -15,7 +15,11 @@
 }
 
 .colored-toast.swal2-icon-question {
-  background-color: #87adbd !important;
+  background-color: $color-black-50 !important;
+}
+
+.dark-theme .colored-toast.swal2-icon-question {
+  background-color: $color-white-50 !important;
 }
 
 .colored-toast .swal2-title {
