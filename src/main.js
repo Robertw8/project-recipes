@@ -25,9 +25,13 @@ import {
   openModal,
 } from './js/modal-recipe';
 
-import { onSearchInput, onResetBtnClick } from './js/search-filter';
+//?----------------------------------------search filters-------------------------------------------
 import getFilterRefs from './js/search-filters/refs.js';
-import { onFilterItemClick } from './js/search-filters/handlers.js';
+import {
+  onFilterItemClick,
+  onResetBtnClick,
+  onSearchInput,
+} from './js/search-filters/handlers.js';
 import {
   renderAreaOptions,
   renderIngredientsOptions,
@@ -61,5 +65,4 @@ resetBtn?.addEventListener('click', onResetBtnClick);
 areaFilter?.addEventListener('click', filterByArea);
 ingredientsFilter?.addEventListener('click', filterByIngredient);
 timeFilter?.addEventListener('click', filterByTime);
-
-import './js/slider-events.js';
+//?----------------------------------------search filters-------------------------------------------

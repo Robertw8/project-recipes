@@ -1,3 +1,9 @@
+import getFilterRefs from './refs';
+import { getRecipes } from '../API/api-recipes';
+import { renderFilteredRecipes } from './markup';
+import { queryParams } from './requests';
+import { executeRequest } from './requests';
+
 const onFilterItemClick = e => {
   try {
     const item = e.target.closest('.extra-filters-item');
@@ -11,4 +17,36 @@ const onFilterItemClick = e => {
   }
 };
 
-export { onFilterItemClick };
+const {
+  searchInput,
+  selectedTime,
+  selectedArea,
+  selectedIngredient,
+  recipeList,
+} = getFilterRefs();
+
+const onResetBtnClick = async () => {
+  searchInput.value = '';
+  queryParams.areaQuery = '';
+  queryParams.timeQuery = '';
+  queryParams.ingredientQuery = '';
+  queryParams.queryParam = '';
+
+  selectedTime.textContent = 'Select';
+  selectedArea.textContent = 'Select';
+  selectedIngredient.textContent = 'Select';
+  const response = getRecipes().then(data =>
+    renderFilteredRecipes(data?.data.results)
+  );
+
+  const items = recipeList?.querySelectorAll('.recipe-item');
+
+  items?.forEach(item => item.classList.remove('d-none'));
+};
+
+const onSearchInput = e => {
+  queryParams.searchQuery = e.target.value;
+  executeRequest();
+};
+
+export { onFilterItemClick, onResetBtnClick, onSearchInput };

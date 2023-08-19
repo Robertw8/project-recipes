@@ -1,6 +1,6 @@
 import getFilterRefs from './refs';
 import { queryParams } from './requests';
-import { executeRequest } from '../search-filter';
+import { executeRequest } from './requests';
 
 const { selectedArea, selectedIngredient, selectedTime } = getFilterRefs();
 
