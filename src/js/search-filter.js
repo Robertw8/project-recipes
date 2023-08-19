@@ -1,6 +1,7 @@
 import { getRequestsService } from './API/api-service';
 import { getRecipes } from './API/api-recipes';
 import axios from 'axios';
+import Swal from 'sweetalert2';
 
 const extraFilterRefs = {
   filtersList: document.querySelector('.extra-filters-list'),
@@ -52,33 +53,17 @@ const renderIngredientsOptions = data => {
   );
 };
 
-const onSearchInput = async e => {
-  const response = await getRecipes();
-  const results = response?.data.results;
-
-  results.forEach(({ title }) => {
-    const matched = title.toLowerCase().includes(e.target.value.toLowerCase());
-    const listItem = document.querySelector(`[data-title="${title}"]`);
-
-    if (listItem) {
-      matched
-        ? listItem.classList.remove('d-none')
-        : listItem.classList.add('d-none');
-    }
-  });
-};
-
 let queryParam = '';
 let selectedArea = '';
 let selectedIngredient = '';
 let selectedTime = '';
+let searchQuery = '';
 
 const filterByArea = e => {
   selectedArea = e.target.dataset.area;
 
   extraFilterRefs.selectedArea.textContent = e.target.textContent;
   executeRequest();
-  console.log(queryParam);
 };
 
 const filterByIngredient = e => {
@@ -86,7 +71,6 @@ const filterByIngredient = e => {
 
   extraFilterRefs.selectedIngredient.textContent = e.target.textContent;
   executeRequest();
-  console.log(queryParam);
 };
 
 const filterByTime = e => {
@@ -94,7 +78,11 @@ const filterByTime = e => {
 
   extraFilterRefs.selectedTime.textContent = e.target.textContent;
   executeRequest();
-  console.log(queryParam);
+};
+
+const onSearchInput = e => {
+  searchQuery = e.target.value;
+  executeRequest();
 };
 
 const executeRequest = async () => {
@@ -110,6 +98,10 @@ const executeRequest = async () => {
 
   if (selectedIngredient) {
     queryParam += `&ingredient=${encodeURIComponent(selectedIngredient)}`;
+  }
+
+  if (searchQuery) {
+    queryParam += `&title=${encodeURIComponent(searchQuery)}`;
   }
 
   try {
