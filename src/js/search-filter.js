@@ -1,20 +1,21 @@
 import { getRequestsService } from './API/api-service';
 import { getRecipes } from './API/api-recipes';
 import axios from 'axios';
-import Swal from 'sweetalert2';
+import { Toast } from './utilities/sweetalert';
+import getFilterRefs from './search-filters/refs';
 
-const extraFilterRefs = {
-  filtersList: document.querySelector('.extra-filters-list'),
-  areaFilter: document.querySelector('#area-filter'),
-  ingredientsFilter: document.querySelector('#ingredients-filter'),
-  timeFilter: document.querySelector('#time-filter'),
-  input: document.querySelector('.search-input'),
-  recipeList: document.querySelector('.recipe-list'),
-  resetBtn: document.querySelector('.reset-btn'),
-  selectedTime: document.querySelector('#selected-time'),
-  selectedArea: document.querySelector('#selected-area'),
-  selectedIngredient: document.querySelector('#selected-ingredient'),
-};
+const {
+  filtersList,
+  areaFilter,
+  ingredientsFilter,
+  timeFilter,
+  searchInput,
+  recipeList,
+  resetBtn,
+  selectedTime,
+  selectedArea,
+  selectedIngredient,
+} = getFilterRefs();
 
 const onFilterItemClick = e => {
   try {
@@ -30,7 +31,7 @@ const onFilterItemClick = e => {
 };
 
 const renderAreaOptions = data => {
-  extraFilterRefs.areaFilter?.insertAdjacentHTML(
+  areaFilter?.insertAdjacentHTML(
     'beforeend',
     data.results
       .map(
@@ -42,7 +43,7 @@ const renderAreaOptions = data => {
 };
 
 const renderIngredientsOptions = data => {
-  extraFilterRefs.ingredientsFilter?.insertAdjacentHTML(
+  ingredientsFilter?.insertAdjacentHTML(
     'beforeend',
     data
       .map(
@@ -54,29 +55,29 @@ const renderIngredientsOptions = data => {
 };
 
 let queryParam = '';
-let selectedArea = '';
-let selectedIngredient = '';
-let selectedTime = '';
+let areaQuery = '';
+let ingredientQuery = '';
+let timeQuery = '';
 let searchQuery = '';
 
 const filterByArea = e => {
-  selectedArea = e.target.dataset.area;
+  areaQuery = e.target.dataset.area;
 
-  extraFilterRefs.selectedArea.textContent = e.target.textContent;
+  selectedArea.textContent = e.target.textContent;
   executeRequest();
 };
 
 const filterByIngredient = e => {
-  selectedIngredient = e.target.dataset.ingredient;
+  ingredientQuery = e.target.dataset.ingredient;
 
-  extraFilterRefs.selectedIngredient.textContent = e.target.textContent;
+  selectedIngredient.textContent = e.target.textContent;
   executeRequest();
 };
 
 const filterByTime = e => {
-  selectedTime = e.target.dataset.time;
+  timeQuery = e.target.dataset.time;
 
-  extraFilterRefs.selectedTime.textContent = e.target.textContent;
+  selectedTime.textContent = e.target.textContent;
   executeRequest();
 };
 
@@ -88,16 +89,16 @@ const onSearchInput = e => {
 const executeRequest = async () => {
   queryParam = '';
 
-  if (selectedTime) {
-    queryParam += `&time=${encodeURIComponent(selectedTime)}`;
+  if (timeQuery) {
+    queryParam += `&time=${encodeURIComponent(timeQuery)}`;
   }
 
-  if (selectedArea) {
-    queryParam += `&area=${encodeURIComponent(selectedArea)}`;
+  if (areaQuery) {
+    queryParam += `&area=${encodeURIComponent(areaQuery)}`;
   }
 
-  if (selectedIngredient) {
-    queryParam += `&ingredient=${encodeURIComponent(selectedIngredient)}`;
+  if (ingredientQuery) {
+    queryParam += `&ingredient=${encodeURIComponent(ingredientQuery)}`;
   }
 
   if (searchQuery) {
@@ -110,10 +111,9 @@ const executeRequest = async () => {
     );
 
     renderFilteredRecipes(response.data.results);
-
-    console.log(queryParam);
   } catch (error) {
-    console.error('Error executing request:', error);
+    // Swal.fire();
+    console.log(error);
   }
 };
 
@@ -141,31 +141,29 @@ const renderFilteredRecipes = results => {
     })
     .join('');
 
-  extraFilterRefs.recipeList.innerHTML = '';
-  extraFilterRefs.recipeList?.insertAdjacentHTML('beforeend', markup);
+  recipeList.innerHTML = '';
+  recipeList?.insertAdjacentHTML('beforeend', markup);
 };
 
 const onResetBtnClick = async () => {
-  extraFilterRefs.input.value = '';
-  selectedArea = '';
-  selectedTime = '';
-  selectedIngredient = '';
+  searchInput.value = '';
+  areaQuery = '';
+  timeQuery = '';
+  ingredientQuery = '';
   queryParam = '';
-  extraFilterRefs.selectedTime.textContent = 'Select';
-  extraFilterRefs.selectedArea.textContent = 'Select';
-  extraFilterRefs.selectedIngredient.textContent = 'Select';
+  selectedTime.textContent = 'Select';
+  selectedArea.textContent = 'Select';
+  selectedIngredient.textContent = 'Select';
   const response = getRecipes().then(data =>
     renderFilteredRecipes(data?.data.results)
   );
-  console.log(queryParam);
 
-  const items = extraFilterRefs.recipeList?.querySelectorAll('.recipe-item');
+  const items = recipeList?.querySelectorAll('.recipe-item');
 
   items?.forEach(item => item.classList.remove('d-none'));
 };
 
 export {
-  extraFilterRefs,
   onFilterItemClick,
   renderAreaOptions,
   renderIngredientsOptions,
