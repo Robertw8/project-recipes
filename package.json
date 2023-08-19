@@ -19,6 +19,7 @@
     "axios": "^1.4.0",
     "lodash.debounce": "^4.0.8",
     "modern-normalize": "^2.0.0",
+    "sweetalert2": "^11.7.26",
     "swiper": "^10.2.0",
     "vite-plugin-full-reload": "^1.0.5",
     "vite-plugin-html-inject": "^1.0.1"
