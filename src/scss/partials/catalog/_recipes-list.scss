@@ -118,6 +118,15 @@
     font-size: 14px;
     font-weight: 500;
     line-height: 1.28;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .recipe-stars-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 4px;
   }
   .recipe-see {
   display: flex;
