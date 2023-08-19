@@ -22,7 +22,9 @@ export async function renderRecipes() {
                     <h2 class="recipe-name">${title}</h2>
                     <p class="recipe-description">${description}</p>
                     <div class="recipe-rating-wrap">
-                        <p class="recipe-rating">${rating}<span class="recipe-stars"></span></p>
+                        <p class="recipe-rating">${rating}<span class="recipe-stars">
+                        <svg class="recipe-stars-icon" width="84" height="18"><use class="stars-icon" href="/images/sprite.svg#icon-${Math.round(rating - 0.1)}-stars"></use></svg>  
+                        </span></p>
                         <button class="recipe-see" type="button">See recipe</button>
                 </div>
                 </div>

@@ -26,17 +26,31 @@ import {
   fillStars,
 } from './js/modal-recipe';
 
+//?----------------------------------------search filters-------------------------------------------
+import getFilterRefs from './js/search-filters/refs.js';
 import {
-  extraFilterRefs,
   onFilterItemClick,
+  onResetBtnClick,
+  onSearchInput,
+} from './js/search-filters/handlers.js';
+import {
   renderAreaOptions,
   renderIngredientsOptions,
-  onSearchInput,
-  onResetBtnClick,
+} from './js/search-filters/markup.js';
+import {
   filterByArea,
   filterByIngredient,
   filterByTime,
-} from './js/search-filter';
+} from './js/search-filters/filters.js';
+
+const {
+  filtersList,
+  searchInput,
+  resetBtn,
+  areaFilter,
+  ingredientsFilter,
+  timeFilter,
+} = getFilterRefs();
 
 getRequestsService('recipes').then(data => {
   renderAreaOptions(data);
@@ -46,16 +60,14 @@ getRequestsService('ingredients').then(data => {
   renderIngredientsOptions(data);
 });
 
-extraFilterRefs.filtersList?.addEventListener('click', onFilterItemClick);
-extraFilterRefs.input?.addEventListener('input', debounce(onSearchInput, 300));
-extraFilterRefs.resetBtn?.addEventListener('click', onResetBtnClick);
-extraFilterRefs.areaFilter?.addEventListener('click', filterByArea);
-extraFilterRefs.ingredientsFilter?.addEventListener(
-  'click',
-  filterByIngredient
-);
-extraFilterRefs.timeFilter?.addEventListener('click', filterByTime);
+filtersList?.addEventListener('click', onFilterItemClick);
+searchInput?.addEventListener('input', debounce(onSearchInput, 300));
+resetBtn?.addEventListener('click', onResetBtnClick);
+areaFilter?.addEventListener('click', filterByArea);
+ingredientsFilter?.addEventListener('click', filterByIngredient);
+timeFilter?.addEventListener('click', filterByTime);
+//?----------------------------------------search filters-------------------------------------------
 
-import './js/slider-events.js';
-
-
+=======
+import { favorites } from './js/favorites.js';
+favorites();
