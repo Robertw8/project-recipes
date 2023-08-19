@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { renderFilteredRecipes } from './markup';
+import { Toast } from '../utilities/sweetalert';
 
 const queryParams = {
   queryParam: '',
@@ -38,12 +39,15 @@ const executeRequest = async () => {
 
   try {
     const response = await axios.get(
-      `https://tasty-treats-backend.p.goit.global/api/recipes?${queryParams.queryParam}`
+      `https://tasty-treats-backend.p.goit.global/api/recipes?&limit=9${queryParams.queryParam}`
     );
 
     renderFilteredRecipes(response.data.results);
   } catch (error) {
-    // Swal.fire();
+    await Toast.fire({
+      icon: 'error',
+      title: 'Something went wrong. Reload the page and try again',
+    });
     console.log(error);
   }
 };
