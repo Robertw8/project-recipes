@@ -1,7 +1,6 @@
 import Swiper from 'swiper';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
 import 'swiper/scss';
-// import 'swiper/css/navigation';
 import 'swiper/scss/pagination';
 import { getRequestsService } from './API/api-service.js';
 
