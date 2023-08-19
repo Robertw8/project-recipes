@@ -39,7 +39,7 @@ const executeRequest = async () => {
 
   try {
     const response = await axios.get(
-      `https://tasty-treats-backend.p.goit.global/api/recipes?${queryParams.queryParam}`
+      `https://tasty-treats-backend.p.goit.global/api/recipes?&limit=9${queryParams.queryParam}`
     );
 
     renderFilteredRecipes(response.data.results);
