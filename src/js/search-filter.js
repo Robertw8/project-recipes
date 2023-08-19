@@ -117,7 +117,7 @@ const executeRequest = async () => {
       `https://tasty-treats-backend.p.goit.global/api/recipes?${queryParam}`
     );
 
-    renderRecipes(response.data.results);
+    renderFilteredRecipes(response.data.results);
 
     console.log(queryParam);
   } catch (error) {
@@ -125,7 +125,7 @@ const executeRequest = async () => {
   }
 };
 
-const renderRecipes = results => {
+const renderFilteredRecipes = results => {
   const markup = results
     .map(({ rating, title, id, description, preview }) => {
       return `
@@ -162,7 +162,9 @@ const onResetBtnClick = async () => {
   extraFilterRefs.selectedTime.textContent = 'Select';
   extraFilterRefs.selectedArea.textContent = 'Select';
   extraFilterRefs.selectedIngredient.textContent = 'Select';
-  const response = getRecipes().then(data => renderRecipes(data?.data.results));
+  const response = getRecipes().then(data =>
+    renderFilteredRecipes(data?.data.results)
+  );
   console.log(queryParam);
 
   const items = extraFilterRefs.recipeList?.querySelectorAll('.recipe-item');
