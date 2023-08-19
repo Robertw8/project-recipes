@@ -25,17 +25,18 @@ import {
   openModal,
 } from './js/modal-recipe';
 
+import { onSearchInput, onResetBtnClick } from './js/search-filter';
+import getFilterRefs from './js/search-filters/refs.js';
+import { onFilterItemClick } from './js/search-filters/handlers.js';
 import {
-  onFilterItemClick,
   renderAreaOptions,
   renderIngredientsOptions,
-  onSearchInput,
-  onResetBtnClick,
+} from './js/search-filters/markup.js';
+import {
   filterByArea,
   filterByIngredient,
   filterByTime,
-} from './js/search-filter';
-import getFilterRefs from './js/search-filters/refs.js';
+} from './js/search-filters/filters.js';
 
 const {
   filtersList,

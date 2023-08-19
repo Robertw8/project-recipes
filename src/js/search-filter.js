@@ -3,6 +3,7 @@ import { getRecipes } from './API/api-recipes';
 import axios from 'axios';
 import { Toast } from './utilities/sweetalert';
 import getFilterRefs from './search-filters/refs';
+import { queryParams } from './search-filters/requests';
 
 const {
   filtersList,
@@ -17,97 +18,41 @@ const {
   selectedIngredient,
 } = getFilterRefs();
 
-const onFilterItemClick = e => {
-  try {
-    const item = e.target.closest('.extra-filters-item');
-    const select = item.querySelector('.extra-select');
-    const list = item.querySelector('.extra-options-list');
-
-    select.classList.toggle('opened');
-    list.classList.toggle('opened-list');
-  } catch (error) {
-    return;
-  }
-};
-
-const renderAreaOptions = data => {
-  areaFilter?.insertAdjacentHTML(
-    'beforeend',
-    data.results
-      .map(
-        item =>
-          `<li class="extra-options-item" data-area="${item.area}">${item.area}</li>`
-      )
-      .join('')
-  );
-};
-
-const renderIngredientsOptions = data => {
-  ingredientsFilter?.insertAdjacentHTML(
-    'beforeend',
-    data
-      .map(
-        item =>
-          `<li class="extra-options-item" data-ingredient="${item._id}">${item.name}</li>`
-      )
-      .join('')
-  );
-};
-
-let queryParam = '';
-let areaQuery = '';
-let ingredientQuery = '';
-let timeQuery = '';
-let searchQuery = '';
-
-const filterByArea = e => {
-  areaQuery = e.target.dataset.area;
-
-  selectedArea.textContent = e.target.textContent;
-  executeRequest();
-};
-
-const filterByIngredient = e => {
-  ingredientQuery = e.target.dataset.ingredient;
-
-  selectedIngredient.textContent = e.target.textContent;
-  executeRequest();
-};
-
-const filterByTime = e => {
-  timeQuery = e.target.dataset.time;
-
-  selectedTime.textContent = e.target.textContent;
-  executeRequest();
-};
-
 const onSearchInput = e => {
-  searchQuery = e.target.value;
+  queryParams.searchQuery = e.target.value;
   executeRequest();
 };
 
 const executeRequest = async () => {
-  queryParam = '';
+  queryParams.queryParam = '';
 
-  if (timeQuery) {
-    queryParam += `&time=${encodeURIComponent(timeQuery)}`;
+  if (queryParams.timeQuery) {
+    queryParams.queryParam += `&time=${encodeURIComponent(
+      queryParams.timeQuery
+    )}`;
   }
 
-  if (areaQuery) {
-    queryParam += `&area=${encodeURIComponent(areaQuery)}`;
+  if (queryParams.areaQuery) {
+    queryParams.queryParam += `&area=${encodeURIComponent(
+      queryParams.areaQuery
+    )}`;
   }
 
-  if (ingredientQuery) {
-    queryParam += `&ingredient=${encodeURIComponent(ingredientQuery)}`;
+  if (queryParams.ingredientQuery) {
+    queryParams.queryParam += `&ingredient=${encodeURIComponent(
+      queryParams.ingredientQuery
+    )}`;
   }
 
-  if (searchQuery) {
-    queryParam += `&title=${encodeURIComponent(searchQuery)}`;
+  if (queryParams.searchQuery) {
+    queryParams.queryParam += `&title=${encodeURIComponent(
+      queryParams.searchQuery
+    )}`;
   }
 
   try {
     const response = await axios.get(
-      `https://tasty-treats-backend.p.goit.global/api/recipes?${queryParam}`
+      `https://tasty-treats-backend.p.goit.global/api/recipes?${queryParams.queryParam}`
     );
 
     renderFilteredRecipes(response.data.results);
@@ -147,10 +92,11 @@ const renderFilteredRecipes = results => {
 
 const onResetBtnClick = async () => {
   searchInput.value = '';
-  areaQuery = '';
-  timeQuery = '';
-  ingredientQuery = '';
-  queryParam = '';
+  queryParams.areaQuery = '';
+  queryParams.timeQuery = '';
+  queryParams.ingredientQuery = '';
+  queryParams.queryParam = '';
+
   selectedTime.textContent = 'Select';
   selectedArea.textContent = 'Select';
   selectedIngredient.textContent = 'Select';
@@ -163,14 +109,4 @@ const onResetBtnClick = async () => {
   items?.forEach(item => item.classList.remove('d-none'));
 };
 
-export {
-  onFilterItemClick,
-  renderAreaOptions,
-  renderIngredientsOptions,
-  onSearchInput,
-  onResetBtnClick,
-  filterByArea,
-  filterByIngredient,
-  filterByTime,
-  executeRequest,
-};
+export { onSearchInput, onResetBtnClick, executeRequest };
