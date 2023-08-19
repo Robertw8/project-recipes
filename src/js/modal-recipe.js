@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { getRequestsService } from './API/api-service';
 
-
 const openModalButton = document.querySelector('.open');
 const modalRecipeBackDrop = document.querySelector('.recipe-backdrop');
 const modalRecipe = document.getElementById('modal-recipe');
@@ -52,7 +51,7 @@ const URL = 'recipes/';
 const getRecipeDetails = async recipeID => {
   try {
     const recipeData = await getRequestsService(`${URL}${recipeID}`);
-    return recipeData;
+        return recipeData;
   } catch (error) {
     console.error(error);
     return null;
@@ -63,48 +62,59 @@ const createRecipeMarkup = recipeData => {
   const ingredientsList = recipeData.ingredients
     .map(
       ingredient => `
-    <li class="list-item-recipe">
-    <p class="modal-recipe-ingredients">${ingredient.name}</p>
-    <p class="modal-recipe-measure">${ingredient.measure}</p>
-    </li>
-    `
+        <li class="list-item-recipe">
+          <p class="modal-recipe-ingredients">${ingredient.name}</p>
+          <p class="modal-recipe-measure">${ingredient.measure}</p>
+        </li>
+      `
     )
     .join('');
 
   const markup = `
-      <div class="recipe-details">
-       <div>
-     <iframe class="recipe-video" src="https://www.youtube.com/embed/${
-       recipeData.youtube
-     }" frameborder="0" allow="autoplay; encrypted-media; fullscreen"></iframe>
-     </div>
-     <div class="recipe-container">
-     <h2 class="modal-recipe-title">${recipeData.title}</h2>
+    <div class="recipe-details">
+      <div>
+        <iframe class="recipe-video" src="https://www.youtube.com/embed/${recipeData.youtube}" frameborder="0" allow="autoplay; encrypted-media; fullscreen"></iframe>
+      </div>
+    
+      <div class="recipe-container">
+        <h2 class="modal-recipe-title">${recipeData.title}</h2>
         <div class="modal-recipe-cooking">
-        <p class="modal-recipe-rating"> ${recipeData.rating}</p>
-        <p class="modal-recipe-time"> ${recipeData.time} mins</p>
+          <div class='card_star-rating card_star-rating-modal'>
+            <p class="modal-recipe-rating">${recipeData.rating}</p>
+            <svg width="14" height="14" class="icon-star">
+              <use href="images/sprite.svg#icon-star"></use>
+            </svg>
+            <svg width="14" height="14" class="icon-star">
+              <use href="images/sprite.svg#icon-star"></use>
+            </svg>
+            <svg width="14" height="14" class="icon-star">
+              <use href="images/sprite.svg#icon-star"></use>
+            </svg>
+            <svg width="14" height="14" class="icon-star">
+              <use href="images/sprite.svg#icon-star"></use>
+            </svg>
+            <svg width="14" height="14" class="icon-star">
+              <use href="images/sprite.svg#icon-star"></use>
+            </svg>
+          </div>
+          <p class="modal-recipe-time">${recipeData.time} mins</p>
         </div>
         
         <div class="overflow-scroll">
-        <ul class="modal-ingredients">
-          ${ingredientsList}
-        </ul>
+          <ul class="modal-ingredients">
+            ${ingredientsList}
+          </ul>
         </div>
-        
-        </div>
-        
-        
-        <ul class="modal-recipe-tag">
-          ${recipeData.tags
-            .map(tag => `<li class="recipe-tag-item"><p>#${tag}</p></li>`)
-            .join('')}
-          
-        </ul>
-        
-        <p class="modal-recipe-text">${recipeData.instructions}</p>
-      
       </div>
-    `;
+      
+      <ul class="modal-recipe-tag">
+        ${recipeData.tags.map(tag => `<li class="recipe-tag-item"><p>#${tag}</p></li>`).join('')}
+      </ul>
+      
+      <p class="modal-recipe-text">${recipeData.instructions}</p>
+    </div>
+  `;
+  
   return markup;
 };
 
@@ -115,7 +125,8 @@ getRecipeDetails(recipeID)
   .then(recipeData => {
     if (recipeData) {
       const recipeMarkup = createRecipeMarkup(recipeData);
-      markUpElement.innerHTML = recipeMarkup; 
+      markUpElement.innerHTML = recipeMarkup;
+      fillStars(recipeData);
     } else {
       Notiflix.Notify.failure('Sorry ERROR. Please try again.');
     }
@@ -123,3 +134,22 @@ getRecipeDetails(recipeID)
   .catch(error => {
     console.error(error);
   });
+
+  function fillStars(recipeData) {
+    const backendRating = recipeData.rating;
+    const starRatings = document.querySelectorAll('.card_star-rating');
+    
+    starRatings.forEach(starRating => {
+      const stars = starRating.querySelectorAll('.star-modal');
+      
+      stars.forEach((star, index) => {
+        if (index < backendRating) {
+          star.classList.add('filled');
+        } else {
+          star.classList.remove('filled');
+        }
+      });
+    });
+  }
+  
+export {fillStars}
