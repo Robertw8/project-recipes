@@ -144,6 +144,7 @@
   @include filter-text;
   font-size: 14px;
   line-height: calc(18 / 14);
+  white-space: nowrap;
 }
 
 .extra-options-list {

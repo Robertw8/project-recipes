@@ -1,4 +1,5 @@
 import { getRequestsService } from './js/API/api-service.js';
+import debounce from 'lodash.debounce';
 
 import {
   getImageApi,
@@ -27,21 +28,31 @@ import {
 import {
   extraFilterRefs,
   onFilterItemClick,
-  renderFilterOptions,
+  renderAreaOptions,
+  renderIngredientsOptions,
   onSearchInput,
   onResetBtnClick,
+  filterByArea,
+  filterByIngredient,
+  filterByTime,
 } from './js/search-filter';
 
-getRequestsService('areas').then(area => {
-  renderFilterOptions(area, extraFilterRefs.areaFilter);
+getRequestsService('recipes').then(data => {
+  renderAreaOptions(data);
 });
 
-getRequestsService('ingredients').then(ingredient => {
-  renderFilterOptions(ingredient, extraFilterRefs.ingredientsFilter);
+getRequestsService('ingredients').then(data => {
+  renderIngredientsOptions(data);
 });
 
 extraFilterRefs.filtersList?.addEventListener('click', onFilterItemClick);
-extraFilterRefs.input?.addEventListener('input', onSearchInput);
+extraFilterRefs.input?.addEventListener('input', debounce(onSearchInput, 300));
 extraFilterRefs.resetBtn?.addEventListener('click', onResetBtnClick);
+extraFilterRefs.areaFilter?.addEventListener('click', filterByArea);
+extraFilterRefs.ingredientsFilter?.addEventListener(
+  'click',
+  filterByIngredient
+);
+extraFilterRefs.timeFilter?.addEventListener('click', filterByTime);
 
 import './js/slider-events.js';
