@@ -17,7 +17,6 @@
 .hero-container {
   display: flex;
   flex-direction: column;
-  //width: 1400px;
 
   @media screen and (min-width: $desktop) {
     flex-direction: row;
@@ -109,18 +108,17 @@
   background-color: $color-black;
 }
 
-
 //swiper style
 .hero-img-wrap {
   display: flex;
   flex-direction: row;
   width: 497px;
-  height: 280px;
-  margin-bottom: 50px; //
+  height: 302px; //280 for pagination
+  //margin-bottom: 10px; //del
 
   @media screen and (min-width: $tablet) {
     width: 871px;
-    height: 442px;
+    height: 468px; //442 for pagination
   }
 
   @media screen and (min-width: $desktop) {
@@ -217,7 +215,6 @@
   }
 
   @media screen and (min-width: $tablet) {
-    //width: 400px;
     height: 442px;
     width: 351px;
   }
@@ -226,8 +223,31 @@
   }
 }
 
-.pagination {
-  //background: #f00; // красный цвет для активного квадрата
+//swiper style important
+.swiper-pagination-horizontal {
+  margin: -10px -60px !important;
+
+  @media screen and (min-width: $tablet) {
+    margin: -10px -110px !important;
+  }
 }
 
+span.swiper-pagination-bullet {
+  opacity: 1;
+  background-color: $color-black-80;
+}
 
+.dark-theme span.swiper-pagination-bullet {
+  opacity: 1;
+  background-color: $color-white;
+}
+
+span.swiper-pagination-bullet-active {
+  background: $color-green;
+  opacity: 1;
+}
+
+.dark-theme span.swiper-pagination-bullet-active {
+  background: $color-green;
+  opacity: 1;
+}
