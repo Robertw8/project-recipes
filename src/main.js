@@ -68,6 +68,5 @@ ingredientsFilter?.addEventListener('click', filterByIngredient);
 timeFilter?.addEventListener('click', filterByTime);
 //?----------------------------------------search filters-------------------------------------------
 
-=======
 import { favorites } from './js/favorites.js';
 favorites();
