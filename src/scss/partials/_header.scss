@@ -1,3 +1,189 @@
-.test-header {
-  color: tomato;
+
+button {
+  cursor: pointer;
+  align-items: center;
+}
+
+.link {
+  text-decoration: none;
+}
+
+.list {
+  list-style: none;
+}
+
+.header-container {
+  padding: 24px 20px;
+}
+
+.logo {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 1.125;
+  letter-spacing: -0.64px;
+  color: $color-green;
+}
+
+.logo>span {
+  color: $color-black;
+}
+
+.header-nav {
+  display: none;
+}
+.checkbox-theme {
+  position: absolute;
+  top: -40px;
+}
+.header-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.header-buttons {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+.header-order-btn {
+  stroke: $color-black;
+  fill: transparent;
+  background-color: transparent;
+  border-color: transparent;
+  padding: 0;
+  font-family: none;
+}
+.header-order-btn:focus,
+.header-order-btn:hover,
+.header-menu-btn:focus,
+.header-menu-btn:hover {
+stroke: $color-green;
+}
+
+.header-menu-btn {
+  stroke: $color-black;
+  background-color: transparent;
+  border-color: transparent;
+  padding: 0;
+  line-height: 0.5;
+  font-family: none;
+  /* transition: stroke var(--transition); */
+}
+
+/* ======== mobile menu================= */
+.mob-menu.is-open {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.mob-menu {
+  position: fixed;
+  z-index: 3;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: $color-green;
+  padding: 20px 20px;
+  display: none;
+}
+
+
+.mob-close-btn {
+  position: absolute;
+    top: 20px;
+    right: 20px;
+  background-color: transparent;
+  border-color: transparent;
+  stroke: $color-white;
+  padding: 0;
+  font-family: none;
+}
+
+.mob-header-nav {
+  text-align: center;
+  margin-top: 200px;
+  margin-bottom: auto;
+}
+
+.mob-nav-list-item {
+  font-weight: 500;
+  font-size: 12px;
+  color: $color-white;
+}
+
+.mob-nav-list-item:not(:last-child) {
+  margin-bottom: 14px;
+}
+
+/* ==================================================== */
+
+
+@media screen and (min-width: 768px) {
+
+  .header-container {
+    padding: 30px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 auto;
+  }
+
+  .mob-menu {
+    display: none;
+  }
+
+.checkbox-theme {
+  position: relative;
+  top: unset;
+}
+.header-buttons {
+  gap: 18px;
+}
+  .header-nav {
+    display: inline-block;
+  }
+
+  .header-menu-btn {
+    display: none;
+  }
+
+  .logo {
+    font-size: 18px;
+    font-style: normal;
+      font-weight: 600;
+      line-height: 1.11;
+      letter-spacing: -0.72px;
+  }
+
+  .nav-list {
+    display: flex;
+    gap: 16px;
+  }
+
+  .nav-list-item {
+    position: relative;
+    font-size: 12px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    color: $color-black;
+  }
+
+  .header-current {
+    color: $color-green;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .header-container {
+    max-width: 1280px;
+    padding: 42px 0;
+  }
+
+  .nav-list-item {
+    font-weight: 500;
+  }
 }
