@@ -40,7 +40,7 @@ body.show-modal-order-now .order-now-backdrop {
   background-color: $color-white;
   border-radius: 15px;
   transform: scale(1.1);
-  // overflow: hidden;
+  overflow: hidden;
 
   width: 335px;
   height: 582px;
@@ -251,4 +251,18 @@ input {
 .dark-theme .order-now-modal-form input::placeholder,
 .dark-theme .order-now-modal-form textarea::placeholder {
   color: rgba(255, 255, 255, 0.5);
+}
+
+.dark-theme .order-now-modal,
+.dark-theme .popup_modal,
+.dark-theme .popup_scroll {
+  background-color: $color-black;
+}
+
+.dark-theme .order-now-modal-close-img {
+  stroke: $color-white;
+}
+
+.dark-theme .order-now-modal-close-img:hover {
+  stroke: $color-green;
 }
