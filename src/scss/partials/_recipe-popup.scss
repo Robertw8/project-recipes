@@ -1,7 +1,7 @@
 
 
 .recipe-backdrop {
-  display: none;
+  // display: none;
   position: fixed;
   top: 0;
   left: 0;
@@ -39,6 +39,7 @@
 }
 .dark-theme .recipe-content{
   background-color: $color-black;
+ 
 }
 
 .recipe-btn-close {
@@ -46,7 +47,7 @@
   position: fixed;
   border: none;
   float: right;
-  font-size: 10px;
+  font-size: 12px;
   font-weight: 700;
   top: 14px;
   right: 14px;
@@ -102,6 +103,7 @@
   width: 295px;
   height: 295px;
   margin-bottom: 20px;
+    
 
   @media screen and (min-width: $tablet) {
     width: 467px;
@@ -122,7 +124,8 @@
   color: $color-black;
   margin-bottom: 14px;
   
-}
+ 
+  }
 .dark-theme .modal-recipe-title{
   color: $color-white;
 }
@@ -154,6 +157,7 @@
   font-style: normal;
   font-weight: 500;
   line-height: calc(18 / 14);
+ 
 }
 
 .dark-theme .modal-recipe-time {
@@ -164,7 +168,7 @@
   height: 250px;
   overflow-y: auto;
   margin-bottom: 40px;
-}
+ }
 
 .modal-ingredients {
   flex-wrap: wrap;
@@ -190,7 +194,7 @@
   line-height: calc(18 / 14);
 }
 .dark-theme .modal-recipe-ingredients{
-  color: $color-white;
+  color: rgba(255, 255, 255, 0.50);
 }
 
 .modal-recipe-measure {
@@ -202,7 +206,7 @@
   line-height: calc(18 / 14);
 }
 
-.dark-theme .modal-recipe-ingredients{
+.dark-theme .modal-recipe-measure{
   color: rgba(255, 255, 255, 0.50);
 }
 
@@ -215,7 +219,7 @@
   left: 0;
 }
 .dark-theme .list-item-recipe::after{
-  color: rgba(255, 255, 255, 0.10);
+  border: 1px solid rgba(255, 255, 255, 0.10);
 }
 
 .modal-recipe-tag {
@@ -258,4 +262,14 @@ margin-bottom: 40px;
 .dark-theme .modal-recipe-text{
   color: $color-white-dark-theme-50;
   
+}
+
+.card_star-rating {
+  align-items: center;
+  gap: 3px;
+  display: flex;
+}
+.icon-star {
+  fill: $color-yellow;
+  // opacity: 1;
 }

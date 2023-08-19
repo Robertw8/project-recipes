@@ -23,6 +23,7 @@ import {
   modalBackDrop,
   closeModal,
   openModal,
+  fillStars,
 } from './js/modal-recipe';
 
 import {
@@ -56,3 +57,5 @@ extraFilterRefs.ingredientsFilter?.addEventListener(
 extraFilterRefs.timeFilter?.addEventListener('click', filterByTime);
 
 import './js/slider-events.js';
+
+
