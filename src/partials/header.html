@@ -12,9 +12,14 @@
         </li>
       </ul>
     </nav>
-    <a href="./index.html" class="logo link">tasty<span>treats.</span></a>
+    <a href="./index.html" class="logo link"><span>tasty</span>treats</a>
     <div class="header-buttons">
-      <button type="button" class="header-order-btn btn" aria-expanded="false">
+      <button
+        type="button"
+        class="header-order-btn btn"
+        aria-expanded="false"
+        aria-label="order now"
+      >
         <svg width="24px" height="24px">
           <use href="./images/sprite.svg#icon-cart"></use>
         </svg>
@@ -24,6 +29,7 @@
         class="header-menu-btn btn js-open-menu"
         aria-expanded="false"
         aria-controls="mobile-menu"
+        aria-label="open mobile menu"
       >
         <svg width="32px" height="32px">
           <use href="./images/sprite.svg#icon-burger"></use>
@@ -36,7 +42,11 @@
     </div>
     <!-- ==== Mobile menu =========== -->
     <div class="mob-menu js-menu-container" id="mobile-menu">
-      <button type="button" class="mob-close-btn js-close-menu">
+      <button
+        type="button"
+        class="mob-close-btn js-close-menu"
+        aria-label="close mobile menu"
+      >
         <svg class="icon-x" width="32px" height="32px">
           <use href="./images/sprite.svg#icon-x"></use>
         </svg>
@@ -52,12 +62,12 @@
           </li>
         </ul>
       </nav>
-      <label id="theme-switcher">
+      <label id="mob-theme-switcher">
         <input type="checkbox" />
         <span></span>
       </label>
     </div>
-    <!-- =============================================================== -->
+    <!-- ========================================== -->
   </div>
 </header>
 <script
@@ -66,4 +76,3 @@
   integrity="sha512-HowizSDbQl7UPEAsPnvJHlQsnBmU2YMrv7KkTBulTLEGz9chfBoWYyZJL+MUO6p/yBuuMO/8jI7O29YRZ2uBlA=="
   crossorigin="anonymous"
 ></script>
-<script src="./js/header.js"></script>

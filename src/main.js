@@ -8,6 +8,9 @@ import { setLocalStorageTheme, setThemeOnClick } from './js/dark-theme.js';
 //? Slider
 import './js/slider-events.js';
 
+//? Header
+import './js/header.js';
+
 //? Recipes list
 import { renderRecipes } from './js/recipes-render';
 
@@ -22,5 +25,8 @@ import './js/search-filters/filters.js';
 //? Favorites
 import { favorites } from './js/favorites.js';
 favorites();
+
+//? Categories
+import './js/categories.js';
 
 import './js/scrollup-btn.js';

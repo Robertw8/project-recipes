@@ -1,10 +1,11 @@
 .wrap-recipes-list {
+  position: relative;
   padding-top: 20px;
-  margin-bottom: 40px; 
-  
+  margin-bottom: 40px;
+
   @media screen and (min-width: $tablet) {
     padding-top: 14px;
-    margin-bottom: 64px; 
+    margin-bottom: 64px;
   }
   .recipe-list {
     display: flex;
@@ -12,7 +13,7 @@
     justify-content: center;
     align-items: center;
     gap: 24px;
-    
+
     @media screen and (min-width: $tablet) {
       flex-direction: row;
       gap: 16px;
@@ -123,7 +124,7 @@
 .dark-theme .recipe-wrap {
   background: linear-gradient(1deg, #050505 0%,
   rgba(5, 5, 5, 0.00) 100%),
-   transparent -21.392px -15.958px / 120.272% 116.336% 
+   transparent -21.392px -15.958px / 120.272% 116.336%
    no-repeat;
 }
 .recipe-rating-wrap {

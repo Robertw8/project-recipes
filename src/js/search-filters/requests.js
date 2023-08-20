@@ -6,6 +6,9 @@ import {
 } from './markup';
 import { Toast } from '../utilities/sweetalert';
 import { getRequestsService } from '../API/api-service';
+import getFilterRefs from './refs';
+
+const { loader } = getFilterRefs();
 
 const queryParams = {
   areaQuery: '',
@@ -53,6 +56,8 @@ const executeRequest = async () => {
       title: 'Something went wrong. Reload the page and try again',
     });
   }
+
+  loader?.classList.add('d-none');
 };
 
 getRequestsService('areas').then(data => {

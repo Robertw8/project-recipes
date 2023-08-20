@@ -1,19 +1,15 @@
 
-button {
-  cursor: pointer;
-  align-items: center;
-}
-
-.link {
-  text-decoration: none;
-}
 
 .list {
   list-style: none;
 }
 
 .header-container {
-  padding: 24px 20px;
+  padding: 24px 20px 0 20px;
+}
+
+.dark-theme .logo {
+  color: $color-white;
 }
 
 .logo {
@@ -21,11 +17,11 @@ button {
   font-size: 16px;
   line-height: 1.125;
   letter-spacing: -0.64px;
-  color: $color-green;
+  color: $color-black;
 }
 
 .logo>span {
-  color: $color-black;
+  color: $color-green;
 }
 
 .header-nav {
@@ -59,6 +55,10 @@ button {
 .header-menu-btn:focus,
 .header-menu-btn:hover {
 stroke: $color-green;
+transition: stroke 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+.dark-theme .header-order-btn {
+  stroke: $color-white;
 }
 
 .header-menu-btn {
@@ -68,28 +68,38 @@ stroke: $color-green;
   padding: 0;
   line-height: 0.5;
   font-family: none;
-  /* transition: stroke var(--transition); */
 }
-
+.dark-theme .header-menu-btn {
+  stroke: $color-white;
+}
 /* ======== mobile menu================= */
 .mob-menu.is-open {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  left:0;
+  opacity: 1;
+  transition: left 250ms ease, opacity 0ms ease;
 }
 
 .mob-menu {
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
   position: fixed;
   z-index: 3;
   top: 0;
-  left: 0;
+  left: 100vw;
   width: 100vw;
   height: 100vh;
   background: $color-green;
   padding: 20px 20px;
-  display: none;
+  transition: left 250ms ease, opacity 2s ease;
 }
-
+.dark-theme .mob-menu {
+  background: $color-black;
+}
 
 .mob-close-btn {
   position: absolute;
@@ -113,6 +123,11 @@ stroke: $color-green;
   font-size: 12px;
   color: $color-white;
 }
+.mob-nav-list-item:focus,
+.mob-nav-list-item:hover {
+  color: $color-green;
+  transition: color 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
 
 .mob-nav-list-item:not(:last-child) {
   margin-bottom: 14px;
@@ -124,7 +139,7 @@ stroke: $color-green;
 @media screen and (min-width: 768px) {
 
   .header-container {
-    padding: 30px 32px;
+    padding: 30px 32px 0 32px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -171,7 +186,9 @@ stroke: $color-green;
     line-height: normal;
     color: $color-black;
   }
-
+.dark-theme .mob-nav-list-item {
+  color: $color-white;
+}
   .header-current {
     color: $color-green;
   }
@@ -180,7 +197,7 @@ stroke: $color-green;
 @media screen and (min-width: 1280px) {
   .header-container {
     max-width: 1280px;
-    padding: 42px 0;
+    padding: 42px 0 0 0;
   }
 
   .nav-list-item {
