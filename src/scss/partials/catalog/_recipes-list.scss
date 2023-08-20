@@ -29,6 +29,18 @@
   height: 335px;
   position: relative;
   overflow: hidden;
+  transition-duration: $dur-primary;
+  &:is(:hover, :focus) {
+    scale: 1.01;
+    -webkit-box-shadow: -12px 12px 5px 0px rgba(5, 5, 5, 0.30);
+    -moz-box-shadow: -12px 12px 5px 0px rgba(5, 5, 5, 0.30);
+    box-shadow: -12px 12px 5px 0px rgba(5, 5, 5, 0.30);
+    }
+  .dark-theme &:is(:hover, :focus) {
+    -webkit-box-shadow: 0px 0px 35px -4px rgba(155,181,55,1);
+    -moz-box-shadow: 0px 0px 35px -4px rgba(155,181,55,1);
+    box-shadow: 0px 0px 35px -4px rgba(155,181,55,1);
+  }
 
   @media screen and (min-width: $tablet) {
     width: 240px;
@@ -65,6 +77,11 @@
   .heart-icon {
     fill: transparent;
     opacity: 0.5;
+    transition-duration: $dur-primary;
+    &:is(:hover, :focus) {
+    fill: $color-white;
+    opacity: none;
+    }
   }
   .recipe-name {
     color: $color-white;
@@ -147,5 +164,105 @@
   &:is(:hover, :focus) {
   color: $color-black;
   }
+  }
+}
+
+.recipe-pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 14px;
+  @media screen and (min-width: $tablet) {
+  gap: 24px;
+  }
+  .wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+    @media screen and (min-width: $tablet) {
+      gap: 8px;
+    }
+  }
+  
+}
+.inner-wrap {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  @media screen and (min-width: $tablet) {
+    gap: 10px;
+  }
+}
+
+.pagination-btn {
+  color: $color-black;
+  font-family: "Inter";
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.22;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 1px solid rgba(5, 5, 5, 0.30);
+  background-color: $color-white;
+  transition-duration: $dur-primary;
+  &:is(:hover, :focus) {
+    border: 1px solid $color-green;
+    background-color: $color-green;
+  }
+  @media screen and (min-width: $tablet) {
+  width: 44px;
+  height: 44px;
+  }
+}
+.dark-theme .pagination-btn {
+  color: $color-white;
+  background-color: $color-darkgrey;
+  border: 1px solid rgba(255, 255, 255, 0.30);
+  &:is(:hover, :focus) {
+    background-color: $color-green; 
+    border: 1px solid $color-green;
+  }
+}
+
+.right-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .right-icon-itm {
+    stroke-width: 0;
+    stroke: $color-black;
+    fill: $color-black;
+  }
+}
+.left-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .left-icon-itm {
+    stroke-width: 0;
+    stroke: rgba(255, 255, 255, 0.5);
+    fill: rgba(255, 255, 255, 0.5);;
+  }
+}
+.left-wrap .pagination-btn {
+  background-color: $color-black;
+  border: 1px solid $color-black;
+  &:is(:hover, :focus) {
+    background-color: $color-black;
+    border: 1px solid $color-green;
+  }
+}
+.right-wrap .pagination-btn {
+  background-color: $color-green;
+  border: 1px solid $color-green;
+  &:is(:hover, :focus) {
+    border: 1px solid $color-black;
   }
 }
