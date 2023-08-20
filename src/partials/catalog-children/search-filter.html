@@ -1,80 +1,81 @@
-<div class="search-filter">
-  <div class="search-input-container">
-    <label class="search-label" for="search">Search</label>
-    <input
-      type="text"
-      class="search-input"
-      placeholder="Enter Text"
-      name="search"
-      id="search"
-      autocomplete="off"
-    />
-    <svg width="18" height="18" class="search-icon">
-      <use href="images/sprite.svg#icon-search"></use>
-    </svg>
-  </div>
-  <div class="extra-wrapper">
-    <ul class="extra-filters-list">
-      <li class="extra-filters-item">
-        <p class="search-label">Time</p>
-        <div class="extra-select">
-          <div class="extra-default">
-            <div class="selected-option" id="selected-time">Select</div>
-            <svg width="18" height="18" class="arrow-down">
-              <use href="images/sprite.svg#icon-arrow-down"></use>
-            </svg>
+<div class="temporary-container container">
+  <div class="search-filter">
+    <div class="search-input-container">
+      <label class="search-label" for="search">Search</label>
+      <input
+        type="text"
+        class="search-input"
+        placeholder="Enter Text"
+        name="search"
+        id="search"
+        autocomplete="off"
+      />
+      <svg width="18" height="18" class="search-icon">
+        <use href="images/sprite.svg#icon-search"></use>
+      </svg>
+    </div>
+    <div class="extra-wrapper">
+      <ul class="extra-filters-list">
+        <li class="extra-filters-item">
+          <p class="search-label">Time</p>
+          <div class="extra-select">
+            <div class="extra-default">
+              <div class="selected-option" id="selected-time">Select</div>
+              <svg width="18" height="18" class="arrow-down">
+                <use href="images/sprite.svg#icon-arrow-down"></use>
+              </svg>
+            </div>
+            <ul class="extra-options-list" id="time-filter">
+              <li class="extra-options-item" data-time="5">5 min</li>
+              <li class="extra-options-item" data-time="10">10 min</li>
+              <li class="extra-options-item" data-time="15">15 min</li>
+              <li class="extra-options-item" data-time="20">20 min</li>
+              <li class="extra-options-item" data-time="25">25 min</li>
+              <li class="extra-options-item" data-time="30">30 min</li>
+              <li class="extra-options-item" data-time="35">35 min</li>
+              <li class="extra-options-item" data-time="40">40 min</li>
+              <li class="extra-options-item" data-time="45">45 min</li>
+              <li class="extra-options-item" data-time="50">50 min</li>
+              <li class="extra-options-item" data-time="55">55 min</li>
+              <li class="extra-options-item" data-time="60">60 min</li>
+              <li class="extra-options-item" data-time="65">65 min</li>
+              <li class="extra-options-item" data-time="70">70 min</li>
+              <li class="extra-options-item" data-time="75">75 min</li>
+              <li class="extra-options-item" data-time="80">80 min</li>
+              <li class="extra-options-item" data-time="85">85 min</li>
+              <li class="extra-options-item" data-time="90">90 min</li>
+              <li class="extra-options-item" data-time="95">95 min</li>
+              <li class="extra-options-item" data-time="100">100 min</li>
+              <li class="extra-options-item" data-time="105">105 min</li>
+              <li class="extra-options-item" data-time="110">110 min</li>
+              <li class="extra-options-item" data-time="115">115 min</li>
+              <li class="extra-options-item" data-time="120">120 min</li>
+            </ul>
           </div>
-          <ul class="extra-options-list" id="time-filter">
-            <li class="extra-options-item" data-time="5">5 min</li>
-            <li class="extra-options-item" data-time="10">10 min</li>
-            <li class="extra-options-item" data-time="15">15 min</li>
-            <li class="extra-options-item" data-time="20">20 min</li>
-            <li class="extra-options-item" data-time="25">25 min</li>
-            <li class="extra-options-item" data-time="30">30 min</li>
-            <li class="extra-options-item" data-time="35">35 min</li>
-            <li class="extra-options-item" data-time="40">40 min</li>
-            <li class="extra-options-item" data-time="45">45 min</li>
-            <li class="extra-options-item" data-time="50">50 min</li>
-            <li class="extra-options-item" data-time="55">55 min</li>
-            <li class="extra-options-item" data-time="60">60 min</li>
-            <li class="extra-options-item" data-time="65">65 min</li>
-            <li class="extra-options-item" data-time="70">70 min</li>
-            <li class="extra-options-item" data-time="75">75 min</li>
-            <li class="extra-options-item" data-time="80">80 min</li>
-            <li class="extra-options-item" data-time="85">85 min</li>
-            <li class="extra-options-item" data-time="90">90 min</li>
-            <li class="extra-options-item" data-time="95">95 min</li>
-            <li class="extra-options-item" data-time="100">100 min</li>
-            <li class="extra-options-item" data-time="105">105 min</li>
-            <li class="extra-options-item" data-time="110">110 min</li>
-            <li class="extra-options-item" data-time="115">115 min</li>
-            <li class="extra-options-item" data-time="120">120 min</li>
-          </ul>
-        </div>
-      </li>
-      <li class="extra-filters-item">
-        <p class="search-label">Area</p>
-        <div class="extra-select" id="area-select">
-          <div class="extra-default">
-            <div class="selected-option" id="selected-area">Select</div>
-            <svg width="18" height="18" class="arrow-down">
-              <use href="images/sprite.svg#icon-arrow-down"></use>
-            </svg>
+        </li>
+        <li class="extra-filters-item">
+          <p class="search-label">Area</p>
+          <div class="extra-select" id="area-select">
+            <div class="extra-default">
+              <div class="selected-option" id="selected-area">Select</div>
+              <svg width="18" height="18" class="arrow-down">
+                <use href="images/sprite.svg#icon-arrow-down"></use>
+              </svg>
+            </div>
+            <ul class="extra-options-list" id="area-filter"></ul>
           </div>
-          <ul class="extra-options-list" id="area-filter"></ul>
-        </div>
-      </li>
-      <li class="extra-filters-item">
-        <p class="search-label">Ingredients</p>
-        <div class="extra-select">
-          <div class="extra-default">
-            <div class="selected-option" id="selected-ingredient">Select</div>
-            <svg width="18" height="18" class="arrow-down">
-              <use href="images/sprite.svg#icon-arrow-down"></use>
-            </svg>
-          </div>
-          <ul class="extra-options-list" id="ingredients-filter">
-            <!-- <li class="extra-options-item">Option 1</li>
+        </li>
+        <li class="extra-filters-item">
+          <p class="search-label">Ingredients</p>
+          <div class="extra-select">
+            <div class="extra-default">
+              <div class="selected-option" id="selected-ingredient">Select</div>
+              <svg width="18" height="18" class="arrow-down">
+                <use href="images/sprite.svg#icon-arrow-down"></use>
+              </svg>
+            </div>
+            <ul class="extra-options-list" id="ingredients-filter">
+              <!-- <li class="extra-options-item">Option 1</li>
               <li class="extra-options-item">Option 2</li>
               <li class="extra-options-item current-option">Option 3</li>
               <li class="extra-options-item">Option 4</li>
@@ -82,17 +83,18 @@
               <li class="extra-options-item">Option 6</li>
               <li class="extra-options-item">Option 7</li>
               <li class="extra-options-item">Option 8</li> -->
-          </ul>
-        </div>
-      </li>
-    </ul>
-    <div class="reset-btn-container">
-      <button type="button" class="reset-btn">
-        <svg width="16" height="16" class="reset-icon">
-          <use href="images/sprite.svg#icon-cross"></use>
-        </svg>
-        <span class="reset-text">Reset the filter</span>
-      </button>
+            </ul>
+          </div>
+        </li>
+      </ul>
+      <div class="reset-btn-container">
+        <button type="button" class="reset-btn">
+          <svg width="16" height="16" class="reset-icon">
+            <use href="images/sprite.svg#icon-cross"></use>
+          </svg>
+          <span class="reset-text">Reset the filter</span>
+        </button>
+      </div>
     </div>
   </div>
 </div>
