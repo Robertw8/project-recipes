@@ -48,17 +48,25 @@
 }
 
 .search-filter {
-  margin-left: 40px;
-
-  @media screen and (min-width: $tablet) {
-      display: flex; // temp
-      align-items: baseline; // temp
-      gap: 20px; // temp
+  @media screen and (min-width: $desktop) {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
   }
 }
 
 .search-input-container {
   position: relative;
+  width: 100%;
+
+  @media screen and (min-width: $tablet) {
+    width: 278px;
+  }
+
+  @media screen and (min-width: $tablet) and (max-width: $desktop) {
+    margin-left: 8px;
+  }
+
 }
 
 .search-label {
@@ -75,7 +83,7 @@
 }
 
 .search-input {
-  width: 335px; // ИЗМЕНИТЬ
+  width: 100%;
   border: 1px solid $color-black-20;
   padding: 14px 14px 14px 48px;
   margin-top: 8px;
@@ -93,8 +101,8 @@
     border-color: $color-green;
   }
 
-  &::placeholder
-  ,::-webkit-input-placeholder {
+  &::placeholder,
+  ::-webkit-input-placeholder {
     @include filter-text;
     font-size: 14px;
     line-height: calc(18 / 14);
@@ -111,13 +119,23 @@
   }
 }
 
+.extra-wrapper {
+  @media screen and (min-width: $desktop) {
+    margin-left: 16px;
+  }
+}
+
 .extra-filters-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 16px;
   margin-top: 14px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $tablet) and (max-width: $desktop) {
+    justify-content: center;
+  }
+
+  @media screen and (min-width: $desktop) {
     flex-wrap: nowrap;
   }
 }
@@ -125,7 +143,6 @@
 .extra-select {
   position: relative;
   width: 160px;
-  height: 46px;
   border-radius: 15px;
   padding: 14px 18px;
   border: 1px solid $color-black-20;
@@ -133,9 +150,14 @@
   margin-top: 8px;
   transition-duration: $dur-secondary;
   user-select: none;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .extra-default {
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
@@ -188,7 +210,7 @@
     -moz-transform: translateX(1px);
     -ms-transform: translateX(1px);
     -o-transform: translateX(1px);
-}
+  }
 
   @media screen and (min-width: $tablet) {
     font-size: 16px;
