@@ -3,7 +3,7 @@ import { renderElement } from './js/popular-recipes.js';
 renderElement();
 
 //? Theme switch
-import { setLocalStorageTheme, setThemeOnClick } from './js/dark-theme.js';
+import './js/dark-theme.js';
 
 //? Slider
 import './js/slider-events.js';
@@ -21,3 +21,6 @@ import './js/search-filters/filters.js';
 //? Favorites
 import { favorites } from './js/favorites.js';
 favorites();
+
+//? Categories
+import './js/categories.js';

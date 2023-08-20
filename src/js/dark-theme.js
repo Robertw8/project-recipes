@@ -2,7 +2,7 @@ const STORAGE_KEY = 'dark-theme';
 const themeSwitcher = document.getElementById('theme-switcher');
 const isEnabledDarkTheme = localStorage.getItem(STORAGE_KEY);
 
-setLocalStorageTheme();
+document.addEventListener('DOMContentLoaded', setLocalStorageTheme);
 
 themeSwitcher.addEventListener('change', setThemeOnClick);
 
