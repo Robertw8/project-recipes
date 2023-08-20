@@ -1,10 +1,3 @@
-import { getRequestsService } from './js/API/api-service.js';
-import debounce from 'lodash.debounce';
-
-import {
-  renderElement,
-} from './js/popular-recipes.js';
-renderElement();
 
 import { setLocalStorageTheme, setThemeOnClick } from './js/dark-theme.js';
 
