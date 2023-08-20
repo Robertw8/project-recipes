@@ -2,7 +2,6 @@ import { getRequestsService } from './js/API/api-service.js';
 import debounce from 'lodash.debounce';
 
 import {
-  getImageApi,
   createMarkup,
   renderElement,
 } from './js/popular-recipes.js';
