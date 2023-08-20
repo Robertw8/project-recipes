@@ -1,7 +1,7 @@
 import getFilterRefs from './refs';
 import { getRequestsService } from '../API/api-service';
 
-const { areaFilter, ingredientsFilter, recipeList } = getFilterRefs();
+const { areaFilter, ingredientsFilter, recipeList, loader } = getFilterRefs();
 
 const renderAreaOptions = data => {
   if (areaFilter) {

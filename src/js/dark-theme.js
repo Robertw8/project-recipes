@@ -26,3 +26,17 @@ function setLocalStorageTheme() {
     themeSwitcher.querySelector('input').checked = true;
   }
 }
+
+function listenMobileThemeSwitcher() {
+  const isEnabledDarkTheme = localStorage.getItem(STORAGE_KEY) === 'true';
+  const mobileThemeSwitcher = document.getElementById('mob-theme-switcher');
+  if (!mobileThemeSwitcher) {
+    return;
+  }
+  if (mobileThemeSwitcher) {
+    mobileThemeSwitcher.addEventListener('change', setThemeOnClick);
+    mobileThemeSwitcher.querySelector('input').checked = isEnabledDarkTheme;
+  }
+}
+
+export { setLocalStorageTheme, setThemeOnClick, listenMobileThemeSwitcher };

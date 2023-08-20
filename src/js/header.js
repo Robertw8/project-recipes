@@ -1,4 +1,5 @@
-(() => {
+import { listenMobileThemeSwitcher } from './dark-theme';
+
   const mobileMenu = document.querySelector('.js-menu-container');
   const openMenuBtn = document.querySelector('.js-open-menu');
   const closeMenuBtn = document.querySelector('.js-close-menu');
@@ -13,6 +14,8 @@
       ? 'disableBodyScroll'
       : 'enableBodyScroll';
     bodyScrollLock[scrollLockMethod](document.body);
+    listenMobileThemeSwitcher();
+
   };
 
   openMenuBtn.addEventListener('click', toggleMenu);
@@ -25,4 +28,3 @@
     openMenuBtn.setAttribute('aria-expanded', false);
     bodyScrollLock.enableBodyScroll(document.body);
   });
-})();
