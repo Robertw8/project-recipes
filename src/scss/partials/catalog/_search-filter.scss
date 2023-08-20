@@ -48,25 +48,33 @@
 }
 
 .search-filter {
-  margin-left: 40px;
-
-  @media screen and (min-width: $tablet) {
-      display: flex; // temp
-      align-items: baseline; // temp
-      gap: 20px; // temp
+  @media screen and (min-width: $desktop) {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
   }
 }
 
 .search-input-container {
   position: relative;
+  width: 100%;
+
+  @media screen and (min-width: $tablet) {
+    width: 278px;
+  }
+
+  @media screen and (min-width: $tablet) and (max-width: $desktop) {
+    margin-left: 8px;
+  }
 }
 
 .search-label {
+  display: block;
+  user-select: none;
+
   @include filter-text;
   font-size: 12px;
   line-height: calc(14 / 12);
-  display: block;
-  user-select: none;
 
   @media screen and (min-width: $tablet) {
     font-size: 14px;
@@ -75,7 +83,7 @@
 }
 
 .search-input {
-  width: 335px; // ИЗМЕНИТЬ
+  width: 100%;
   border: 1px solid $color-black-20;
   padding: 14px 14px 14px 48px;
   margin-top: 8px;
@@ -93,8 +101,8 @@
     border-color: $color-green;
   }
 
-  &::placeholder
-  ,::-webkit-input-placeholder {
+  &::placeholder,
+  ::-webkit-input-placeholder {
     @include filter-text;
     font-size: 14px;
     line-height: calc(18 / 14);
@@ -111,13 +119,23 @@
   }
 }
 
+.extra-wrapper {
+  @media screen and (min-width: $desktop) {
+    margin-left: 16px;
+  }
+}
+
 .extra-filters-list {
   display: flex;
   flex-wrap: wrap;
-  gap: 14px;
+  gap: 16px;
   margin-top: 14px;
 
-  @media screen and (min-width: 768px) {
+  @media screen and (min-width: $tablet) and (max-width: $desktop) {
+    justify-content: center;
+  }
+
+  @media screen and (min-width: $desktop) {
     flex-wrap: nowrap;
   }
 }
@@ -125,17 +143,22 @@
 .extra-select {
   position: relative;
   width: 160px;
-  height: 46px;
-  border-radius: 15px;
+  margin-top: 8px;
   padding: 14px 18px;
   border: 1px solid $color-black-20;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  @include radius-15;
   cursor: pointer;
-  margin-top: 8px;
   transition-duration: $dur-secondary;
   user-select: none;
 }
 
 .extra-default {
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
@@ -151,15 +174,17 @@
   position: absolute;
   top: 105%;
   left: 0;
-  width: 100%;
-  max-height: 176px;
   overflow-y: auto;
   overflow-x: hidden;
+  z-index: 10;
+
+  width: 100%;
+  max-height: 176px;
+
   background-color: $color-white;
   @include radius-15;
   box-shadow: 0px 4px 36px 0px #00000005;
   transition-duration: $dur-secondary;
-  z-index: 10;
   transform-origin: top;
 
   transform: scaleY(0);
@@ -167,19 +192,19 @@
   -moz-transform: scaleY(0);
   -ms-transform: scaleY(0);
   -o-transform: scaleY(0);
-
   @include scrollbar-primary;
 }
 
 .extra-options-item {
   padding: 8px;
-  cursor: pointer;
 
   @include filter-text;
   font-size: 14px;
   line-height: calc(18 / 14);
   color: $color-black-30;
+
   transition-duration: $dur-secondary;
+  cursor: pointer;
 
   &:hover {
     color: $color-green;
@@ -188,7 +213,7 @@
     -moz-transform: translateX(1px);
     -ms-transform: translateX(1px);
     -o-transform: translateX(1px);
-}
+  }
 
   @media screen and (min-width: $tablet) {
     font-size: 16px;
@@ -200,6 +225,7 @@
   position: absolute;
   left: 18px;
   top: 55%;
+
   fill: $color-black-50;
   pointer-events: none;
 }
@@ -218,11 +244,12 @@
 .reset-btn {
   display: flex;
   align-items: center;
-  padding: 5px;
-  border: none;
-  background-color: transparent;
   gap: 4px;
+  padding: 5px;
   margin-left: auto;
+  border: none;
+
+  background-color: transparent;
 
   &:hover .reset-text {
     color: $color-green;
