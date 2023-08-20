@@ -1,9 +1,8 @@
 //? Цей файл використовуємо тільки для позиціонування між собою дочірніх паршалів каталогу.
 
-.test-catalog {
-  color: green;
-}
-
-.catalog {
-  display: flex;
+@media screen and (min-width: $tablet) {
+  .catalog-container {
+    display: flex;
+    padding: 0;
+  }
 }
