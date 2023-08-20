@@ -1,45 +1,52 @@
 import axios from 'axios';
-import { renderFilteredRecipes } from './markup';
+import {
+  renderFilteredRecipes,
+  renderAreaOptions,
+  renderIngredientsOptions,
+} from './markup';
 import { Toast } from '../utilities/sweetalert';
+import { getRequestsService } from '../API/api-service';
+import getFilterRefs from './refs';
+
+const { loader } = getFilterRefs();
 
 const queryParams = {
-  queryParam: '',
   areaQuery: '',
   ingredientQuery: '',
   timeQuery: '',
   searchQuery: '',
 };
 
-const executeRequest = async () => {
-  queryParams.queryParam = '';
+const buildQueryParam = () => {
+  const params = [];
 
   if (queryParams.timeQuery) {
-    queryParams.queryParam += `&time=${encodeURIComponent(
-      queryParams.timeQuery
-    )}`;
+    params.push(`time=${encodeURIComponent(queryParams.timeQuery)}`);
   }
 
   if (queryParams.areaQuery) {
-    queryParams.queryParam += `&area=${encodeURIComponent(
-      queryParams.areaQuery
-    )}`;
+    params.push(`area=${encodeURIComponent(queryParams.areaQuery)}`);
   }
 
   if (queryParams.ingredientQuery) {
-    queryParams.queryParam += `&ingredient=${encodeURIComponent(
-      queryParams.ingredientQuery
-    )}`;
+    params.push(
+      `ingredient=${encodeURIComponent(queryParams.ingredientQuery)}`
+    );
   }
 
   if (queryParams.searchQuery) {
-    queryParams.queryParam += `&title=${encodeURIComponent(
-      queryParams.searchQuery
-    )}`;
+    params.push(`title=${encodeURIComponent(queryParams.searchQuery)}`);
   }
 
+  return params.join('&');
+};
+
+const executeRequest = async () => {
   try {
+    const queryParam = buildQueryParam();
+
     const response = await axios.get(
-      `https://tasty-treats-backend.p.goit.global/api/recipes?&limit=9${queryParams.queryParam}`
+      `https://tasty-treats-backend.p.goit.global/api/recipes?&limit=9&${queryParam}`
     );
 
     renderFilteredRecipes(response.data.results);
@@ -48,8 +55,17 @@ const executeRequest = async () => {
       icon: 'error',
       title: 'Something went wrong. Reload the page and try again',
     });
-    console.log(error);
   }
+
+  loader?.classList.add('d-none');
 };
 
-export { queryParams, executeRequest };
+getRequestsService('areas').then(data => {
+  renderAreaOptions(data);
+});
+
+getRequestsService('ingredients').then(data => {
+  renderIngredientsOptions(data);
+});
+
+export { queryParams, executeRequest, buildQueryParam };
