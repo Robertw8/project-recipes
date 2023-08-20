@@ -21,3 +21,5 @@ import './js/search-filters/filters.js';
 import { favorites } from './js/favorites.js';
 favorites();
 
+import './js/scrollup-btn.js';
+

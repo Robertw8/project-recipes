@@ -24,6 +24,7 @@ const {
   recipeList,
   filtersList,
   resetBtn,
+  loader,
 } = getFilterRefs();
 
 const onResetBtnClick = async () => {
@@ -50,6 +51,7 @@ const onResetBtnClick = async () => {
 };
 
 const onSearchInput = e => {
+  loader?.classList.remove('d-none');
   queryParams.searchQuery = e.target.value;
   executeRequest();
 };
