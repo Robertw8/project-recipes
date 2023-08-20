@@ -1,22 +1,29 @@
 <div class="rating-modal-backdrop js-backdrop">
-    <div class="rating-modal">
-        <button type="button" class="rating-modal-btn-close">
-            <svg class="rating-modal-btn-icon">
-                <use href="/src/img/sprite.svg#icon-krestik-modalka"></use>
-            </svg>
-        </button>
+  <div class="rating-modal">
+    <button type="button" class="rating-modal-btn-close">
+      <svg class="rating-modal-btn-icon">
+        <use href="images/sprite.svg#icon-cross"></use>
+      </svg>
+    </button>
 
-        <div class="rating-modal-content">
-            <h2 class="rating-modal-title">Rating</h2>
-            <div class="rating-modal-stars-wrapper">
-                <div class="live-rating">0.0</div>
-                <div class="my-rating-9"></div>
-            </div>
-            <form class="rating-modal-form">
-                <input type="email" name="email" id="rating-modal-email" placeholder="Enter email"
-                    class="rating-modal-form-input" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}" />
-                <button type="submit" class="rating-modal-form-btn">Send</button>
-            </form>
-        </div>
+    <div class="rating-modal-content">
+      <h2 class="rating-modal-title">Rating</h2>
+      <div class="rating-modal-stars-wrapper">
+        <div class="live-rating">0.0</div>
+        <div class="my-rating-9"></div>
+      </div>
+      <form class="rating-modal-form">
+        <input
+          type="email"
+          name="email"
+          id="rating-modal-email"
+          placeholder="Enter email"
+          class="rating-modal-form-input"
+          required
+          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}"
+        />
+        <button type="submit" class="rating-modal-form-btn">Send</button>
+      </form>
     </div>
+  </div>
 </div>
