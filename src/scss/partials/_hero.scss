@@ -85,10 +85,13 @@
   font-size: 14px;
   border: 1px solid $color-green;
   background-color: $color-white;
+  color: $color-black;
   font-weight: 500;
   border-radius: 12px;
 
   padding: 10px 20px;
+  transition: background-color, color, 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
 
   &:focus, &:hover {
     background-color: $color-green;
@@ -106,6 +109,12 @@
 .dark-theme .hero-btn {
   color: $color-white;
   background-color: $color-black;
+  transition: background-color, color, 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
+  &:focus, &:hover {
+    background-color: $color-green;
+    color: $color-white;
+  }
 }
 
 //swiper style
@@ -184,7 +193,7 @@
 
   .dish-area {
     font-size: 8px;
-    color: $color-white-10;
+    color: $color-white-20;
 
     @media screen and (min-width: $tablet) {
       font-size: 12px;
