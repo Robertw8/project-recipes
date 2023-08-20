@@ -1,11 +1,10 @@
 import { postOrder } from '../api';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
-import { Loading } from 'notiflix';
+import Swal from 'sweetalert2';
 import { disablePageScroll, enablePageScroll } from 'scroll-lock';
 
 const refs = {
     modalOrderNowForm: document.querySelector('.order-now-modal-form'),
-    // openButtonEl: document.querySelector('.icon-star'),
+    openButtonEl: document.querySelector('.header-order-btn'),
     openButtonHeroEl: document.querySelector('.hero-btn'),
     closeButtonEl: document.querySelector('.order-now-modal-close-btn'),
     backdropEl: document.querySelector('.js-backdrop'),
@@ -17,7 +16,7 @@ if (refs.openButtonHeroEl) {
     });
 }
 
-// refs.openButtonEl.addEventListener('click', onModalOpen, { passive: true });
+refs.openButtonEl.addEventListener('click', onModalOpen, { passive: true });
 refs.closeButtonEl.addEventListener('click', onModalRemove, { passive: true });
 refs.backdropEl.addEventListener('click', onBackdropClick, { passive: true });
 refs.modalOrderNowForm.addEventListener('submit', onSubmitForm, {
@@ -80,7 +79,12 @@ function onSubmitForm(e) {
             if (localStorage.getItem('patch-rating') !== 'error') {
                 onModalRemove();
                 setTimeout(() => {
-                    Notify.success('Thank you for your order!');
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Thank you for your order!',
+                        timer: 1500,
+                        showConfirmButton: false
+                    });
                 }, 500);
                 refs.modalOrderNowForm.reset();
             }
@@ -92,6 +96,8 @@ function onSubmitForm(e) {
                 Loading.remove();
             }, 500)
         );
+
+
 }
 
 export { onModalOpen };
