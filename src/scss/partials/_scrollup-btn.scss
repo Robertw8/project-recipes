@@ -1,0 +1,63 @@
+.scrollup-btn-wrapper {
+  position: fixed;
+  right: 30px;
+  bottom: 30px;
+}
+
+.scrollup-btn {
+  width: 50px;
+  height: 50px;
+  border: 1px solid transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: $color-green;
+  border-radius: 50%;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  -ms-border-radius: 50%;
+  -o-border-radius: 50%;
+  transition-duration: 300ms;
+
+
+  &:hover,:focus {
+    box-shadow: inset 0 0 5px 2px $color-white;
+  }
+  animation: floating 3s ease-in-out infinite;
+  -webkit-animation: floating 3s ease-in-out infinite;
+}
+
+.dark-theme .scrollup-btn {
+  background-color: $color-white;
+
+  &:hover,
+    :focus {
+      box-shadow: inset 0 0 3px 1px $color-black-50;
+    }
+}
+
+.scrollup-icon {
+  fill: $color-white;
+
+  transform: rotate(90deg);
+  -webkit-transform: rotate(90deg);
+  -moz-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  -o-transform: rotate(90deg);
+}
+
+.dark-theme .scrollup-icon {
+  fill: $color-green;
+}
+
+@keyframes floating {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-10px);
+  }
+}
