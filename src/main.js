@@ -14,6 +14,7 @@ import './js/header.js';
 //? Recipes list
 import { renderRecipes } from './js/recipes-render';
 
+updatePageButtons();
 //? Recipes modal
 import './js/modal-recipe';
 
