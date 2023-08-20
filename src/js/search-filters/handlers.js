@@ -1,18 +1,21 @@
 import getFilterRefs from './refs';
 import { getRecipes } from '../API/api-recipes';
 import { renderFilteredRecipes } from './markup';
-import { queryParams, executeRequest } from './requests';
+import { queryParams } from './requests';
+import { executeRequest } from './requests';
 import { Toast } from '../utilities/sweetalert';
 
 const onFilterItemClick = e => {
-  const item = e.target.closest('.extra-filters-item');
-  if (!item) return;
+  try {
+    const item = e.target.closest('.extra-filters-item');
+    const select = item.querySelector('.extra-select');
+    const list = item.querySelector('.extra-options-list');
 
-  const select = item.querySelector('.extra-select');
-  const list = item.querySelector('.extra-options-list');
-
-  select.classList.toggle('opened');
-  list.classList.toggle('opened-list');
+    select.classList.toggle('opened');
+    list.classList.toggle('opened-list');
+  } catch (error) {
+    return;
+  }
 };
 
 const {
@@ -33,11 +36,12 @@ const onResetBtnClick = async () => {
   selectedTime.textContent = 'Select';
   selectedArea.textContent = 'Select';
   selectedIngredient.textContent = 'Select';
-
-  const data = await getRecipes();
-  renderFilteredRecipes(data?.data.results);
+  const response = getRecipes().then(data =>
+    renderFilteredRecipes(data?.data.results)
+  );
 
   const items = recipeList?.querySelectorAll('.recipe-item');
+
   items?.forEach(item => item.classList.remove('d-none'));
 
   await Toast.fire({
