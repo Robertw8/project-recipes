@@ -1,3 +1,6 @@
+//? Popular recipes
+import { renderElement } from './js/popular-recipes.js';
+renderElement();
 
 import { setLocalStorageTheme, setThemeOnClick } from './js/dark-theme.js';
 
