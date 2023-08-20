@@ -1,13 +1,22 @@
 .hero {
-  max-width: 1280px;
-  padding: 90px 100px 0 100px;
+  max-width: 375px;
+  padding: 90px 20px 0 20px;
   overflow: hidden;
+
+  @media screen and (min-width: $tablet) {
+    max-width: 768px;
+    padding: 90px 32px 0 32px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    max-width: 1280px;
+    padding: 90px 100px 0 100px;
+  }
 }
 
 .hero-container {
   display: flex;
   flex-direction: column;
-  width: 1400px;
 
   @media screen and (min-width: $desktop) {
     flex-direction: row;
@@ -17,9 +26,11 @@
 
 .hero-text-wrap {
   width: 335px;
+  margin-bottom: 48px;
 
   @media screen and (min-width: $tablet) {
     width: 446px;
+    margin-bottom: 64px;
   }
 
   @media screen and (min-width: $desktop) {
@@ -76,7 +87,7 @@
   background-color: $color-white;
   font-weight: 500;
   border-radius: 12px;
-  margin-bottom: 48px;
+
   padding: 10px 20px;
 
   &:focus, &:hover {
@@ -89,8 +100,6 @@
     height: 45px;
     font-size: 15px;
     @include radius-15;
-
-    margin-bottom: 64px;
   }
 }
 
@@ -99,18 +108,20 @@
   background-color: $color-black;
 }
 
-
 //swiper style
 .hero-img-wrap {
   display: flex;
   flex-direction: row;
-  width: 871px; // 871
-  height: 448px;
-  //margin-left: 200px; // 0
-  margin-bottom: 50px;
+  width: 497px;
+  height: 302px; //280 for pagination
+  //margin-bottom: 10px; //del
 
   @media screen and (min-width: $tablet) {
-    //width: 400px;
+    width: 871px;
+    height: 468px; //442 for pagination
+  }
+
+  @media screen and (min-width: $desktop) {
   }
 }
 
@@ -120,51 +131,77 @@
 }
 
 .cook-card-wrap {
-  width: 137px;
-  height: 442px;
+  width: 80px;
 
   .cook-card {
     @include radius-15;
     object-fit: cover;
+  }
+
+  @media screen and (min-width: $tablet) {
+    width: 137px;
+    height: 442px;
   }
 }
 
 .dish-card-wrap {
   background-color: $color-black;
   @include radius-15;
-  width: 351px;
+  width: 185px;
+  height: 280px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  justify-content: center;
 
   .dish-card {
     object-fit: contain;
-    width: 262px;
-    height: 262px;
-    //margin-bottom: 32px;
+    width: 157px;
+    height: 142px;
+    margin-bottom: 10px;
+
+    @media screen and (min-width: $tablet) {
+      width: 262px;
+      height: 262px;
+    }
   }
 
   .dish-name {
-    font-size: 14px;
+    font-size: 10px;
     font-weight: 500;
     line-height: 1.16em;
     text-transform: uppercase;
     color: $color-white-50;
     margin-bottom: 8px;
+    width: 156px;
+    text-align: center;
+
+    @media screen and (min-width: $tablet) {
+      width: 300px;
+      font-size: 14px;
+    }
   }
 
   .dish-area {
-    font-size: 12px;
+    font-size: 8px;
     color: $color-white-10;
+
+    @media screen and (min-width: $tablet) {
+      font-size: 12px;
+    }
+  }
+
+  @media screen and (min-width: $tablet) {
+    width: 351px;
+    height: 442px;
   }
 }
 
 .dish-big-wrap {
   background-color: $color-black;
   @include radius-15;
-  height: 442px;
-  width: 351px;
+  width: 185px;
+  height: 280px;
   margin-right: 16px;
   overflow: hidden;
 
@@ -176,15 +213,41 @@
     object-position: 50% 10%;
     //width: 1500px;
   }
+
+  @media screen and (min-width: $tablet) {
+    height: 442px;
+    width: 351px;
+  }
+
+  @media screen and (min-width: $desktop) {
+  }
 }
 
-.swiper-pagination {
-  //position: ;
-//  top: 10px;
-//  right: 10px;
-//  width: auto !important;
-//  left: auto !important;
-//  margin: 0;
+//swiper style important
+.swiper-pagination-horizontal {
+  margin: -10px -60px !important;
 
-  margin-top: 450px;
+  @media screen and (min-width: $tablet) {
+    margin: -10px -110px !important;
+  }
+}
+
+span.swiper-pagination-bullet {
+  opacity: 1;
+  background-color: $color-black-80;
+}
+
+.dark-theme span.swiper-pagination-bullet {
+  opacity: 1;
+  background-color: $color-white;
+}
+
+span.swiper-pagination-bullet-active {
+  background: $color-green;
+  opacity: 1;
+}
+
+.dark-theme span.swiper-pagination-bullet-active {
+  background: $color-green;
+  opacity: 1;
 }
