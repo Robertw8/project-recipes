@@ -1,8 +1,9 @@
 //? Цей файл використовуємо тільки для позиціонування між собою дочірніх паршалів каталогу.
 
-@media screen and (min-width: $tablet) {
-  .catalog-container {
-    display: flex;
-    padding: 0;
-  }
+.test-catalog {
+  color: green;
+}
+
+.catalog {
+  display: flex;
 }

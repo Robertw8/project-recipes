@@ -3,42 +3,43 @@ import { renderFilteredRecipes } from './markup';
 import { Toast } from '../utilities/sweetalert';
 
 const queryParams = {
+  queryParam: '',
   areaQuery: '',
   ingredientQuery: '',
   timeQuery: '',
   searchQuery: '',
 };
 
-const buildQueryParam = () => {
-  const params = [];
+const executeRequest = async () => {
+  queryParams.queryParam = '';
 
   if (queryParams.timeQuery) {
-    params.push(`time=${encodeURIComponent(queryParams.timeQuery)}`);
+    queryParams.queryParam += `&time=${encodeURIComponent(
+      queryParams.timeQuery
+    )}`;
   }
 
   if (queryParams.areaQuery) {
-    params.push(`area=${encodeURIComponent(queryParams.areaQuery)}`);
+    queryParams.queryParam += `&area=${encodeURIComponent(
+      queryParams.areaQuery
+    )}`;
   }
 
   if (queryParams.ingredientQuery) {
-    params.push(
-      `ingredient=${encodeURIComponent(queryParams.ingredientQuery)}`
-    );
+    queryParams.queryParam += `&ingredient=${encodeURIComponent(
+      queryParams.ingredientQuery
+    )}`;
   }
 
   if (queryParams.searchQuery) {
-    params.push(`title=${encodeURIComponent(queryParams.searchQuery)}`);
+    queryParams.queryParam += `&title=${encodeURIComponent(
+      queryParams.searchQuery
+    )}`;
   }
 
-  return params.join('&');
-};
-
-const executeRequest = async () => {
   try {
-    const queryParam = buildQueryParam();
-
     const response = await axios.get(
-      `https://tasty-treats-backend.p.goit.global/api/recipes?&limit=9&${queryParam}`
+      `https://tasty-treats-backend.p.goit.global/api/recipes?&limit=9${queryParams.queryParam}`
     );
 
     renderFilteredRecipes(response.data.results);
