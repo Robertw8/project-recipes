@@ -1,19 +1,25 @@
 import { getRequestsService } from './API/api-service.js';
-import { queryParams } from './search-filters/requests.js';
+import { executeRequest, queryParams } from './search-filters/requests.js';
+import { Toast } from './utilities/sweetalert.js';
 
 const categoryBox = document.querySelector('.categories ul');
-const categories = document.querySelector('.categories');
+const categoriesList = document.querySelector('.categories-list');
+const allCategoriesBtn = document.querySelector('.all-categories-btn');
 
 document.addEventListener('DOMContentLoaded', getAllCategories);
 document.removeEventListener('load', getAllCategories);
-categories.addEventListener('click', onClick);
+allCategoriesBtn?.addEventListener('click', onAllCategoriesClick);
+categoriesList?.addEventListener('click', onClick);
 
 async function getAllCategories() {
   try {
     const allCategories = await getRequestsService('categories');
     makeCategoryList(allCategories);
   } catch (error) {
-    console.log(error);
+    Toast.fire({
+      icon: 'error',
+      title: 'Something went wrong. Reload the page and try again',
+    });
   }
 }
 
@@ -24,7 +30,7 @@ function onClick(evt) {
   }
 
   queryParams.category = evt.target.textContent;
-  console.dir(queryParams);
+  executeRequest();
 }
 
 function makeCategoryList(obj) {
@@ -39,6 +45,11 @@ function markup({ name }) {
     <button type="button">${name}</button>
   </li>
   `;
+}
+
+function onAllCategoriesClick() {
+  queryParams.category = '';
+  executeRequest();
 }
 
 function clearBox() {

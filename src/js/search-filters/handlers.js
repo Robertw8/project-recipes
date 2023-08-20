@@ -31,6 +31,7 @@ const onResetBtnClick = async () => {
   searchInput.value = '';
   queryParams.areaQuery = '';
   queryParams.timeQuery = '';
+  queryParams.searchQuery = '';
   queryParams.ingredientQuery = '';
   queryParams.queryParam = '';
 
