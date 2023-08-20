@@ -9,23 +9,13 @@ const {
   areaFilter,
   ingredientsFilter,
   timeFilter,
+  loader,
 } = getFilterRefs();
 
-const filterByArea = e => {
-  queryParams.areaQuery = e.target.dataset.area;
-  updateSelectedContent(selectedArea, e.target.textContent);
-  executeRequest();
-};
-
-const filterByIngredient = e => {
-  queryParams.ingredientQuery = e.target.dataset.ingredient;
-  updateSelectedContent(selectedIngredient, e.target.textContent);
-  executeRequest();
-};
-
-const filterByTime = e => {
-  queryParams.timeQuery = e.target.dataset.time;
-  updateSelectedContent(selectedTime, e.target.textContent);
+const filterBy = ({ e, filter, dataAttr, param }) => {
+  loader?.classList.remove('d-none');
+  queryParams[param] = e.target.dataset[dataAttr];
+  updateSelectedContent(filter, e.target.textContent);
   executeRequest();
 };
 
@@ -35,8 +25,17 @@ const updateSelectedContent = (element, content) => {
   }
 };
 
-areaFilter?.addEventListener('click', filterByArea);
-ingredientsFilter?.addEventListener('click', filterByIngredient);
-timeFilter?.addEventListener('click', filterByTime);
-
-export { filterByArea, filterByIngredient, filterByTime };
+areaFilter?.addEventListener('click', e =>
+  filterBy({ e, filter: selectedArea, dataAttr: 'area', param: 'areaQuery' })
+);
+ingredientsFilter?.addEventListener('click', e =>
+  filterBy({
+    e,
+    filter: selectedIngredient,
+    dataAttr: 'ingredient',
+    param: 'ingredientQuery',
+  })
+);
+timeFilter?.addEventListener('click', e =>
+  filterBy({ e, filter: selectedTime, dataAttr: 'time', param: 'timeQuery' })
+);
