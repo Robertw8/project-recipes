@@ -56,5 +56,7 @@ extraFilterRefs.ingredientsFilter?.addEventListener(
 extraFilterRefs.timeFilter?.addEventListener('click', filterByTime);
 
 import './js/slider-events.js';
+
 import { favorites } from './js/favorites.js';
+
 favorites();
