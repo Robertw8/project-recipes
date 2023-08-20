@@ -39,7 +39,7 @@ body.dark-theme {
 }
 
 .d-none {
-  display: none;
+  display: none !important;
 }
 
 .is-hidden {
