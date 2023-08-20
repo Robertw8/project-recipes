@@ -1,3 +1,5 @@
+import './js/scrollup-btn.js';
+
 //? Popular recipes
 import { renderElement } from './js/popular-recipes.js';
 renderElement();
