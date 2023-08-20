@@ -2,61 +2,24 @@
 import { renderElement } from './js/popular-recipes.js';
 renderElement();
 
+//? Theme switch
 import { setLocalStorageTheme, setThemeOnClick } from './js/dark-theme.js';
 
+//? Slider
 import './js/slider-events.js';
 
+//? Recipes list
 import { renderRecipes } from './js/recipes-render';
 
-import {
-  openModalButton,
-  modalRecipe,
-  modal,
-  closeModalButton,
-  closeEsc,
-  modalBackDrop,
-  closeModal,
-  openModal,
-} from './js/modal-recipe';
+//? Recipes modal
+import './js/modal-recipe';
 
-//?----------------------------------------search filters-------------------------------------------
-import getFilterRefs from './js/search-filters/refs.js';
-import {
-  onFilterItemClick,
-  onResetBtnClick,
-  onSearchInput,
-} from './js/search-filters/handlers.js';
-import {
-  renderAreaOptions,
-  renderIngredientsOptions,
-} from './js/search-filters/markup.js';
-import {
-  filterByArea,
-  filterByIngredient,
-  filterByTime,
-} from './js/search-filters/filters.js';
+//? Search filters
+import './js/search-filters/handlers.js';
+import './js/search-filters/filters.js';
 
-const {
-  filtersList,
-  searchInput,
-  resetBtn,
-  areaFilter,
-  ingredientsFilter,
-  timeFilter,
-} = getFilterRefs();
+//? Favorites
+import { favorites } from './js/favorites.js';
+favorites();
 
-getRequestsService('recipes').then(data => {
-  renderAreaOptions(data);
-});
-
-getRequestsService('ingredients').then(data => {
-  renderIngredientsOptions(data);
-});
-
-filtersList?.addEventListener('click', onFilterItemClick);
-searchInput?.addEventListener('input', debounce(onSearchInput, 300));
-resetBtn?.addEventListener('click', onResetBtnClick);
-areaFilter?.addEventListener('click', filterByArea);
-ingredientsFilter?.addEventListener('click', filterByIngredient);
-timeFilter?.addEventListener('click', filterByTime);
-//?----------------------------------------search filters-------------------------------------------
+import './js/scrollup-btn.js';
