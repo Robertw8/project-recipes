@@ -18,8 +18,11 @@ import './js/modal-recipe';
 import './js/search-filters/handlers.js';
 import './js/search-filters/filters.js';
 
+//? Favorites
 import { favorites } from './js/favorites.js';
 favorites();
 
-import './js/scrollup-btn.js';
+//? Categories
+import './js/categories.js';
 
+import './js/scrollup-btn.js';
