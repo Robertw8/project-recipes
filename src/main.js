@@ -13,6 +13,7 @@ import { renderRecipes } from './js/recipes-render';
 
 //? Recipes modal
 import './js/modal-recipe';
+import './js/header';
 
 //? Search filters
 import './js/search-filters/handlers.js';
