@@ -1,17 +1,13 @@
 import axios from 'axios';
-import {
-  renderFilteredRecipes,
-  renderAreaOptions,
-  renderIngredientsOptions,
-} from './markup';
+import { renderFilteredRecipes } from './markup';
 import { Toast } from '../utilities/sweetalert';
-import { getRequestsService } from '../API/api-service';
 import getFilterRefs from './refs';
 
 const { loader } = getFilterRefs();
 
 const queryParams = {
   areaQuery: '',
+  category: '',
   ingredientQuery: '',
   timeQuery: '',
   searchQuery: '',
@@ -19,6 +15,10 @@ const queryParams = {
 
 const buildQueryParam = () => {
   const params = [];
+
+  if (queryParams.category) {
+    params.push(`category=${encodeURIComponent(queryParams.category)}`);
+  }
 
   if (queryParams.timeQuery) {
     params.push(`time=${encodeURIComponent(queryParams.timeQuery)}`);
@@ -38,6 +38,7 @@ const buildQueryParam = () => {
     params.push(`title=${encodeURIComponent(queryParams.searchQuery)}`);
   }
 
+  console.log(params.join('&'));
   return params.join('&');
 };
 
@@ -59,13 +60,5 @@ const executeRequest = async () => {
 
   loader?.classList.add('d-none');
 };
-
-getRequestsService('areas').then(data => {
-  renderAreaOptions(data);
-});
-
-getRequestsService('ingredients').then(data => {
-  renderIngredientsOptions(data);
-});
 
 export { queryParams, executeRequest, buildQueryParam };
