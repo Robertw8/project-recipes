@@ -1,11 +1,9 @@
-import './js/scrollup-btn.js';
-
 //? Popular recipes
 import { renderElement } from './js/popular-recipes.js';
 renderElement();
 
 //? Theme switch
-import './js/dark-theme.js';
+import { setLocalStorageTheme, setThemeOnClick } from './js/dark-theme.js';
 
 //? Slider
 import './js/slider-events.js';
@@ -15,7 +13,6 @@ import { renderRecipes } from './js/recipes-render';
 
 //? Recipes modal
 import './js/modal-recipe';
-import './js/header';
 
 //? Search filters
 import './js/search-filters/handlers.js';
