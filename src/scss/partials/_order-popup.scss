@@ -23,10 +23,10 @@ body.show-modal-order-now .order-now-backdrop {
   height: 100vh;
   background-color: rgba(46, 47, 66, 0.4);
   visibility: hidden;
-  pointer-events: none;
-  opacity: 0;
+  // pointer-events: none;
+  // opacity: 0;
 
-  overflow: auto;
+  overflow: hidden;
   z-index: 2;
   background: rgba(22, 22, 22, 0.9);
 }
@@ -39,7 +39,10 @@ body.show-modal-order-now .order-now-backdrop {
   padding: 28px 20px;
   background-color: $color-white;
   border-radius: 15px;
+<<<<<<< Updated upstream
   transform: scale(1.1);
+=======
+>>>>>>> Stashed changes
   overflow: hidden;
 
   width: 335px;
@@ -48,7 +51,7 @@ body.show-modal-order-now .order-now-backdrop {
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%) scale(1.1);
   box-shadow: 0 1px 1px rgba(0, 0, 0, .14), 0 1px 3px rgba(0, 0, 0, .12), 0 2px 1px rgba(0, 0, 0, .2);
 }
 
