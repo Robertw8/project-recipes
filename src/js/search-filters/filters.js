@@ -2,7 +2,14 @@ import getFilterRefs from './refs';
 import { queryParams } from './requests';
 import { executeRequest } from './requests';
 
-const { selectedArea, selectedIngredient, selectedTime } = getFilterRefs();
+const {
+  selectedArea,
+  selectedIngredient,
+  selectedTime,
+  areaFilter,
+  ingredientsFilter,
+  timeFilter,
+} = getFilterRefs();
 
 const filterByArea = e => {
   queryParams.areaQuery = e.target.dataset.area;
@@ -27,5 +34,9 @@ const updateSelectedContent = (element, content) => {
     element.textContent = content;
   }
 };
+
+areaFilter?.addEventListener('click', filterByArea);
+ingredientsFilter?.addEventListener('click', filterByIngredient);
+timeFilter?.addEventListener('click', filterByTime);
 
 export { filterByArea, filterByIngredient, filterByTime };

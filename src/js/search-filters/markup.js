@@ -1,4 +1,5 @@
 import getFilterRefs from './refs';
+import { getRequestsService } from '../API/api-service';
 
 const { areaFilter, ingredientsFilter, recipeList } = getFilterRefs();
 
@@ -62,5 +63,13 @@ const renderFilteredRecipes = results => {
     recipeList.insertAdjacentHTML('beforeend', markup);
   }
 };
+
+getRequestsService('areas').then(data => {
+  renderAreaOptions(data);
+});
+
+getRequestsService('ingredients').then(data => {
+  renderIngredientsOptions(data);
+});
 
 export { renderAreaOptions, renderIngredientsOptions, renderFilteredRecipes };
