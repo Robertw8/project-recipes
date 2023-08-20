@@ -51,4 +51,4 @@ const executeRequest = async () => {
   }
 };
 
-export { queryParams, executeRequest };
+export { queryParams, executeRequest, buildQueryParam };
