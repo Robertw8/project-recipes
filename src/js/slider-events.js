@@ -1,27 +1,32 @@
 import Swiper from 'swiper';
 import { Navigation, Pagination, Autoplay } from 'swiper/modules';
-import 'swiper/css';
+import 'swiper/scss';
+// import 'swiper/css/navigation';
+import 'swiper/scss/pagination';
 import { getRequestsService } from './API/api-service.js';
 
 const galleryEl = document.querySelector('.swiper-wrapper');
 
 //swiper created, options
-const swiper = new Swiper('.swiper', {
-  modules: [Navigation, Pagination, Autoplay],
-  allowSlideNext: true,
-  pagination: {
-    el: '.swiper-pagination',
-    clickable: true,
-  },
-  autoplay: {
-    delay: 1500,
-  },
-  speed: 800,
-  loop: true,
-});
+function swiper() {
+  const swiper = new Swiper('.swiper', {
+    modules: [Navigation, Pagination, Autoplay],
+    allowSlideNext: true,
+    pagination: {
+      el: '.pagination',
+      clickable: true,
+    },
+    autoplay: {
+      delay: 1500,
+    },
+    speed: 800,
+    loop: true,
+  });
+}
 
 getRequestsService('events').then(data => {
   renderGallery(data);
+  swiper();
 }).catch(error => console.log(error));
 
 
@@ -33,7 +38,6 @@ function renderGallery(data) {
       <div class='swiper-slide-wrp'>
         <div class='cook-card-wrap'>
           <img class='cook-card' src='${itm.cook.imgWebpUrl}' alt='cook name'>
-<!--    <div class='cook' style='background-image: url(${itm.cook.imgWebpUrl});'>-->
         </div>
         <div class='dish-card-wrap'>
           <img class='dish-card' src='${itm.topic.previewWebpUrl}' alt='dish previe'>
@@ -49,4 +53,3 @@ function renderGallery(data) {
   }).join('');
   galleryEl.insertAdjacentHTML('beforeend', img);
 }
-
