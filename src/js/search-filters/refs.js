@@ -9,6 +9,7 @@ const getFilterRefs = () => ({
   selectedTime: document.querySelector('#selected-time'),
   selectedArea: document.querySelector('#selected-area'),
   selectedIngredient: document.querySelector('#selected-ingredient'),
+  loader: document.querySelector('.loader'),
 });
 
 export default getFilterRefs;
