@@ -1,24 +1,31 @@
-// //? Popular recipes
-// import { renderElement } from './js/popular-recipes.js';
-// renderElement();
+//? Favorites
+import { favorites } from './js/favorites.js';
+favorites();
 
-// //? Theme switch
-// import { setLocalStorageTheme, setThemeOnClick } from './js/dark-theme.js';
+import './js/scrollup-btn.js';
 
-// //? Slider
-// import './js/slider-events.js';
+//? Popular recipes
+import { renderElement } from './js/popular-recipes.js';
+renderElement();
 
-// //? Recipes list
-// import { renderRecipes } from './js/recipes-render';
+//? Theme switch
+import { setLocalStorageTheme, setThemeOnClick } from './js/dark-theme.js';
 
-// //? Recipes modal
-// import './js/modal-recipe';
+//? Slider
+import './js/slider-events.js';
 
-// //? Search filters
-// import './js/search-filters/handlers.js';
-// import './js/search-filters/filters.js';
+//? Recipes list
+import { renderRecipes } from './js/recipes-render';
 
-// //? Favorites
+//? Recipes modal
+import './js/modal-recipe';
+import './js/header';
+
+//? Search filters
+import './js/search-filters/handlers.js';
+import './js/search-filters/filters.js';
+
+//? Favorites
 import { favorites } from './js/favorites.js';
 favorites();
 
