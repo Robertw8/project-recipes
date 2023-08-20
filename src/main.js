@@ -52,7 +52,7 @@ const {
   timeFilter,
 } = getFilterRefs();
 
-getRequestsService('recipes').then(data => {
+getRequestsService('areas').then(data => {
   renderAreaOptions(data);
 });
 
