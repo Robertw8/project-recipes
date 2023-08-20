@@ -1,17 +1,6 @@
-const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/recipes/popular';
+
 const galeryPopularRecipes = document.querySelector('.gallery-popular-recipes');
-import axios from "axios";
-
-
-export const getImageApi = async () => {
-          try {
-        const { data } = await axios(`${BASE_URL}`);
-        console.log(data);
-        return data;
-    } catch (error) {
-        console.log(error.message);
-    }
-};
+import {getRequestsService} from './API/api-service.js'
 
 export function createMarkup(data) {
     const { preview, description, title } = data;
@@ -33,7 +22,7 @@ export function createMarkup(data) {
 export async function renderElement() {
     
     try {
-    const data = await getImageApi();
+    const data = await getRequestsService('recipes/popular');
     const markup = data.map(recipe => createMarkup(recipe)).join('');
         galeryPopularRecipes.innerHTML = markup;
     } catch (error) {
