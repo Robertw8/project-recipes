@@ -1,6 +1,11 @@
 import axios from 'axios';
-import { renderFilteredRecipes } from './markup';
+import {
+  renderFilteredRecipes,
+  renderAreaOptions,
+  renderIngredientsOptions,
+} from './markup';
 import { Toast } from '../utilities/sweetalert';
+import { getRequestsService } from '../API/api-service';
 
 const queryParams = {
   areaQuery: '',
@@ -47,8 +52,15 @@ const executeRequest = async () => {
       icon: 'error',
       title: 'Something went wrong. Reload the page and try again',
     });
-    console.log(error);
   }
 };
 
-export { queryParams, executeRequest };
+getRequestsService('areas').then(data => {
+  renderAreaOptions(data);
+});
+
+getRequestsService('ingredients').then(data => {
+  renderIngredientsOptions(data);
+});
+
+export { queryParams, executeRequest, buildQueryParam };
