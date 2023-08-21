@@ -11,6 +11,7 @@ const modal = document.querySelector('.modal');
 const closeModalButton = document.querySelector('.recipe-btn-close');
 const giveRatingBtn = document.querySelector('.give-rating-btn');
 const videoPlayer = document.querySelector('.recipe-video');
+const liteYoutubeElement = document.querySelector('.recipe-video');
 
 
 function openModal(recipeID) { 
@@ -19,14 +20,23 @@ function openModal(recipeID) {
   handleRecipeDetails(recipeID); 
 }
 
-
-closeModalButton.addEventListener('click', closeModal);
+function pauseLiteYoutubeVideo() {
+  if (liteYoutubeElement) {
+    const iframe = liteYoutubeElement.shadowRoot.querySelector('iframe');
+    if (iframe) {
+       iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'mute' }), '*');
+      iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'pauseVideo' }), '*');
+    }
+  }
+}
 
 function closeModal() {
   modalRecipeBackDrop.style.display = 'none';
   document.body.style.overflow = 'auto';
-
+  pauseLiteYoutubeVideo();
 }
+
+closeModalButton.addEventListener('click', closeModal);
 
 modalRecipeBackDrop.addEventListener('click', modalBackDrop);
 
@@ -37,6 +47,7 @@ function modalBackDrop(event) {
 }
 
 document.addEventListener('keydown', closeEsc);
+
 function closeEsc(event) {
   if (event.key === 'Escape' && modalRecipeBackDrop.style.display === 'block') {
     closeModal();
@@ -51,6 +62,7 @@ export {
   modalBackDrop,
   closeModal,
   openModal,
+  pauseLiteYoutubeVideo,
 };
 
 const URL = 'recipes/';
@@ -82,45 +94,32 @@ const youtubeLink = recipeData.youtube;
 var videoId = youtubeLink.match(/v=([a-zA-Z0-9_-]+)/)[1];
   const markup = `
     <div class="recipe-details">
-    <h2 class="modal-recipe-title-tabl">${recipeData.title}</h2>
-      
-      <lite-youtube class="recipe-video" videoid="${videoId}"></lite-youtube>
-      
 
+    <div class="video-title">
+    <lite-youtube class="recipe-video" videoid="${videoId}"></lite-youtube>
+    <h2 class="modal-recipe-title">${recipeData.title}</h2>
+    </div>
       <div class="recipe-container">
-      <h2 class="modal-recipe-title-mobl">${recipeData.title}</h2>
         <div class="modal-recipe-cooking">
-        <ul class="modal-recipe-tag-tablet">
-        ${recipeData.tags
-          .map(tag => `<li class="recipe-tag-item"><p>#${tag}</p></li>`)
-          .join('')}
-      </ul>
-          <div>
-
             <p class="modal-recipe-rating">${
               recipeData.rating
             } <svg class="modal-stars-icon" width="84" height="18"><use class="stars-icon" href="images/sprite.svg#icon-${Math.round(
     recipeData.rating - 0.1
   )}-stars"></use></svg>
             </span></p>
-
-          </div>
           <p class="modal-recipe-time">${recipeData.time} mins</p>
         </div>
-
         <div class="overflow-scroll">
           <ul class="modal-ingredients">
             ${ingredientsList}
           </ul>
         </div>
-      </div>
-
-      <ul class="modal-recipe-tag-mobl">
+        <ul class="modal-recipe-tag">
         ${recipeData.tags
           .map(tag => `<li class="recipe-tag-item"><p>#${tag}</p></li>`)
           .join('')}
       </ul>
-
+      </div>
       <p class="modal-recipe-text">${recipeData.instructions}</p>
     </div>
   `;
@@ -197,12 +196,12 @@ async function addToFavorites(existingFavorites, recipeData) {
 
     Toast.fire({
       icon: 'success',
-      title: 'Додано до обраного!',
+      title: 'Added to favorites!',
     });
   } else {
     Toast.fire({
       icon: 'info',
-      title: 'Рецепт вже є в обраному!',
+      title: 'The recipe is already in your favorites!',
     });
   }
 }
@@ -215,7 +214,7 @@ async function removeFromFavorites(existingFavorites, recipeID) {
     existingFavorites.splice(recipeIndex, 1);
     Toast.fire({
       icon: 'success',
-      title: 'Видалено з обраних!',
+      title: 'Removed from favorites!',
     });
   } 
 }
