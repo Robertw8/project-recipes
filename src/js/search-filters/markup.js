@@ -29,15 +29,18 @@ const renderIngredientsOptions = data => {
 
 const renderFilteredRecipes = results => {
   const markup = results
-    .map(({ rating, title, id, description, preview }) => {
+    .map(({ rating, title, description, preview }) => {
       return `
         <li class="recipe-item" data-title="${title}">
             <img class="recipe-img" loading="lazy"
                 src="${preview}"
-                alt="${id}">
+                alt="${title}"
+                width="335"
+                height="335"
+                >
             <div class="recipe-wrap">
                 <div class="top-wrap">
-                    <button type="button" class="recipe-favorite-btn">
+                    <button type="button" aria-label="add to favorite" class="recipe-favorite-btn">
                         <svg class="recipe-favorite-icon" width="22" height="22"><use class="heart-icon" href="images/sprite.svg#icon-heart"></use></svg>
                     </button>
                 </div>

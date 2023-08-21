@@ -11,7 +11,10 @@ export async function renderRecipes() {
         <li class="recipe-item" data-title="${title}">
             <img class="recipe-img" loading="lazy"
                 src="${preview}"
-                alt="${title}">
+                alt="${title}"
+                width="335"
+                height="335"
+                >
             <div class="recipe-wrap">
                 <div class="top-wrap">
                     <button type="button" aria-label="add to favorite" class="recipe-favorite-btn">
