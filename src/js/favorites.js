@@ -33,7 +33,7 @@ const tabletHat = document.querySelector('.tablet-favorites-svg');
 const phoneHat = document.querySelector('.phone-favorites-svg');
 
 function hideElement(element, className) {
-  element.classList.add(className);
+  element?.classList.add(className);
 }
 
 function favorites() {

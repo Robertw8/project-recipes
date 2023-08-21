@@ -14,17 +14,13 @@ import './js/header.js';
 //? Recipes list
 import { renderRecipes } from './js/recipes-render';
 
-updatePageButtons();
+// updatePageButtons();
 //? Recipes modal
 import './js/modal-recipe';
 
 //? Search filters
 import './js/search-filters/handlers.js';
 import './js/search-filters/filters.js';
-
-//? Favorites
-import { favorites } from './js/favorites.js';
-favorites();
 
 //? Categories
 import './js/categories.js';
