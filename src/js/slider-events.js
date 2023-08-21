@@ -23,32 +23,35 @@ function swiper() {
   });
 }
 
-getRequestsService('events').then(data => {
-  renderGallery(data);
-  swiper();
-}).catch(error => console.log(error));
-
+getRequestsService('events')
+  .then(data => {
+    renderGallery(data);
+    swiper();
+  })
+  .catch(error => console.log(error));
 
 function renderGallery(data) {
-  const img = data.map(itm => {
-    // console.log(itm);
-    return `
+  const img = data
+    .map(itm => {
+      // console.log(itm);
+      return `
     <div class='swiper-slide'>
       <div class='swiper-slide-wrp'>
         <div class='cook-card-wrap'>
-          <img class='cook-card' src='${itm.cook.imgWebpUrl}' alt='cook name'>
+          <img class='cook-card' src='${itm.cook.imgWebpUrl}' alt='cook name' loading="lazy">
         </div>
         <div class='dish-card-wrap'>
-          <img class='dish-card' src='${itm.topic.previewWebpUrl}' alt='dish previe'>
+          <img class='dish-card' src='${itm.topic.previewWebpUrl}' alt='dish previe' loading="lazy">
             <p class='dish-name'>${itm.topic.name}</p>
             <p class='dish-area'>${itm.topic.area}</p>
         </div>
         <div class='dish-big-wrap'>
-          <img class='dish-big' src='${itm.topic.imgWebpUrl}' alt='dish'>
+          <img class='dish-big' src='${itm.topic.imgWebpUrl}' alt='dish' loading="lazy">
         </div>
       </div>
     </div>
     `;
-  }).join('');
+    })
+    .join('');
   galleryEl.insertAdjacentHTML('beforeend', img);
 }
