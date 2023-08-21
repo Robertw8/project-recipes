@@ -35,6 +35,12 @@ font-weight: 600;
 line-height: calc(18/14);
 text-transform: uppercase;
 margin-bottom: 8px;
+text-overflow: ellipsis;
+-webkit-line-clamp: 1;
+line-clamp: 1;
+-webkit-box-orient: vertical;
+display: -webkit-box;
+overflow: hidden;
 }
 
 .popular-recipes-text {
@@ -54,16 +60,19 @@ margin-bottom: 8px;
 }
 
  .dark-theme .popular-recipes-text {
- color: $color-white;
-
+ color: $color-white-dark-theme-50;
 }
 
 .dark-theme .popular-recipes-title {
   color: $color-white;
-
 }
 
 @media screen and (min-width: $tablet) {
+
+  .section-popular-recipes {
+      margin-top: 64px;
+      
+    }
 
   .section-popular-recipes {
       margin-top: 64px;
@@ -98,6 +107,10 @@ margin-bottom: 8px;
 }
 
 @media screen and (min-width: $desktop) {
+
+.section-popular-recipes {
+    margin-top: 40px;
+  }
 
 .gallery-popular-recipes {
     gap: 32px;

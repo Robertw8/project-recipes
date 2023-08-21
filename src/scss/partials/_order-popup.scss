@@ -23,8 +23,8 @@ body.show-modal-order-now .order-now-backdrop {
   height: 100vh;
   background-color: rgba(46, 47, 66, 0.4);
   visibility: hidden;
-  // pointer-events: none;
-  // opacity: 0;
+  pointer-events: none;
+  opacity: 0;
 
   overflow: hidden;
   z-index: 2;
@@ -39,6 +39,7 @@ body.show-modal-order-now .order-now-backdrop {
   padding: 28px 20px;
   background-color: $color-white;
   border-radius: 15px;
+
   transform: scale(1.1);
   overflow: hidden;
 

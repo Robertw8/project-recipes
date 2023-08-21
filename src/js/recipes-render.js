@@ -1,6 +1,7 @@
 import { getRecipes } from './API/api-recipes';
 const recipeListEl = document.querySelector('.recipe-list');
 
+
 export async function renderRecipes() {
   try {
     const response = await getRecipes();
@@ -45,3 +46,6 @@ export async function renderRecipes() {
 }
 
 renderRecipes();
+
+
+
