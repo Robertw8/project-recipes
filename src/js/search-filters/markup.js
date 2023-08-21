@@ -17,12 +17,16 @@ const renderAreaOptions = data => {
 
 const renderIngredientsOptions = data => {
   if (ingredientsFilter) {
-    const markup = data
+    const maxElements = 100;
+    const elementsToRender = data.slice(0, maxElements);
+
+    const markup = elementsToRender
       .map(
         item =>
           `<li class="extra-options-item" data-ingredient="${item._id}">${item.name}</li>`
       )
       .join('');
+
     ingredientsFilter.insertAdjacentHTML('beforeend', markup);
   }
 };
