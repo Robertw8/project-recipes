@@ -51,11 +51,10 @@ export {
 const URL = 'recipes/';
 
 const getRecipeDetails = async recipeID => {
-
   try {
     const recipeData = await getRequestsService(`${URL}${recipeID}`);
-    console.log(recipeData)
-        return recipeData;
+    console.log(recipeData);
+    return recipeData;
   } catch (error) {
     console.error(error);
     return null;
@@ -73,7 +72,7 @@ const createRecipeMarkup = recipeData => {
       `
     )
     .join('');
-    const youtubeEmbedUrl = recipeData.youtube.replace('watch?v=', 'embed/');
+  const youtubeEmbedUrl = recipeData.youtube.replace('watch?v=', 'embed/');
 
   const markup = `
     <div class="recipe-details">
@@ -81,39 +80,45 @@ const createRecipeMarkup = recipeData => {
       <div>
       <iframe class="recipe-video" src="${youtubeEmbedUrl}" frameborder="0" allow="autoplay; encrypted-media; fullscreen"></iframe>
             </div>
-      
+
       <div class="recipe-container">
       <h2 class="modal-recipe-title-mobl">${recipeData.title}</h2>
         <div class="modal-recipe-cooking">
         <ul class="modal-recipe-tag-tablet">
-        ${recipeData.tags.map(tag => `<li class="recipe-tag-item"><p>#${tag}</p></li>`).join('')}
+        ${recipeData.tags
+          .map(tag => `<li class="recipe-tag-item"><p>#${tag}</p></li>`)
+          .join('')}
       </ul>
           <div>
-        
-            <p class="modal-recipe-rating">${recipeData.rating} <svg class="modal-stars-icon" width="84" height="18"><use class="stars-icon" href="/images/sprite.svg#icon-${Math.round(
-              recipeData.rating - 0.1
-            )}-stars"></use></svg>
+
+            <p class="modal-recipe-rating">${
+              recipeData.rating
+            } <svg class="modal-stars-icon" width="84" height="18"><use class="stars-icon" href="/images/sprite.svg#icon-${Math.round(
+    recipeData.rating - 0.1
+  )}-stars"></use></svg>
             </span></p>
-            
+
           </div>
           <p class="modal-recipe-time">${recipeData.time} mins</p>
         </div>
-        
+
         <div class="overflow-scroll">
           <ul class="modal-ingredients">
             ${ingredientsList}
           </ul>
         </div>
       </div>
-      
+
       <ul class="modal-recipe-tag-mobl">
-        ${recipeData.tags.map(tag => `<li class="recipe-tag-item"><p>#${tag}</p></li>`).join('')}
+        ${recipeData.tags
+          .map(tag => `<li class="recipe-tag-item"><p>#${tag}</p></li>`)
+          .join('')}
       </ul>
-      
+
       <p class="modal-recipe-text">${recipeData.instructions}</p>
     </div>
   `;
-  
+
   return markup;
 };
 
@@ -125,18 +130,10 @@ getRecipeDetails(recipeID)
     if (recipeData) {
       const recipeMarkup = createRecipeMarkup(recipeData);
       markUpElement.innerHTML = recipeMarkup;
-         } else {
-      Notiflix.Notify.failure('Sorry ERROR. Please try again.');
     }
   })
   .catch(error => {
     console.error(error);
   });
 
-
-
-
-  // localStorage
-
-
-  
+// localStorage
