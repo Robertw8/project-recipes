@@ -1,10 +1,10 @@
 .wrap-recipes-list {
   position: relative;
-  padding-top: 20px;
+  margin-top: 20px;
   margin-bottom: 40px;
 
   @media screen and (min-width: $tablet) {
-    padding-top: 14px;
+    margin-top: 14px;
     margin-bottom: 64px;
   }
   .recipe-list {
@@ -185,7 +185,7 @@
       gap: 8px;
     }
   }
-  
+
 }
 .inner-wrap {
   display: flex;
@@ -227,7 +227,7 @@
   background-color: $color-darkgrey;
   border: 1px solid rgba(255, 255, 255, 0.30);
   &:is(:hover, :focus) {
-    background-color: $color-green; 
+    background-color: $color-green;
     border: 1px solid $color-green;
   }
 }
