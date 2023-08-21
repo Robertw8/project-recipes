@@ -1,3 +1,66 @@
-.test-filter1 {
-  color: aqua;
+.categories {
+  > button {
+    padding: 14px 28px;
+    border-radius: 15px;
+    border: 1px solid rgba(5, 5, 5, 0.2);
+    background-color: inherit;
+
+    color: rgba(5, 5, 5, 0.5);
+    font-family: inherit;
+    font-size: 18px;
+    font-style: normal;
+    font-weight: 500;
+    line-height: normal;
+
+    &:hover,
+    &:focus {
+      color: $color-white;
+      background-color: $color-green;
+      border-color: $color-green;
+    }
+    .dark-theme & {
+      border-color: rgba(255, 255, 255, 0.2);
+      color: rgba(255, 255, 255, 0.5);
+    }
+  }
+
+  & ul {
+    width: 235px;
+    height: 416px;
+    margin-top: 42px;
+    overflow-y: scroll;
+  }
+
+  & li {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+
+    &:not(:first-child) {
+      margin-top: 24px;
+    }
+
+    & button {
+      margin: 0;
+      padding: 0;
+      border: 0;
+      background-color: inherit;
+      gap: 24px;
+
+      color: rgba(5, 5, 5, 0.3);
+      font-family: inherit;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 1.25; /* 125% */
+
+      .dark-theme & {
+        color: rgba(255, 255, 255, 0.3);
+      }
+
+      &:hover,
+      &:focus {
+        color: $color-green;
+      }
+    }
+  }
 }

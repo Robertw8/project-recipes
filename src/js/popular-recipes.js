@@ -1,26 +1,17 @@
-const BASE_URL = 'https://tasty-treats-backend.p.goit.global/api/recipes/popular';
+
+import { getRequestsService } from './API/api-service.js';
+import { Toast } from './utilities/sweetalert.js';
+import { openModal } from './modal-recipe.js';
+
 const galeryPopularRecipes = document.querySelector('.gallery-popular-recipes');
-import axios from "axios";
-
-
-export const getImageApi = async () => {
-          try {
-        const { data } = await axios(`${BASE_URL}`);
-        console.log(data);
-        return data;
-    } catch (error) {
-        console.log(error.message);
-    }
-};
 
 export function createMarkup(data) {
-    const { preview, description, title } = data;
-   
+    const { preview, _id, description, title } = data;
     return `
       
 <li class="popular-recipes-list">
   
-     <img class="popular-img" src=${preview} alt="${title}" width="64px" height="64px">
+     <img id='${_id}' class="popular-img" src=${preview} alt="${title}" width="64px" height="64px">
   <div class="popular-wrapper">
     <h3 class="popular-title">${title}</h3>
     <p class="popular-recipes-text">${description}</p>
@@ -33,11 +24,33 @@ export function createMarkup(data) {
 export async function renderElement() {
     
     try {
-    const data = await getImageApi();
-    const markup = data.map(recipe => createMarkup(recipe)).join('');
+        const data = await getRequestsService('recipes/popular');
+        const markup = data.map(recipe => createMarkup(recipe)).join('');
         galeryPopularRecipes.innerHTML = markup;
+
+        onClickPopularCard()
     } catch (error) {
-        console.log(error.message);
+        Toast.fire({
+      icon: 'error',
+      title: 'Something went wrong, try reloading the page',
+    });
     }
 }
-   
+ 
+async function onClickPopularCard() {
+    galeryPopularRecipes.addEventListener('click', async event => {
+        const clickedImg = event.target.closest('.popular-img');
+        
+        if (clickedImg) {
+            try {
+                const recipeID = clickedImg.id;
+                await openModal(recipeID);
+            } catch (error) {
+                 Toast.fire({
+                    icon: 'error',
+                    title: 'Something went wrong, try reloading the page',
+                     });
+            }
+        }
+    });
+}

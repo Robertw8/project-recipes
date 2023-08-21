@@ -2,21 +2,31 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Explore a world of culinary delights with Tasty Treats! Discover a diverse collection of recipes and master-classes showcasing exquisite dishes from around the globe. From savory to sweet, our platform offers a delectable array of cooking experiences, bringing the flavors of many different countries to your kitchen."
+    />
     <link rel="icon" type="image/x-icon" href="/favicon.png" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Favorites</title>
     <link rel="stylesheet" href="./index.scss" />
   </head>
   <body>
-    <!-- <section>
-      <a href="./index.html">Go to home</a>
-      <h1 class="test-favorites">Welcome to favorites page</h1>
-    </section> -->
     <load ="partials/header.html" />
-    <main class="main"></main>
+    <main class="main">
+      <load ="partials/favorits/hero.html" />
+      <load ="partials/favorits/categoris.html" />
+      <load ="partials/favorits/dishes.html" />
+    </main>
+    <button class="open" type="button"></button>
+    <load ="partials/scrollup-btn.html" />
     <load ="partials/footer.html" />
+    <load ="partials/recipe-popup.html" />
+    <load ="partials/rating-popup.html" />
+    <load ="partials/order-popup.html" />
+    <load ="partials/mobile-menu.html" />
 
-    <script type="module" src="/main.js"></script>
+    <script type="module" src="/favorites-page.js"></script>
   </body>
 </html>

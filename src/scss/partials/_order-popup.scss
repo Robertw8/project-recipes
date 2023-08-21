@@ -39,6 +39,8 @@ body.show-modal-order-now .order-now-backdrop {
   padding: 28px 20px;
   background-color: $color-white;
   border-radius: 15px;
+
+  transform: scale(1.1);
   overflow: hidden;
 
   width: 335px;

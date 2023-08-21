@@ -1,8 +1,8 @@
 const STORAGE_KEY = 'dark-theme';
 const themeSwitcher = document.getElementById('theme-switcher');
-const isEnabledDarkTheme = localStorage.getItem(STORAGE_KEY) === 'true';
+const isEnabledDarkTheme = localStorage.getItem(STORAGE_KEY);
 
-setLocalStorageTheme();
+document.addEventListener('DOMContentLoaded', setLocalStorageTheme);
 
 themeSwitcher.addEventListener('change', setThemeOnClick);
 
@@ -27,4 +27,16 @@ function setLocalStorageTheme() {
   }
 }
 
-export { setLocalStorageTheme, setThemeOnClick };
+function listenMobileThemeSwitcher() {
+  const isEnabledDarkTheme = localStorage.getItem(STORAGE_KEY) === 'true';
+  const mobileThemeSwitcher = document.getElementById('mob-theme-switcher');
+  if (!mobileThemeSwitcher) {
+    return;
+  }
+  if (mobileThemeSwitcher) {
+    mobileThemeSwitcher.addEventListener('change', setThemeOnClick);
+    mobileThemeSwitcher.querySelector('input').checked = isEnabledDarkTheme;
+  }
+}
+
+export { setLocalStorageTheme, setThemeOnClick, listenMobileThemeSwitcher };

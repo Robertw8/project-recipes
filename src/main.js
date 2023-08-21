@@ -1,47 +1,28 @@
-import { getRequestsService } from './js/API/api-service.js';
-
-import {
-  getImageApi,
-  createMarkup,
-  renderElement,
-} from './js/popular-recipes.js';
+//? Popular recipes
+import { renderElement } from './js/popular-recipes.js';
 renderElement();
 
+//? Theme switch
 import { setLocalStorageTheme, setThemeOnClick } from './js/dark-theme.js';
 
-import './js/slider-events.js'
+//? Slider
+import './js/slider-events.js';
 
+//? Header
+import './js/header.js';
 
+//? Recipes list
+import { renderRecipes } from './js/recipes-render';
 
+// updatePageButtons();
+//? Recipes modal
+import './js/modal-recipe';
 
+//? Search filters
+import './js/search-filters/handlers.js';
+import './js/search-filters/filters.js';
 
+//? Categories
+import './js/categories.js';
 
-
-
-
-
-
-
-
-
-
-
-
-
-import {openModalButton, modalRecipe, modal, closeModalButton, closeEsc, modalBackDrop, closeModal, openModal } from './js/modal-recipe';
-
-import {
-  extraFilterRefs,
-  onFilterItemClick,
-  renderAreaOptions,
-} from './js/search-filter';
-
-getRequestsService('areas').then(area => {
-  renderAreaOptions(area, extraFilterRefs.areaFilter);
-});
-
-getRequestsService('ingredients').then(ingredient => {
-  renderAreaOptions(ingredient, extraFilterRefs.ingredientsFilter);
-});
-
-extraFilterRefs.filtersList?.addEventListener('click', onFilterItemClick);
+import './js/scrollup-btn.js';

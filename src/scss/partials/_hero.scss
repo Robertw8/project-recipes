@@ -1,5 +1,17 @@
 .hero {
-  padding-top: 90px;
+  max-width: 375px;
+  padding: 90px 20px 0 20px;
+  overflow: hidden;
+
+  @media screen and (min-width: $tablet) {
+    max-width: 768px;
+    padding: 90px 32px 0 32px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    max-width: 1280px;
+    padding: 90px 100px 0 100px;
+  }
 }
 
 .hero-container {
@@ -14,9 +26,15 @@
 
 .hero-text-wrap {
   width: 335px;
+  margin-bottom: 48px;
 
   @media screen and (min-width: $tablet) {
     width: 446px;
+    margin-bottom: 64px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    margin-top: 65px;
   }
 }
 
@@ -53,6 +71,7 @@
   @media screen and (min-width: $tablet) {
     font-size: 16px;
     margin-bottom: 32px;
+    width: 408px;
   }
 }
 
@@ -66,10 +85,13 @@
   font-size: 14px;
   border: 1px solid $color-green;
   background-color: $color-white;
+  color: $color-black;
   font-weight: 500;
   border-radius: 12px;
-  margin-bottom: 48px;
+
   padding: 10px 20px;
+  transition: background-color, color, 250ms cubic-bezier(0.4, 0, 0.2, 1);
+
 
   &:focus, &:hover {
     background-color: $color-green;
@@ -81,28 +103,34 @@
     height: 45px;
     font-size: 15px;
     @include radius-15;
-
-    margin-bottom: 64px;
   }
 }
 
 .dark-theme .hero-btn {
   color: $color-white;
   background-color: $color-black;
-}
+  transition: background-color, color, 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
+  &:focus, &:hover {
+    background-color: $color-green;
+    color: $color-white;
+  }
+}
 
 //swiper style
 .hero-img-wrap {
   display: flex;
   flex-direction: row;
-  width: 850px;
-  height: 448px;
-  margin-left: 100px;
-  margin-bottom: 50px;
+  width: 497px;
+  height: 302px; //280 for pagination
+  //margin-bottom: 10px; //del
 
   @media screen and (min-width: $tablet) {
-    //width: 400px;
+    width: 871px;
+    height: 468px; //442 for pagination
+  }
+
+  @media screen and (min-width: $desktop) {
   }
 }
 
@@ -112,72 +140,123 @@
 }
 
 .cook-card-wrap {
-  width: 137px;
-  height: 442px;
+  width: 80px;
 
   .cook-card {
     @include radius-15;
     object-fit: cover;
-    //background-size: cover;
-    //overflow: hidden;
+  }
+
+  @media screen and (min-width: $tablet) {
+    width: 137px;
+    height: 442px;
   }
 }
 
 .dish-card-wrap {
   background-color: $color-black;
   @include radius-15;
-  width: 350px;
+  width: 185px;
+  height: 280px;
   display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   .dish-card {
     object-fit: contain;
+    width: 157px;
+    height: 142px;
+    margin-bottom: 10px;
+
+    @media screen and (min-width: $tablet) {
+      width: 262px;
+      height: 262px;
+    }
   }
 
-  .dish-text {
-    position: absolute;
+  .dish-name {
+    font-size: 10px;
+    font-weight: 500;
+    line-height: 1.16em;
+    text-transform: uppercase;
+    color: $color-white-50;
+    margin-bottom: 8px;
+    width: 156px;
+    text-align: center;
 
-
-    .dish-name {
+    @media screen and (min-width: $tablet) {
+      width: 300px;
       font-size: 14px;
-      font-weight: 500;
-      line-height: 1.16em;
-      text-transform: uppercase;
-      color: $color-white;
-      margin: 380px 0 0 50px;
-      //position: relative;
-      //top: 85%;
-      //right: 90%;
-      //display: block;
-      //width: 305px;
-      //justify-content: center;
-
     }
+  }
 
-    .dish-area {
+  .dish-area {
+    font-size: 8px;
+    color: $color-white-20;
+
+    @media screen and (min-width: $tablet) {
       font-size: 12px;
-      color: $color-white;
-      margin: 0 0 0 150px;
-      //position: relative;
-      //top: 85%;
-      //right: 50%;
-      //width: 275px;
-
     }
+  }
+
+  @media screen and (min-width: $tablet) {
+    width: 351px;
+    height: 442px;
   }
 }
 
 .dish-big-wrap {
   background-color: $color-black;
   @include radius-15;
-  width: 350px;
+  width: 185px;
+  height: 280px;
   margin-right: 16px;
   overflow: hidden;
 
   .dish-big {
+    display: block;
+    height: 150%;
+    //width: 200%;
     object-fit: cover;
-    object-position: 50% 100%;
+    object-position: 50% 10%;
+    //width: 1500px;
+  }
+
+  @media screen and (min-width: $tablet) {
+    height: 442px;
+    width: 351px;
+  }
+
+  @media screen and (min-width: $desktop) {
   }
 }
 
-.page {
+//swiper style important
+.swiper-pagination-horizontal {
+  margin: -10px -60px !important;
+
+  @media screen and (min-width: $tablet) {
+    margin: -10px -110px !important;
+  }
+}
+
+span.swiper-pagination-bullet {
+  opacity: 1;
+  background-color: $color-black-80;
+}
+
+.dark-theme span.swiper-pagination-bullet {
+  opacity: 1;
+  background-color: $color-white;
+}
+
+span.swiper-pagination-bullet-active {
+  background: $color-green;
+  opacity: 1;
+}
+
+.dark-theme span.swiper-pagination-bullet-active {
+  background: $color-green;
+  opacity: 1;
 }
