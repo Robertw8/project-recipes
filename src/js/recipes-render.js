@@ -5,6 +5,7 @@ import { onListClick } from './add-to-favorite';
 let page = 1;
 let limit = window.innerWidth < 768 ? 6 : 9;
 
+
 export async function renderRecipes() {
   try {
     const response = await getRequestsService(`recipes?page=${page}&limit=${limit}`);
@@ -56,5 +57,4 @@ export async function renderRecipes() {
   }
 }
 renderRecipes();
-
 

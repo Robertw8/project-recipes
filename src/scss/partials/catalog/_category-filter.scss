@@ -1,6 +1,6 @@
 .categories {
   > button {
-    padding: 14px 28px;
+    padding: 13px 28px;
     border-radius: 15px;
     border: 1px solid rgba(5, 5, 5, 0.2);
     background-color: inherit;
@@ -13,7 +13,8 @@
     line-height: normal;
 
     &:hover,
-    &:focus {
+    &:focus,
+    &.active-category {
       color: $color-white;
       background-color: $color-green;
       border-color: $color-green;
@@ -25,10 +26,20 @@
   }
 
   & ul {
-    width: 235px;
-    height: 416px;
-    margin-top: 42px;
+    margin-top: 24px;
+    height: 198px;
     overflow-y: scroll;
+
+    @media screen and (min-width: $tablet) {
+      margin-top: 30px;
+      width: 176px;
+      height: 416px;
+    }
+
+    @media screen and (min-width: $desktop) {
+      margin-top: 42px;
+      width: 235px;
+    }
   }
 
   & li {
@@ -58,7 +69,8 @@
       }
 
       &:hover,
-      &:focus {
+      &:focus,
+      &.active-category {
         color: $color-green;
       }
     }

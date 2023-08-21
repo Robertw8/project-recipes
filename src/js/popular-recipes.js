@@ -37,6 +37,8 @@ export async function renderElement() {
     }
 }
  
+
+
 async function onClickPopularCard() {
     galeryPopularRecipes.addEventListener('click', async event => {
         const clickedImg = event.target.closest('.popular-img');
