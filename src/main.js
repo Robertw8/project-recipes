@@ -17,6 +17,7 @@ import { renderRecipes } from './js/recipes-render';
 // updatePageButtons();
 //? Recipes modal
 import './js/modal-recipe';
+import './js/order-popup.js';
 
 //? Search filters
 import './js/search-filters/handlers.js';
