@@ -16,6 +16,7 @@
   "author": "Alexander Repeta <alexander.repeta@gmail.com>",
   "license": "ISC",
   "dependencies": {
+    "@justinribeiro/lite-youtube": "^1.5.0",
     "axios": "^1.4.0",
     "lodash.debounce": "^4.0.8",
     "modern-normalize": "^2.0.0",
