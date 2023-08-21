@@ -1,5 +1,5 @@
 //? Theme switch
-import { setLocalStorageTheme, setThemeOnClick } from './js/dark-theme.js';
+import './js/dark-theme.js';
 
 //? Header
 import './js/header.js';

@@ -9,7 +9,6 @@
   @media screen and (min-width: $desktop) {
     margin-top: 100px;
   }
-
 }
 
 .right-column {
@@ -19,5 +18,15 @@
 
   @media screen and (min-width: $desktop) {
     margin-left: 64px;
+  }
+}
+
+.left-column {
+  @media screen and (min-width: $tablet) {
+    margin-top: 26px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    margin-top: 24px;
   }
 }
