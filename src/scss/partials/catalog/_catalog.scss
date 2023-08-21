@@ -1,8 +1,23 @@
-//? Цей файл використовуємо тільки для позиціонування між собою дочірніх паршалів каталогу.
+.catalog-container {
+  margin-top: 80px;
 
-@media screen and (min-width: $tablet) {
-  .catalog-container {
+  @media screen and (min-width: $tablet) {
     display: flex;
-    padding: 0;
+    justify-content: center;
+  }
+
+  @media screen and (min-width: $desktop) {
+    margin-top: 100px;
+  }
+
+}
+
+.right-column {
+  @media screen and (min-width: $tablet) {
+    margin-left: 32px;
+  }
+
+  @media screen and (min-width: $desktop) {
+    margin-left: 64px;
   }
 }
