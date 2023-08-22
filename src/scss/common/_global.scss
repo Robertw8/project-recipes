@@ -8,6 +8,7 @@ html {
 body {
   font-family: 'Inter', sans-serif;
   color: $color-black;
+  transition-duration: $dur-secondary;
 }
 
 body.dark-theme {
