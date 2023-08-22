@@ -5,7 +5,6 @@ import { onListClick } from './add-to-favorite';
 let page = 1;
 let limit = window.innerWidth < 768 ? 6 : 9;
 
-
 export async function renderRecipes() {
   try {
     const response = await getRequestsService(`recipes?page=${page}&limit=${limit}`);
@@ -31,9 +30,9 @@ export async function renderRecipes() {
                     <p class="recipe-description">${description}</p>
                     <div class="recipe-rating-wrap">
                         <p class="recipe-rating">${rating}<span class="recipe-stars">
-                        <svg class="recipe-stars-icon" width="84" height="18">
-                        <use class="stars-icon" href="./images/sprite.svg#icon-${Math.round(rating - 0.1)}-stars">
-                        </use></svg>
+                        <svg class="recipe-stars-icon" width="84" height="18"><use class="stars-icon" href="./src/images/sprite.svg#icon-${Math.round(
+                          rating - 0.1
+                        )}-stars"></use></svg>
                         </span></p>
                         <button class="recipe-see" type="button">See recipe</button>
                 </div>
@@ -57,4 +56,3 @@ export async function renderRecipes() {
   }
 }
 renderRecipes();
-
