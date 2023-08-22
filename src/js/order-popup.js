@@ -1,5 +1,4 @@
 // import { postOrder } from '../api';
-import Swal from 'sweetalert2';
 
 const refs = {
   modalOrderNowForm: document.querySelector('.order-now-modal-form'),
