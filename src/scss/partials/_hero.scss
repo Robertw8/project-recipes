@@ -108,7 +108,7 @@
 
 .dark-theme .hero-btn {
   color: $color-white;
-  background-color: $color-black;
+  background-color: $color-darkgrey;
   transition: background-color, color, 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:focus, &:hover {

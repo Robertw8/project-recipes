@@ -49,6 +49,10 @@
   top: 14px;
   right: 14px;
   background-color: $color-white;
+
+  &:is(:hover, :focus) .reciepe-close-icon {
+    stroke: $color-green;
+  }
 }
 .dark-theme .recipe-btn-close{
   background-color: $color-black;
@@ -61,6 +65,7 @@
 
 .reciepe-close-icon {
   stroke: $color-black;
+  transition-duration: $dur-secondary;
 }
 .dark-theme .reciepe-close-icon{
   stroke: $color-white;
@@ -308,7 +313,7 @@ line-height: normal;
   max-height: 100px;
   overflow: auto;
   text-overflow: ellipsis;
-  
+
   @media screen and (min-width: $tablet) {
   width: 467px;
   margin-bottom: 32px;
