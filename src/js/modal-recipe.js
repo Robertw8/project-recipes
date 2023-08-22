@@ -2,14 +2,11 @@ import axios from 'axios';
 import { Toast } from './utilities/sweetalert.js';
 import { getRequestsService } from './API/api-service';
 import '@justinribeiro/lite-youtube';
-import 'animate.css';
 
 const modalRecipeBackDrop = document.querySelector('.recipe-backdrop');
 const modalRecipe = document.getElementById('modal-recipe');
 const modal = document.querySelector('.modal');
 const closeModalButton = document.querySelector('.recipe-btn-close');
-const giveRatingBtn = document.querySelector('.give-rating-btn');
-const liteYoutubeElement = document.querySelector('.recipe-video');
 
 function openModal(recipeID) {
   modal?.classList.replace('hidden-modal', 'opened-modal');
