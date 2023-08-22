@@ -1,23 +1,16 @@
-<div><h1 class="test-recipe-popup">RECIPE POPUP</pc></div>
-
-       
-    
-    <div class="recipe-backdrop" id="modalBackdrop">
-        <div id="modal-recipe" class="modal recipe-content">
-                <button class="recipe-btn-close">
-                    <svg width="14" height="14" class="reciepe-close-icon">
-                        <use href="images/sprite.svg#icon-x"></use>
-                      </svg>
-                </button>
-                <div class="markUp"></div>
-                <div class="modal-recipe-btn">
-                    <button type="button" class="favorite-btn" data-is-favorite="false">Add to favorite</button>
-
-                    <button type="button" class="give-rating-btn">Give a rating</button>
-                </div>
-            </div>
+<div class="recipe-backdrop hidden-backdrop" id="modalBackdrop">
+  <div id="modal-recipe" class="modal recipe-content hidden-modal">
+    <button type="button" class="recipe-btn-close" aria-label="Close modal">
+      <svg width="14" height="14" class="reciepe-close-icon">
+        <use href="images/sprite.svg#icon-x"></use>
+      </svg>
+    </button>
+    <div class="markUp"></div>
+    <div class="modal-recipe-btn">
+      <button type="button" class="favorite-btn" data-is-favorite="false">
+        Add to favorite
+      </button>
+      <button type="button" class="give-rating-btn">Give a rating</button>
     </div>
-
-    
-
-   
+  </div>
+</div>

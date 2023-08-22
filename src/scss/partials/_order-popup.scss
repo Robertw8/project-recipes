@@ -1,17 +1,3 @@
-body.show-modal-order-now {
-  overflow: hidden;
-}
-
-body.show-modal-order-now .order-now-modal {
-  transform: scale(1);
-}
-
-body.show-modal-order-now .order-now-backdrop {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: initial;
-}
-
 .order-now-backdrop {
   position: fixed;
   top: 0;
@@ -22,9 +8,6 @@ body.show-modal-order-now .order-now-backdrop {
   width: 100vw;
   height: 100vh;
   background-color: rgba(46, 47, 66, 0.4);
-  visibility: hidden;
-  pointer-events: none;
-  opacity: 0;
 
   overflow: hidden;
   z-index: 2;
@@ -32,25 +15,28 @@ body.show-modal-order-now .order-now-backdrop {
 }
 
 .order-now-modal {
-  display: flex;
-  flex-direction: column;
-  max-width: 320px;
-  opacity: 1;
-  padding: 28px 20px;
-  background-color: $color-white;
-  border-radius: 15px;
+    display: flex;
+    flex-direction: column;
+    max-width: 320px;
+    opacity: 1;
+    padding: 28px 20px;
+    background-color: $color-white;
 
-  transform: scale(1.1);
-  overflow: hidden;
+    overflow: hidden;
+    width: 335px;
+    height: 582px;
+    margin: auto;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, .14), 0 1px 3px rgba(0, 0, 0, .12), 0 2px 1px rgba(0, 0, 0, .2);
+    @include radius-15;
 
-  width: 335px;
-  height: 582px;
-  margin: auto;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%) scale(1.1);
-  box-shadow: 0 1px 1px rgba(0, 0, 0, .14), 0 1px 3px rgba(0, 0, 0, .12), 0 2px 1px rgba(0, 0, 0, .2);
+    transform: translate(-50%, -50%);
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
 }
 
 .order-now-modal-title {
@@ -124,18 +110,26 @@ body.show-modal-order-now .order-now-backdrop {
 .order-now-modal-form-input {
   padding: 14px 18px;
   height: 43px;
+  transition-duration: $dur-secondary;
+}
+
+.dark-theme .order-now-modal-form-input {
+  color: $color-white;
 }
 
 .order-now-modal-form input,
-textarea {
-  border-radius: 15px;
+  textarea {
+  font-family: "Inter", sans-serif;
   border: 1px solid rgba(5, 5, 5, 0.2);
+
+  @include radius-15;
 }
 
 .order-now-modal-form textarea {
   padding: 14px 18px;
   height: 100px;
   resize: none;
+  transition-duration: $dur-secondary;
 }
 
 .order-now-modal-form textarea:hover,
@@ -156,6 +150,7 @@ input {
 }
 
 .order-now-modal-form button {
+  font-family: "Inter", sans-serif;
   width: 100%;
   padding: 15px 0;
   font-size: 14px;
@@ -164,15 +159,16 @@ input {
   background: $color-green;
   color: $color-white;
   cursor: pointer;
-}
+  transition-duration: $dur-secondary;
 
-.order-now-modal-form button:hover,
-.order-now-modal-form button:focus {
-  color: rgba(248, 248, 248, 1);
+  &:hover {
+    box-shadow: inset 0 0 10px 10px $color-white-50;
+  }
 }
 
 .order-now-modal-close-img {
   stroke: $color-black;
+  transition-duration: $dur-secondary;
 }
 
 .order-now-modal-close-img:hover {
@@ -214,7 +210,6 @@ input {
 
   .order-now-modal-form-input {
     height: 48px;
-
   }
 
   .order-now-modal-close-img {
@@ -229,7 +224,6 @@ input {
 }
 
 .dark-theme .order-now-modal-form-input:is(:hover, :focus) {
-
   border: 1px solid $color-green;
 }
 

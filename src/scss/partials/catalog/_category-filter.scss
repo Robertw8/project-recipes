@@ -29,6 +29,7 @@
     margin-top: 24px;
     height: 198px;
     overflow-y: scroll;
+    @include scrollbar-primary;
 
     @media screen and (min-width: $tablet) {
       margin-top: 30px;
@@ -40,6 +41,10 @@
       margin-top: 42px;
       width: 235px;
     }
+  }
+
+  .dark-theme & ul {
+    @include scrollbar-dark-theme;
   }
 
   & li {
