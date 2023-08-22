@@ -7,13 +7,13 @@ const modalRecipeBackDrop = document.querySelector('.recipe-backdrop');
 const modalRecipe = document.getElementById('modal-recipe');
 const modal = document.querySelector('.modal');
 const closeModalButton = document.querySelector('.recipe-btn-close');
-const giveRatingBtn = document.querySelector('.give-rating-btn')
+const giveRatingBtn = document.querySelector('.give-rating-btn');
 
 function openModal(recipeID) {
   modal?.classList.replace('hidden-modal', 'opened-modal');
   modalRecipeBackDrop?.classList.replace('hidden-backdrop', 'opened-backdrop');
   handleRecipeDetails(recipeID);
-  document.body.style.overflow = 'hidden'; 
+  document.body.style.overflow = 'hidden';
 }
 
 function closeModal() {
@@ -94,7 +94,7 @@ const createRecipeMarkup = recipeData => {
         <div class="modal-recipe-cooking">
             <p class="modal-recipe-rating">${
               recipeData.rating
-            } <svg class="modal-stars-icon" width="84" height="18"><use class="stars-icon" href="./images/sprite.svg#icon-${Math.round(
+            } <svg class="modal-stars-icon" width="84" height="18"><use class="stars-icon" href="public/sprite.svg#icon-${Math.round(
     recipeData.rating - 0.1
   )}-stars"></use></svg>
             </span></p>
@@ -130,9 +130,13 @@ async function handleRecipeDetails(recipeID) {
       markUpElement.innerHTML = recipeMarkup;
 
       // Завантажити обрані з локального сховища
-      const existingFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+      const existingFavorites =
+        JSON.parse(localStorage.getItem('favorites')) || [];
 
-      const isRecipeInFavorites = checkIfRecipeInFavorites(existingFavorites, recipeData._id);
+      const isRecipeInFavorites = checkIfRecipeInFavorites(
+        existingFavorites,
+        recipeData._id
+      );
 
       if (isRecipeInFavorites) {
         favoriteBtn.textContent = 'Remove from Favorite';
@@ -159,7 +163,10 @@ async function handleRecipeDetails(recipeID) {
 }
 
 function handleFavoriteButtonClick(existingFavorites, recipeData, favoriteBtn) {
-  const isRecipeInFavorites = checkIfRecipeInFavorites(existingFavorites, recipeData._id);
+  const isRecipeInFavorites = checkIfRecipeInFavorites(
+    existingFavorites,
+    recipeData._id
+  );
 
   if (isRecipeInFavorites) {
     removeFromFavorites(existingFavorites, recipeData._id);
@@ -169,7 +176,6 @@ function handleFavoriteButtonClick(existingFavorites, recipeData, favoriteBtn) {
     favoriteBtn.textContent = 'Remove from Favorite';
   }
 }
-
 
 function checkIfRecipeInFavorites(existingFavorites, recipeID) {
   return existingFavorites.some(favorite => favorite._id === recipeID);
@@ -182,8 +188,8 @@ async function addToFavorites(existingFavorites, recipeData) {
   if (!isRecipeInFavorites) {
     existingFavorites.push(recipeData);
     localStorage.setItem('favorites', JSON.stringify(existingFavorites));
-     const event = new Event('favoritesUpdated');
-     window.dispatchEvent(event);
+    const event = new Event('favoritesUpdated');
+    window.dispatchEvent(event);
     Toast.fire({
       icon: 'success',
       title: 'Added to favorites!',
@@ -213,4 +219,3 @@ async function removeFromFavorites(existingFavorites, recipeID) {
     });
   }
 }
-
