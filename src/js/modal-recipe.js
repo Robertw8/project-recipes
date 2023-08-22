@@ -90,7 +90,7 @@ const createRecipeMarkup = recipeData => {
         <div class="modal-recipe-cooking">
             <p class="modal-recipe-rating">${
               recipeData.rating
-            } <svg class="modal-stars-icon" width="84" height="18"><use class="stars-icon" href="images/sprite.svg#icon-${Math.round(
+            } <svg class="modal-stars-icon" width="84" height="18"><use class="stars-icon" href="public/sprite.svg#icon-${Math.round(
     recipeData.rating - 0.1
   )}-stars"></use></svg>
             </span></p>
