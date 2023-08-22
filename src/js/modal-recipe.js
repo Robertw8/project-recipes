@@ -7,6 +7,7 @@ const modalRecipeBackDrop = document.querySelector('.recipe-backdrop');
 const modalRecipe = document.getElementById('modal-recipe');
 const modal = document.querySelector('.modal');
 const closeModalButton = document.querySelector('.recipe-btn-close');
+const giveRatingBtn = document.querySelector('.give-rating-btn')
 
 function openModal(recipeID) {
   modal?.classList.replace('hidden-modal', 'opened-modal');
@@ -49,6 +50,7 @@ export {
   modalRecipe,
   modal,
   closeModalButton,
+  giveRatingBtn,
   closeEsc,
   modalBackDrop,
   closeModal,
@@ -126,8 +128,6 @@ async function handleRecipeDetails(recipeID) {
     if (recipeData) {
       const recipeMarkup = createRecipeMarkup(recipeData);
       markUpElement.innerHTML = recipeMarkup;
-
-      // favoriteBtn.textContent = 'Завантаження...'; // Відображення стану завантаження
 
       // Завантажити обрані з локального сховища
       const existingFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
