@@ -2,43 +2,32 @@ import axios from 'axios';
 import { Toast } from './utilities/sweetalert.js';
 import { getRequestsService } from './API/api-service';
 import '@justinribeiro/lite-youtube';
-
-
+import 'animate.css';
 
 const modalRecipeBackDrop = document.querySelector('.recipe-backdrop');
 const modalRecipe = document.getElementById('modal-recipe');
 const modal = document.querySelector('.modal');
 const closeModalButton = document.querySelector('.recipe-btn-close');
 const giveRatingBtn = document.querySelector('.give-rating-btn');
-const videoPlayer = document.querySelector('.recipe-video');
 const liteYoutubeElement = document.querySelector('.recipe-video');
 
-
-function openModal(recipeID) { 
-  modalRecipeBackDrop.style.display = 'block'; 
-  document.body.style.overflow = 'hidden'; 
-  handleRecipeDetails(recipeID); 
-}
-
-function pauseLiteYoutubeVideo() {
-  if (liteYoutubeElement) {
-    const iframe = liteYoutubeElement.shadowRoot.querySelector('iframe');
-    if (iframe) {
-       iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'mute' }), '*');
-      iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'pauseVideo' }), '*');
-    }
-  }
+function openModal(recipeID) {
+  modal?.classList.replace('hidden-modal', 'opened-modal');
+  modalRecipeBackDrop?.classList.replace('hidden-backdrop', 'opened-backdrop');
+  handleRecipeDetails(recipeID);
 }
 
 function closeModal() {
-  modalRecipeBackDrop.style.display = 'none';
-  document.body.style.overflow = 'auto';
-  pauseLiteYoutubeVideo();
+  modal?.classList.replace('opened-modal', 'hidden-modal');
+  modalRecipeBackDrop?.classList.replace('opened-backdrop', 'hidden-backdrop');
+
+  const videoElem = modal?.querySelector('lite-youtube');
+  videoElem?.remove();
 }
 
-closeModalButton.addEventListener('click', closeModal);
+closeModalButton?.addEventListener('click', closeModal);
 
-modalRecipeBackDrop.addEventListener('click', modalBackDrop);
+modalRecipeBackDrop?.addEventListener('click', modalBackDrop);
 
 function modalBackDrop(event) {
   if (event.target === modalRecipeBackDrop) {
@@ -49,20 +38,22 @@ function modalBackDrop(event) {
 document.addEventListener('keydown', closeEsc);
 
 function closeEsc(event) {
-  if (event.key === 'Escape' && modalRecipeBackDrop.style.display === 'block') {
+  if (
+    event.key === 'Escape' &&
+    modalRecipeBackDrop?.classList.contains('opened-backdrop')
+  ) {
     closeModal();
   }
 }
 
 export {
-   modalRecipe,
+  modalRecipe,
   modal,
   closeModalButton,
   closeEsc,
   modalBackDrop,
   closeModal,
   openModal,
-  pauseLiteYoutubeVideo,
 };
 
 const URL = 'recipes/';
@@ -70,10 +61,8 @@ const URL = 'recipes/';
 const getRecipeDetails = async recipeID => {
   try {
     const recipeData = await getRequestsService(`${URL}${recipeID}`);
-    console.log(recipeData);
     return recipeData;
   } catch (error) {
-    console.error(error);
     return null;
   }
 };
@@ -89,9 +78,10 @@ const createRecipeMarkup = recipeData => {
       `
     )
     .join('');
-  
-const youtubeLink = recipeData.youtube;
-var videoId = youtubeLink.match(/v=([a-zA-Z0-9_-]+)/)[1];
+
+  const youtubeLink = recipeData.youtube;
+  var videoId = youtubeLink.match(/v=([a-zA-Z0-9_-]+)/)[1];
+
   const markup = `
     <div class="recipe-details">
 
@@ -127,8 +117,6 @@ var videoId = youtubeLink.match(/v=([a-zA-Z0-9_-]+)/)[1];
   return markup;
 };
 
-
-
 async function handleRecipeDetails(recipeID) {
   const markUpElement = document.querySelector('.markUp');
 
@@ -148,8 +136,9 @@ async function handleRecipeDetails(recipeID) {
         favoriteBtn.textContent = 'Add to Favorite';
       }
 
-      favoriteBtn.addEventListener('click', async () => {
-        const existingFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+      favoriteBtn?.addEventListener('click', async () => {
+        const existingFavorites =
+          JSON.parse(localStorage.getItem('favorites')) || [];
 
         if (isRecipeInFavorites) {
           removeFromFavorites(existingFavorites, recipeData._id);
@@ -162,7 +151,6 @@ async function handleRecipeDetails(recipeID) {
         // Оновити локальне сховище
         localStorage.setItem('favorites', JSON.stringify(existingFavorites));
       });
-
     } else {
       Toast.fire({
         icon: 'error',
@@ -179,20 +167,18 @@ async function handleRecipeDetails(recipeID) {
 function checkIfRecipeInFavorites(recipeID) {
   const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
   return storedFavorites.some(favorite => favorite._id === recipeID);
-
 }
-
 
 async function addToFavorites(existingFavorites, recipeData) {
   const isRecipeInFavorites = existingFavorites.some(
-    (favorite) => favorite._id === recipeData._id
+    favorite => favorite._id === recipeData._id
   );
 
   if (!isRecipeInFavorites) {
     existingFavorites.push(recipeData);
 
     const favoriteBtn = document.querySelector('.favorite-btn');
-    favoriteBtn.classList.add('favorited');
+    favoriteBtn?.classList.add('favorited');
 
     Toast.fire({
       icon: 'success',
@@ -206,9 +192,10 @@ async function addToFavorites(existingFavorites, recipeData) {
   }
 }
 
-
 async function removeFromFavorites(existingFavorites, recipeID) {
-  const recipeIndex = existingFavorites.findIndex(favorite => favorite._id === recipeID);
+  const recipeIndex = existingFavorites.findIndex(
+    favorite => favorite._id === recipeID
+  );
 
   if (recipeIndex !== -1) {
     existingFavorites.splice(recipeIndex, 1);
@@ -216,12 +203,5 @@ async function removeFromFavorites(existingFavorites, recipeID) {
       icon: 'success',
       title: 'Removed from favorites!',
     });
-  } 
+  }
 }
-
-
-
-
-
-
-
