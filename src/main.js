@@ -12,9 +12,9 @@ import './js/slider-events.js';
 import './js/header.js';
 
 //? Recipes list
-import { renderRecipes } from './js/recipes-render';
+import { renderRecipes} from './js/recipes-render.js';
+import { onListClick } from './js/add-to-favorite.js';
 
-// updatePageButtons();
 //? Recipes modal
 import './js/modal-recipe';
 import './js/order-popup.js';

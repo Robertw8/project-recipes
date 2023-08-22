@@ -1,12 +1,16 @@
-import { getRecipes } from './API/api-recipes';
-const recipeListEl = document.querySelector('.recipe-list');
+
+import { Toast } from './utilities/sweetalert';
+import { getRequestsService } from './API/api-service';
+import { onListClick } from './add-to-favorite';
+let page = 1;
+let limit = window.innerWidth < 768 ? 6 : 9;
 
 export async function renderRecipes() {
   try {
-    const response = await getRecipes();
-    const recipesArr = response.data.results;
+    const response = await getRequestsService(`recipes?page=${page}&limit=${limit}`);
+    const recipesArr = response.results;
     const markup = recipesArr
-      .map(({ rating, title, id, description, preview }) => {
+      .map(({ rating, title, description, preview, _id}) => {
         return `
         <li class="recipe-item" data-title="${title}">
             <img class="recipe-img" loading="lazy"
@@ -18,7 +22,7 @@ export async function renderRecipes() {
             <div class="recipe-wrap">
                 <div class="top-wrap">
                     <button type="button" aria-label="add to favorite" class="recipe-favorite-btn">
-                        <svg class="recipe-favorite-icon" width="22" height="22"><use class="heart-icon" href="./images/sprite.svg#icon-heart"></use></svg>
+                        <svg class="recipe-favorite-icon" width="22" height="22"><use id="${_id}" class="heart-icon js-added" href="./images/sprite.svg#icon-heart"></use></svg>
                     </button>
                 </div>
                 <div class="bottom-wrap">
@@ -38,10 +42,17 @@ export async function renderRecipes() {
       })
       .join('');
     const recipeListEl = document.querySelector('.recipe-list');
+    recipeListEl.addEventListener('click', onListClick)
     recipeListEl.insertAdjacentHTML('beforeend', markup);
   } catch (error) {
-    console.log(error);
+    const defaultWindowEl = document.querySelector('.resipe-list-empty');
+    const paginationEl = document.querySelector('.recipe-pagination');
+    defaultWindowEl.classList.remove('is-hidden');
+    paginationEl.classList.add('is-hidden');
+    Toast.fire({
+      icon: 'error',
+      title: 'Something went wrong, we found 0 recipes. Try reloading the page!',
+    });
   }
 }
-
 renderRecipes();

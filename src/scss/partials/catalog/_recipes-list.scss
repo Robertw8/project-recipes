@@ -75,15 +75,23 @@
     background-color: transparent;
     border: 0px;
   }
+  .added-heart-icon {
+    fill: $color-white;
+    opacity: 1;
+  }
   .heart-icon {
     fill: transparent;
     opacity: 0.5;
     transition-duration: $dur-primary;
     &:is(:hover, :focus) {
     fill: $color-white;
-    opacity: none;
-    }
-  }
+    opacity: 1;
+   }
+}
+
+
+
+
   .recipe-name {
     color: $color-white;
     font-size: 14px;
@@ -266,4 +274,22 @@
   &:is(:hover, :focus) {
     border: 1px solid $color-black;
   }
+}
+
+.resipe-list-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  @media screen and (min-width: $tablet) {
+    margin-top: 20px;
+    flex-direction: column;
+    gap: 80px;
+    }
+}
+.dark-theme .resipe-list-message {
+  color: $color-white;
+}
+.js-added {
+  
 }
