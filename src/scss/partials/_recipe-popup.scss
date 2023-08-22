@@ -9,12 +9,13 @@
   z-index: 100;
   background-color: rgba(5, 5, 5, 0.5);
   overflow: auto;
+
 }
 
 .modal {
   z-index: 100;
   position: absolute;
-  top: 50%;
+  top: 60%;
   left: 50%;
   transform: translate(-50%, -40%);
   -webkit-transform: translate(-50%, -40%);
@@ -202,26 +203,19 @@ line-height: normal;
 }
 
 .overflow-scroll {
-  height: 250px;
+  height: 180px;
   overflow-y: auto;
   margin-bottom: 40px;
 
   @media screen and (min-width: $tablet) {
     margin-bottom: 32px;
   }
-
- }
- .overflow-scroll::-webkit-scrollbar{
-  width: 8px;
-
+  @include scrollbar-primary
  }
 
-.overflow-scroll::-webkit-scrollbar-thumb {
-  background-color: $color-green;
-  border-radius: 10px;
-
+ .dark-theme .overflow-scroll{
+  @include scrollbar-dark-theme;
 }
-
 
 .modal-ingredients {
   flex-wrap: wrap;

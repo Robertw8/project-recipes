@@ -22,6 +22,7 @@
     "modern-normalize": "^2.0.0",
     "sweetalert2": "^11.7.26",
     "swiper": "^10.2.0",
+    "tui-pagination": "^3.4.1",
     "vite-plugin-full-reload": "^1.0.5",
     "vite-plugin-html-inject": "^1.0.1"
   }
