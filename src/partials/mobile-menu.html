@@ -1,1 +1,36 @@
-<div><h1 class="test-menu">MOBILE MENU</h1></div>
+<div class="mob-menu js-menu-container" id="mobile-menu">
+  <button
+    type="button"
+    class="mob-close-btn js-close-menu"
+    aria-label="close mobile menu"
+  >
+    <svg class="icon-x" width="32px" height="32px">
+      <use href="./images/sprite.svg#icon-x"></use>
+    </svg>
+  </button>
+
+  <nav class="mob-header-nav">
+    <ul class="mob-nav-list list">
+      <li class="mob-nav-list-item">
+        <a
+          href="./index.html"
+          id="mobile-home-link"
+          class="mob-nav-list-item link"
+          >Home</a
+        >
+      </li>
+      <li class="mob-nav-list-item">
+        <a
+          href="./favorites.html"
+          id="mobile-favorites-link"
+          class="mob-nav-list-item link"
+          >Favorites</a
+        >
+      </li>
+    </ul>
+  </nav>
+  <label id="mob-theme-switcher">
+    <input type="checkbox" />
+    <span></span>
+  </label>
+</div>
