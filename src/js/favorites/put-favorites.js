@@ -1,4 +1,5 @@
 import { makeCategories } from './favorite-categories';
+import sprite from '../../public/sprite.svg';
 
 export function putFavorites(element) {
   const localArray = JSON.parse(localStorage.getItem('favorites'));
@@ -15,7 +16,7 @@ export function putFavorites(element) {
         <div class="recipe-wrap">
             <div class="top-wrap">
                 <button type="button" aria-label="add to favorite" class="recipe-favorite-btn">
-                    <svg class="recipe-favorite-icon" width="22" height="22"><use id="${_id}" class="added-heart-icon" href="./images/sprite.svg#icon-heart"></use></svg>
+                    <svg class="recipe-favorite-icon" width="22" height="22"><use id="${_id}" class="added-heart-icon" href="${sprite}#icon-heart"></use></svg>
                 </button>
             </div>
             <div class="bottom-wrap">
@@ -24,9 +25,9 @@ export function putFavorites(element) {
                 <div class="recipe-rating-wrap">
                     <p class="recipe-rating">${rating}<span class="recipe-stars">
                     <svg class="recipe-stars-icon" width="84" height="18">
-                    <use class="stars-icon" href="./images/sprite.svg#icon-${Math.round(
-                      rating - 0.1
-                    )}-stars">
+                    <use class="stars-icon" href="${sprite}#icon-${Math.round(
+        rating - 0.1
+      )}-stars">
                     </use></svg>
                     </span></p>
                     <button class="recipe-see" type="button">See recipe</button>
