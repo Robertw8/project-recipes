@@ -13,3 +13,6 @@ import './js/scrollup-btn.js';
 //? Favorites
 import { favorites } from './js/favorites.js';
 favorites();
+
+//Footer
+import './js/footer-modal.js';

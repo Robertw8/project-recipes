@@ -26,3 +26,7 @@ import './js/search-filters/filters.js';
 import './js/categories.js';
 
 import './js/scrollup-btn.js';
+
+//Footer
+import './js/footer-modal.js';
+
