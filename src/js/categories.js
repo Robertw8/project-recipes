@@ -1,5 +1,6 @@
 import { getRequestsService } from './API/api-service.js';
-import { executeRequest, queryParams } from './search-filters/requests.js';
+import { queryParams } from './API/query-params.js';
+import { executeRequest } from './search-filters/requests.js';
 import { Toast } from './utilities/sweetalert.js';
 
 const categories = document.querySelector('.categories');
