@@ -16,5 +16,7 @@ import { favorites } from './js/favorites/favorites.js';
 
 favorites();
 
+import './js/order-popup.js';
+
 //Footer
 import './js/footer-modal.js';
