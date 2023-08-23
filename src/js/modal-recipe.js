@@ -190,7 +190,7 @@ function handleFavoriteButtonClick(existingFavorites, recipeData, favoriteBtn) {
 function checkIfRecipeInFavorites(existingFavorites, recipeID) {
   return existingFavorites.some(favorite => favorite._id === recipeID);
 }
-async function addToFavorites(existingFavorites, recipeData) {
+export async function addToFavorites(existingFavorites, recipeData) {
   const isRecipeInFavorites = existingFavorites.some(
     favorite => favorite._id === recipeData._id
   );
@@ -210,7 +210,7 @@ async function addToFavorites(existingFavorites, recipeData) {
   }
 }
 
-async function removeFromFavorites(existingFavorites, recipeID) {
+export async function removeFromFavorites(existingFavorites, recipeID) {
   const recipeIndex = existingFavorites.findIndex(
     favorite => favorite._id === recipeID
   );
