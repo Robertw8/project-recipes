@@ -1,8 +1,8 @@
-
 import { Toast } from './utilities/sweetalert';
 import { getRequestsService } from './API/api-service';
 import { onListClick } from './add-to-favorite';
 let page = 1;
+let totalPages;
 let limit = window.innerWidth < 768 ? 6 : 9;
 
 
@@ -10,6 +10,7 @@ export async function renderRecipes() {
   try {
     const response = await getRequestsService(`recipes?page=${page}&limit=${limit}`);
     const recipesArr = response.results;
+    totalPages = response.totalPages;
     const markup = recipesArr
       .map(({ rating, title, description, preview, _id}) => {
         return `
@@ -57,4 +58,221 @@ export async function renderRecipes() {
   }
 }
 renderRecipes();
+//PAGINATION//
+const recipeListEl = document.querySelector('.recipe-list');
+const firstPageBtnEl = document.querySelector('.first-page');
+const prevPageBtnEl = document.querySelector('.previous-page');
+const currentFirstPageBtnEl = document.querySelector('.current-page-1');
+const secondPageBtnEl = document.querySelector('.page-2');
+const thirdPageBtnEl = document.querySelector('.page-3');
+const morePageBtnEl = document.querySelector('.page-5');
+const nextPageBtnEl = document.querySelector('.next-page');
+const lastPageBtnEl = document.querySelector('.last-page');
+
+
+export function displayPaginationBtns(value) {
+  if (totalPages <= 1) {
+    secondPageBtnEl.classList.remove('is-hidden');
+  } else if (totalPages === 2) {
+    secondPageBtnEl.classList.remove('is-hidden');
+  } else if (totalPages === 3) {
+    secondPageBtnEl.classList.remove('is-hidden');
+    thirdPageBtnEl.classList.remove('is-hidden');
+  } else {
+    secondPageBtnEl.classList.remove('is-hidden');
+    thirdPageBtnEl.classList.remove('is-hidden');
+    morePageBtnEl.classList.remove('is-hidden');
+  }
+}
+displayPaginationBtns(totalPages);
+export function minPagination() {
+  window.innerWidth < 768 ? morePageBtnEl.classList.add('is-hidden') : morePageBtnEl.classList.remove('is-hidden');
+}
+minPagination();
+
+
+// PAGE 1; --DONE;
+currentFirstPageBtnEl.addEventListener('click', (e) => {
+if (page === 1) {
+  return  Toast.fire({
+    icon: 'info',
+    title: 'You already on this page!',
+  });
+} else if (page === 2) {
+  recipeListEl.innerHTML = '';
+  page = Number(e.target.innerText);
+  renderRecipes();
+} else if (page === totalPages || Number(thirdPageBtnEl.textContent) === totalPages) {
+  recipeListEl.innerHTML = '';
+  page = Number(e.target.innerText);
+  renderRecipes();
+  morePageBtnEl.classList.remove('is-hidden');
+  currentFirstPageBtnEl.textContent = page - 1;
+  secondPageBtnEl.textContent = page;
+  thirdPageBtnEl.textContent = page + 1;
+} else {
+  recipeListEl.innerHTML = '';
+  page = Number(e.target.innerText);
+  renderRecipes();
+  currentFirstPageBtnEl.textContent = page - 1;
+  secondPageBtnEl.textContent = page;
+  thirdPageBtnEl.textContent = page + 1;
+}
+})
+// PAGE 2 ;--DONE;
+secondPageBtnEl.addEventListener('click', (e) => {
+  if (page === 1) {
+    recipeListEl.innerHTML = '';
+    page = Number(e.target.innerText);
+    renderRecipes();
+  } else if (page !== Number(e.target.innerText)) {
+    recipeListEl.innerHTML = '';
+    page = Number(e.target.innerText);
+    renderRecipes();
+  } else {
+    return  Toast.fire({
+      icon: 'info',
+      title: 'You already on this page!',
+    });
+  }
+})
+// PAGE 3; --DONE;
+thirdPageBtnEl.addEventListener('click', (e) => {
+  if (page <= 2) {
+    recipeListEl.innerHTML = '';
+    page = Number(e.target.innerText);
+    renderRecipes();
+    e.target.innerText = (Number(e.target.innerText) + 1);
+    secondPageBtnEl.textContent = page;
+    currentFirstPageBtnEl.textContent = page - 1;
+  } else if (Number(e.target.innerText) === totalPages) {
+    morePageBtnEl.classList.add('is-hidden');
+    return Toast.fire({
+      icon: 'info',
+      title: 'That was the last page',
+    });
+  } else {
+    recipeListEl.innerHTML = '';
+    page = Number(e.target.innerText);
+    renderRecipes();
+    e.target.innerText = (Number(e.target.innerText) + 1);
+    secondPageBtnEl.textContent = page;
+    currentFirstPageBtnEl.textContent = (Number(e.target.innerText) - 2);
+  }
+});
+// MORE NEXT BTN; --DONE;
+morePageBtnEl.addEventListener('click', (e) => { 
+  if ((page + 3) === totalPages) {
+    page += 2;
+    recipeListEl.innerHTML = '';
+    renderRecipes();
+    currentFirstPageBtnEl.textContent = page - 2;
+    secondPageBtnEl.textContent = page - 1;
+    thirdPageBtnEl.textContent = page;
+    morePageBtnEl.classList.add('is-hidden');
+  } else if ((page + 2) === totalPages) {
+    page += 1;
+    recipeListEl.innerHTML = '';
+    renderRecipes();
+    currentFirstPageBtnEl.textContent = page - 2;
+    secondPageBtnEl.textContent = page - 1;
+    thirdPageBtnEl.textContent = page;
+    morePageBtnEl.classList.add('is-hidden');
+  } else {
+  page += 2;
+  recipeListEl.innerHTML = '';
+  renderRecipes();
+  currentFirstPageBtnEl.textContent = page - 1;
+  secondPageBtnEl.textContent = page;
+  thirdPageBtnEl.textContent = page + 1;
+  }
+})
+// NEXT PAGE BTN; --DONE;
+nextPageBtnEl.addEventListener('click', (e) => {
+  if (page === 1) {
+  recipeListEl.innerHTML = '';
+  page += 1;
+  renderRecipes();
+  } else if (page === totalPages - 1) {
+    recipeListEl.innerHTML = '';
+    page += 1;
+    renderRecipes();
+    morePageBtnEl.classList.remove('is-hidden');
+    currentFirstPageBtnEl.textContent = page - 2;
+    secondPageBtnEl.textContent = page -1;
+    thirdPageBtnEl.textContent = page;
+    morePageBtnEl.classList.add('is-hidden')
+  } else {
+    recipeListEl.innerHTML = '';
+    page += 1;
+    renderRecipes();
+    morePageBtnEl.classList.remove('is-hidden');
+    currentFirstPageBtnEl.textContent = page - 1;
+    secondPageBtnEl.textContent = page;
+    thirdPageBtnEl.textContent = page + 1;
+  }
+}
+)
+// LAST PAGE BTN; --DONE;
+lastPageBtnEl.addEventListener('click', (e) => {
+  if (page === totalPages || page === totalPages - 1 || page === totalPages - 2) {
+    return;
+  } else {
+    recipeListEl.innerHTML = '';
+    page = totalPages;
+    renderRecipes();
+    morePageBtnEl.classList.add('is-hidden');
+    currentFirstPageBtnEl.textContent = page - 2;
+    secondPageBtnEl.textContent = page -1;
+    thirdPageBtnEl.textContent = page;
+  }
+});
+// FIRST PAGE BTN; --DONE;
+firstPageBtnEl.addEventListener('click', (e) => {
+  if (page <= 2) {
+    return;
+  } else if (page === totalPages) {
+    recipeListEl.innerHTML = '';
+    page = 1;
+    renderRecipes();
+    morePageBtnEl.classList.remove('is-hidden');
+    currentFirstPageBtnEl.textContent = page;
+    secondPageBtnEl.textContent = page + 1;
+    thirdPageBtnEl.textContent = page + 2;
+  } else {
+    recipeListEl.innerHTML = '';
+    page = 1;
+    renderRecipes();
+    currentFirstPageBtnEl.textContent = page;
+    secondPageBtnEl.textContent = page + 1;
+    thirdPageBtnEl.textContent = page + 2;
+  }
+})
+// PREV PAGE BTN; --DONE;
+prevPageBtnEl.addEventListener('click', (e) => {
+  if (page === 1) {
+    return;
+  } else if (page === 2) {
+    recipeListEl.innerHTML = '';
+    page = 1;
+    renderRecipes();
+    currentFirstPageBtnEl.textContent = page;
+    secondPageBtnEl.textContent = page + 1;
+    thirdPageBtnEl.textContent = page + 2;
+  } else if (Number(secondPageBtnEl.textContent) === totalPages || Number(thirdPageBtnEl.textContent) === totalPages) {
+    recipeListEl.innerHTML = '';
+    page -= 1;
+    renderRecipes();
+    currentFirstPageBtnEl.textContent = page - 2;
+    secondPageBtnEl.textContent = page - 1;
+    thirdPageBtnEl.textContent = page;
+  } else {
+    recipeListEl.innerHTML = '';
+    page -= 1;
+    renderRecipes();
+    currentFirstPageBtnEl.textContent = page - 1;
+    secondPageBtnEl.textContent = page;
+    thirdPageBtnEl.textContent = page + 1;
+  }
+})
 

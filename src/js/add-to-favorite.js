@@ -17,7 +17,6 @@ if (index !== -1) {
   console.log(favoriteArr)
   localStorage.setItem("favoriteList", JSON.stringify(favoriteArr));
 }
-
 } else {
   e.target.classList.remove("heart-icon");
   e.target.classList.add("added-heart-icon");
