@@ -1,4 +1,5 @@
 // import { postOrder } from '../api';
+import Swal from 'sweetalert2';
 
 const refs = {
   modalOrderNowForm: document.querySelector('.order-now-modal-form'),
@@ -59,35 +60,37 @@ function onSubmitForm(e) {
 
   const formData = extractFormData(refs.modalOrderNowForm);
 
-  // const { name, phone, email, comment } = formData;
+  const { name, phone, email, comment } = formData;
 
-  // const options = {
-  //   name,
-  //   phone,
-  //   email,
-  //   comment,
-  // };
+  const options = {
+    name,
+    phone,
+    email,
+    comment,
+  };
 
-  // postOrder(options)
-  //   .then(() => {
-  //     if (localStorage.getItem('patch-rating') !== 'error') {
-  //       onModalRemove();
-  //       setTimeout(() => {
-  //         Swal.fire({
-  //           icon: 'success',
-  //           title: 'Thank you for your order!',
-  //           timer: 1500,
-  //           showConfirmButton: false,
-  //         });
-  //       }, 500);
-  //       refs.modalOrderNowForm.reset();
-  //     }
-  //     return;
-  //   })
-  //   .catch(error => console.log(error))
-  //   .finally(
-  //     setTimeout(() => {
-  //       Loading.remove();
-  //     }, 500)
-  //   );
+  postOrder(options)
+    .then(() => {
+      if (localStorage.getItem('patch-rating') !== 'error') {
+        onModalRemove();
+        setTimeout(() => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Thank you for your order!',
+            timer: 1500,
+            showConfirmButton: false
+          });
+        }, 500);
+        refs.modalOrderNowForm.reset();
+      }
+      return;
+    })
+    .catch(error => console.log(error))
+    .finally(
+      setTimeout(() => {
+        Loading.remove();
+      }, 500)
+    );
 }
+
+export { onModalOpen };

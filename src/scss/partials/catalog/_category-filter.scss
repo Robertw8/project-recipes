@@ -21,7 +21,7 @@
     }
     .dark-theme & {
       border-color: rgba(255, 255, 255, 0.2);
-      color: rgba(255, 255, 255, 0.5);
+      color: $color-white;
     }
   }
 
@@ -69,6 +69,8 @@
       font-weight: 500;
       line-height: 1.25; /* 125% */
 
+      transition-duration: $dur-secondary;
+
       .dark-theme & {
         color: rgba(255, 255, 255, 0.3);
       }
@@ -80,4 +82,8 @@
       }
     }
   }
+}
+
+.all-categories-btn {
+  transition-duration: $dur-secondary;
 }
