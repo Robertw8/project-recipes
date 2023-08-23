@@ -1,18 +1,18 @@
-const openModalLink = document.getElementById("openModalLink");
-const modal = document.getElementById("modal-footer");
-const closeModal = document.querySelector(".close");
+const openModalLink3 = document.getElementById("openModalLink3");
+const modal3 = document.getElementById("modal3");
+const closeModal = document.querySelector(".close3");
 
-openModalLink.addEventListener("click", (event) => {
+openModalLink3.addEventListener("click", (event) => {
     event.preventDefault(); // Предотвращаем переход по ссылке
-    modal.style.display = "block";
+    modal3.style.display = "block";
 });
 
 closeModal.addEventListener("click", () => {
-    modal.style.display = "none";
+    modal3.style.display = "none";
 });
 
 window.addEventListener("click", (event) => {
     if (event.target === modal) {
-        modal.style.display = "none";
+        modal3.style.display = "none";
     }
 });
