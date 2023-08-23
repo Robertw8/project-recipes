@@ -2,6 +2,7 @@ import axios from 'axios';
 import { Toast } from './utilities/sweetalert.js';
 import { getRequestsService } from './API/api-service';
 import '@justinribeiro/lite-youtube';
+import sprite from '../public/sprite.svg';
 
 const modalRecipeBackDrop = document.querySelector('.recipe-backdrop');
 const modalRecipe = document.getElementById('modal-recipe');
@@ -94,7 +95,7 @@ const createRecipeMarkup = recipeData => {
         <div class="modal-recipe-cooking">
             <p class="modal-recipe-rating">${
               recipeData.rating
-            } <svg class="modal-stars-icon" width="84" height="18"><use class="stars-icon" href="public/sprite.svg#icon-${Math.round(
+            } <svg class="modal-stars-icon" width="84" height="18"><use class="stars-icon" href="${sprite}#icon-${Math.round(
     recipeData.rating - 0.1
   )}-stars"></use></svg>
             </span></p>
