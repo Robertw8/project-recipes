@@ -95,10 +95,9 @@ const createRecipeMarkup = recipeData => {
         <div class="modal-recipe-cooking">
             <p class="modal-recipe-rating">${
               recipeData.rating
-            } <svg class="modal-stars-icon" width="84" height="18"><use class="stars-icon" href="${sprite}#icon-${Math.round(
-    recipeData.rating - 0.1
-  )}-stars"></use></svg>
-            </span></p>
+            } <span><svg class="modal-stars-icon" width="84" height="18"><use class="stars-icon" href="${sprite}#icon-${Math.round(
+              recipeData.rating - 0.1
+          )}-stars"></use></svg></span></p>
           <p class="modal-recipe-time">${recipeData.time} mins</p>
         </div>
         <div class="overflow-scroll">
@@ -119,49 +118,6 @@ const createRecipeMarkup = recipeData => {
   return markup;
 };
 
-async function handleRecipeDetails(recipeID) {
-  const markUpElement = document.querySelector('.markUp');
-  const favoriteBtn = document.querySelector('.favorite-btn');
-
-  try {
-    const recipeData = await getRecipeDetails(recipeID);
-
-    if (recipeData) {
-      const recipeMarkup = createRecipeMarkup(recipeData);
-      markUpElement.innerHTML = recipeMarkup;
-
-      // Завантажити обрані з локального сховища
-      const existingFavorites =
-        JSON.parse(localStorage.getItem('favorites')) || [];
-
-      const isRecipeInFavorites = checkIfRecipeInFavorites(
-        existingFavorites,
-        recipeData._id
-      );
-
-      if (isRecipeInFavorites) {
-        favoriteBtn.textContent = 'Remove from Favorite';
-      } else {
-        favoriteBtn.textContent = 'Add to Favorite';
-      }
-
-      // Видалимо попередні обробники подій, щоб уникнути накопичення
-      favoriteBtn.removeEventListener('click', handleFavoriteButtonClick);
-
-      // Додамо новий обробник події
-      favoriteBtn.addEventListener('click', () => {
-        handleFavoriteButtonClick(existingFavorites, recipeData, favoriteBtn);
-      });
-    } else {
-      Toast.fire({
-        icon: 'error',
-        title: 'Something went wrong, try reloading the page',
-      });
-    }
-  } catch (error) {
-    console.error(error);
-  }
-}
 
 function handleFavoriteButtonClick(existingFavorites, recipeData, favoriteBtn) {
   const isRecipeInFavorites = checkIfRecipeInFavorites(
@@ -220,3 +176,98 @@ async function removeFromFavorites(existingFavorites, recipeID) {
     });
   }
 }
+
+
+function toggleFavorite(recipeData) {
+  const existingFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+
+  const isRecipeInFavorites = existingFavorites.some(favorite => favorite._id === recipeData._id);
+
+  if (isRecipeInFavorites) {
+    const updatedFavorites = existingFavorites.filter(favorite => favorite._id !== recipeData._id);
+    localStorage.setItem('favorites', JSON.stringify(updatedFavorites));
+  } else {
+    existingFavorites.push(recipeData);
+    localStorage.setItem('favorites', JSON.stringify(existingFavorites));
+  }
+}
+
+async function handleRecipeDetails(recipeID) {
+  const markUpElement = document.querySelector('.markUp');
+  const favoriteBtn = document.querySelector('.favorite-btn');
+
+  try {
+    const recipeData = await getRecipeDetails(recipeID);
+
+    if (recipeData) {
+      const recipeMarkup = createRecipeMarkup(recipeData);
+      markUpElement.innerHTML = recipeMarkup;
+
+      const existingFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+      const isRecipeInFavorites = existingFavorites.some(favorite => favorite._id === recipeData._id);
+
+      if (isRecipeInFavorites) {
+        favoriteBtn.textContent = 'Remove from Favorite';
+      } else {
+        favoriteBtn.textContent = 'Add to Favorite';
+      }
+
+      favoriteBtn.addEventListener('click', () => {
+        toggleFavorite(recipeData); //  + або - зі списку улюблених
+        handleFavoriteButtonClick(existingFavorites, recipeData, favoriteBtn); // оновлення кнопки Add to Favorite
+      });
+    } else {
+      Toast.fire({
+        icon: 'error',
+        title: 'Something went wrong, try reloading the page',
+      });
+    }
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+
+// async function handleRecipeDetails(recipeID) {
+//   const markUpElement = document.querySelector('.markUp');
+//   const favoriteBtn = document.querySelector('.favorite-btn');
+
+//   try {
+//     const recipeData = await getRecipeDetails(recipeID);
+
+//     if (recipeData) {
+//       const recipeMarkup = createRecipeMarkup(recipeData);
+//       markUpElement.innerHTML = recipeMarkup;
+
+//       // Завантажити обрані з локального сховища
+//       const existingFavorites =
+//         JSON.parse(localStorage.getItem('favorites')) || [];
+
+//       const isRecipeInFavorites = checkIfRecipeInFavorites(
+//         existingFavorites,
+//         recipeData._id
+//       );
+
+//       if (isRecipeInFavorites) {
+//         favoriteBtn.textContent = 'Remove from Favorite';
+//       } else {
+//         favoriteBtn.textContent = 'Add to Favorite';
+//       }
+
+//       // Видалимо попередні обробники подій, щоб уникнути накопичення
+//       favoriteBtn.removeEventListener('click', handleFavoriteButtonClick);
+
+//       // Додамо новий обробник події
+//       favoriteBtn.addEventListener('click', () => {
+//         handleFavoriteButtonClick(existingFavorites, recipeData, favoriteBtn);
+//       });
+//     } else {
+//       Toast.fire({
+//         icon: 'error',
+//         title: 'Something went wrong, try reloading the page',
+//       });
+//     }
+//   } catch (error) {
+//     console.error(error);
+//   }
+// }
