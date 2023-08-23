@@ -12,7 +12,7 @@ import './js/slider-events.js';
 import './js/header.js';
 
 //? Recipes list
-import { renderRecipes} from './js/recipes-render.js';
+import { renderRecipes, displayPaginationBtns, minPagination } from './js/recipes-render.js';
 import { onListClick } from './js/add-to-favorite.js';
 
 //? Recipes modal
@@ -27,3 +27,7 @@ import './js/search-filters/filters.js';
 import './js/categories.js';
 
 import './js/scrollup-btn.js';
+
+//Footer
+import './js/footer-modal.js';
+

@@ -2,6 +2,7 @@ import axios from 'axios';
 import { Toast } from './utilities/sweetalert.js';
 import { getRequestsService } from './API/api-service';
 import '@justinribeiro/lite-youtube';
+import sprite from '../public/sprite.svg';
 
 const modalRecipeBackDrop = document.querySelector('.recipe-backdrop');
 const modalRecipe = document.getElementById('modal-recipe');
@@ -84,8 +85,9 @@ const createRecipeMarkup = recipeData => {
   var videoId = youtubeLink.match(/v=([a-zA-Z0-9_-]+)/)[1];
 
   const markup = `
-    <div class="recipe-details">
+  
 
+    <div class="recipe-details">
     <div class="video-title">
     <lite-youtube class="recipe-video" videoid="${videoId}"></lite-youtube>
     <h2 class="modal-recipe-title">${recipeData.title}</h2>
@@ -94,10 +96,9 @@ const createRecipeMarkup = recipeData => {
         <div class="modal-recipe-cooking">
             <p class="modal-recipe-rating">${
               recipeData.rating
-            } <svg class="modal-stars-icon" width="84" height="18"><use class="stars-icon" href="public/sprite.svg#icon-${Math.round(
-    recipeData.rating - 0.1
-  )}-stars"></use></svg>
-            </span></p>
+            } <span><svg class="modal-stars-icon" width="84" height="18"><use class="stars-icon" href="${sprite}#icon-${Math.round(
+              recipeData.rating - 0.1
+          )}-stars"></use></svg></span></p>
           <p class="modal-recipe-time">${recipeData.time} mins</p>
         </div>
         <div class="overflow-scroll">
@@ -113,54 +114,63 @@ const createRecipeMarkup = recipeData => {
       </div>
       <p class="modal-recipe-text">${recipeData.instructions}</p>
     </div>
+    <div class="modal-recipe-btn">
+      <button type="button" class="favorite-btn" data-is-favorite="false">
+        Add to favorite
+      </button>
+      <button type="button" class="give-rating-btn">Give a rating</button>
+    </div>
   `;
 
   return markup;
 };
 
-async function handleRecipeDetails(recipeID) {
-  const markUpElement = document.querySelector('.markUp');
-  const favoriteBtn = document.querySelector('.favorite-btn');
 
-  try {
-    const recipeData = await getRecipeDetails(recipeID);
 
-    if (recipeData) {
-      const recipeMarkup = createRecipeMarkup(recipeData);
-      markUpElement.innerHTML = recipeMarkup;
-
-      // Завантажити обрані з локального сховища
-      const existingFavorites =
-        JSON.parse(localStorage.getItem('favorites')) || [];
-
-      const isRecipeInFavorites = checkIfRecipeInFavorites(
-        existingFavorites,
-        recipeData._id
-      );
-
-      if (isRecipeInFavorites) {
-        favoriteBtn.textContent = 'Remove from Favorite';
+ async function handleRecipeDetails(recipeID) {
+    const markUpElement = document.querySelector('.markUp');
+    const favoriteBtn = document.querySelector('.favorite-btn');
+  
+    try {
+      const recipeData = await getRecipeDetails(recipeID);
+  
+      if (recipeData) {
+        const recipeMarkup = createRecipeMarkup(recipeData);
+        markUpElement.innerHTML = recipeMarkup;
+  
+        // Завантажити обрані з локального сховища
+        const existingFavorites =
+          JSON.parse(localStorage.getItem('favorites')) || [];
+  
+        const isRecipeInFavorites = checkIfRecipeInFavorites(
+          existingFavorites,
+          recipeData._id
+        );
+  
+        if (isRecipeInFavorites) {
+          favoriteBtn.textContent = 'Remove from Favorite';
+        } else {
+          favoriteBtn.textContent = 'Add to Favorite';
+        }
+  
+        // Видалимо попередні обробники подій, щоб уникнути накопичення
+        favoriteBtn.removeEventListener('click', handleFavoriteButtonClick);
+  
+        // Додамо новий обробник події
+        favoriteBtn.addEventListener('click', () => {
+          handleFavoriteButtonClick(existingFavorites, recipeData, favoriteBtn);
+        });
       } else {
-        favoriteBtn.textContent = 'Add to Favorite';
+        Toast.fire({
+          icon: 'error',
+          title: 'Something went wrong, try reloading the page',
+        });
       }
-
-      // Видалимо попередні обробники подій, щоб уникнути накопичення
-      favoriteBtn.removeEventListener('click', handleFavoriteButtonClick);
-
-      // Додамо новий обробник події
-      favoriteBtn.addEventListener('click', () => {
-        handleFavoriteButtonClick(existingFavorites, recipeData, favoriteBtn);
-      });
-    } else {
-      Toast.fire({
-        icon: 'error',
-        title: 'Something went wrong, try reloading the page',
-      });
+    } catch (error) {
+      console.error(error);
     }
-  } catch (error) {
-    console.error(error);
   }
-}
+  
 
 function handleFavoriteButtonClick(existingFavorites, recipeData, favoriteBtn) {
   const isRecipeInFavorites = checkIfRecipeInFavorites(
@@ -187,9 +197,7 @@ async function addToFavorites(existingFavorites, recipeData) {
 
   if (!isRecipeInFavorites) {
     existingFavorites.push(recipeData);
-    localStorage.setItem('favorites', JSON.stringify(existingFavorites));
-    const event = new Event('favoritesUpdated');
-    window.dispatchEvent(event);
+    saveUpdate(existingFavorites);
     Toast.fire({
       icon: 'success',
       title: 'Added to favorites!',
@@ -209,13 +217,17 @@ async function removeFromFavorites(existingFavorites, recipeID) {
 
   if (recipeIndex !== -1) {
     existingFavorites.splice(recipeIndex, 1);
-    localStorage.setItem('favorites', JSON.stringify(existingFavorites));
-    const event = new Event('favoritesUpdated');
-    window.dispatchEvent(event);
-
+    saveUpdate(existingFavorites);
     Toast.fire({
       icon: 'info',
       title: 'Removed from favorites!',
     });
   }
 }
+
+function saveUpdate (favorites) {
+  localStorage.setItem('favorites', JSON.stringify(favorites));
+  const event = new Event('favoritesUpdated');
+  window.dispatchEvent(event);
+}
+
