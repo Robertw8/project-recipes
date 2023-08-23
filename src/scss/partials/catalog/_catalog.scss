@@ -11,17 +11,11 @@
   }
 }
 
-.right-column {
-  @media screen and (min-width: $tablet) {
-    //margin-left: 32px;
-  }
-
-  @media screen and (min-width: $desktop) {
-    //margin-left: 64px;
-  }
-}
-
 .left-column {
+  @media screen and (min-width: $tablet) and (max-width: $desktop) {
+    margin-right: 32px;
+  }
+
   @media screen and (min-width: $tablet) {
     margin-top: 26px;
   }

@@ -22,7 +22,9 @@
   column-gap: 16px;
   cursor: pointer;
   border-radius: 8px;
-  transition-duration: 300ms;
+  transition-duration: $dur-primary;
+  max-width: 235px;
+
   &:is(:hover, :focus) {
     scale: 1.01;
       -webkit-box-shadow: -12px 12px 5px 0px rgba(5, 5, 5, 0.30);
