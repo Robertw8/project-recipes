@@ -1,9 +1,9 @@
 .colored-toast.swal2-icon-success {
-  background-color: #a5dc86 !important;
+  background-color: $color-green !important;
 }
 
 .colored-toast.swal2-icon-error {
-  background-color: #f27474 !important;
+  background-color: $color-yellow !important;
 }
 
 .colored-toast.swal2-icon-warning {
@@ -11,7 +11,7 @@
 }
 
 .colored-toast.swal2-icon-info {
-  background-color: #3fc3ee !important;
+  background-color: $color-grey !important;
 }
 
 .colored-toast.swal2-icon-question {
