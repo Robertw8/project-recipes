@@ -1,6 +1,8 @@
 import { Toast } from './utilities/sweetalert';
 import { getRequestsService } from './API/api-service';
 import { onListClick } from './add-to-favorite';
+import sprite from '../public/sprite.svg';
+
 let page = 1;
 let limit = window.innerWidth < 768 ? 6 : 9;
 
@@ -23,7 +25,7 @@ export async function renderRecipes() {
             <div class="recipe-wrap">
                 <div class="top-wrap">
                     <button type="button" aria-label="add to favorite" class="recipe-favorite-btn">
-                        <svg class="recipe-favorite-icon" width="22" height="22"><use id="${_id}" class="heart-icon" href="/sprite.svg#icon-heart"></use></svg>
+                        <svg class="recipe-favorite-icon" width="22" height="22"><use id="${_id}" class="heart-icon" href="${sprite}#icon-heart"></use></svg>
                     </button>
                 </div>
                 <div class="bottom-wrap">
@@ -31,9 +33,9 @@ export async function renderRecipes() {
                     <p class="recipe-description">${description}</p>
                     <div class="recipe-rating-wrap">
                         <p class="recipe-rating">${rating}<span class="recipe-stars">
-                        <svg class="recipe-stars-icon" width="84" height="18"><use class="stars-icon" href="/sprite.svg#icon-${Math.round(
-                          rating - 0.1
-                        )}-stars"></use></svg>
+                        <svg class="recipe-stars-icon" width="84" height="18"><use class="stars-icon" href="${sprite}#icon-${Math.round(
+          rating - 0.1
+        )}-stars"></use></svg>
                         </span></p>
                         <button class="recipe-see" type="button">See recipe</button>
                 </div>
