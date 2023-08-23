@@ -15,3 +15,6 @@ import './js/scrollup-btn.js';
 import { favorites } from './js/favorites/favorites.js';
 
 favorites();
+
+//Footer
+import './js/footer-modal.js';
