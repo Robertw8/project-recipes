@@ -11,5 +11,7 @@ import './js/modal-recipe';
 import './js/scrollup-btn.js';
 
 //? Favorites
-import { favorites } from './js/favorites.js';
+
+import { favorites } from './js/favorites/favorites.js';
+
 favorites();
