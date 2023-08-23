@@ -6,18 +6,22 @@ import sprite from '../public/sprite.svg';
 let page = 1;
 let totalPages;
 let limit = window.innerWidth < 768 ? 6 : 9;
-
+let totalResults;
 export async function renderRecipes() {
   try {
     const response = await getRequestsService(
       `recipes?page=${page}&limit=${limit}`
     );
     const recipesArr = response.results;
+    totalResults = recipesArr.length;
+    if (totalResults < 9) {
+      paginationWrap.classList.add('is-hidden');
+    }
     totalPages = response.totalPages;
     const markup = recipesArr
       .map(({ rating, title, description, preview, _id }) => {
         return `
-        <li class="recipe-item" data-title="${title}">
+        <li class="recipe-item" id="${_id} data-title="${title}">
             <img class="recipe-img" loading="lazy"
                 src="${preview}"
                 alt="${title}"
@@ -27,7 +31,7 @@ export async function renderRecipes() {
             <div class="recipe-wrap">
                 <div class="top-wrap">
                     <button type="button" aria-label="add to favorite" class="recipe-favorite-btn">
-                        <svg class="recipe-favorite-icon" width="22" height="22"><use id="${_id}" class="heart-icon" href="${sprite}#icon-heart"></use></svg>
+                        <svg class="recipe-favorite-icon" width="30" height="30"><use data-id="${_id}" class="heart-icon" href="${sprite}#icon-heart"></use></svg>
                     </button>
                 </div>
                 <div class="bottom-wrap">
@@ -39,7 +43,7 @@ export async function renderRecipes() {
           rating - 0.1
         )}-stars"></use></svg>
                         </span></p>
-                        <button class="recipe-see" type="button">See recipe</button>
+                        <button data-id="${_id}" class="recipe-see" type="button">See recipe</button>
                 </div>
                 </div>
             </div>
@@ -64,6 +68,7 @@ export async function renderRecipes() {
 renderRecipes();
 
 //PAGINATION//
+const paginationWrap = document.querySelector('.recipe-pagination')
 const recipeListEl = document.querySelector('.recipe-list');
 const firstPageBtnEl = document.querySelector('.first-page');
 const prevPageBtnEl = document.querySelector('.previous-page');
