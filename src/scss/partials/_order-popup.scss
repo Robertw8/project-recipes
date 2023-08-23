@@ -254,8 +254,10 @@ input {
   background-color: $color-black;
 }
 
-.dark-theme .order-now-modal-close-img {
+.dark-theme .order-now-modal-close-img,
+.dark-theme .order-now-modal-title {
   stroke: $color-white;
+  color: $color-white;
 }
 
 .dark-theme .order-now-modal-close-img:hover {
