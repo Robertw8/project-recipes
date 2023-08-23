@@ -20,12 +20,26 @@
   align-items: flex-start;
   display: flex;
   column-gap: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition-duration: 300ms;
+  &:is(:hover, :focus) {
+    scale: 1.01;
+      -webkit-box-shadow: -12px 12px 5px 0px rgba(5, 5, 5, 0.30);
+      -moz-box-shadow: -12px 12px 5px 0px rgba(5, 5, 5, 0.30);
+      box-shadow: -12px 12px 5px 0px rgba(5, 5, 5, 0.30);
+    }
+        .dark-theme &:is(:hover, :focus) {
+          scale: 1.01;
+          -webkit-box-shadow: 0px 0px 35px -4px rgba(155, 181, 55, 1);
+          -moz-box-shadow: 0px 0px 35px -4px rgba(155, 181, 55, 1);
+          box-shadow: 0px 0px 35px -4px rgba(155, 181, 55, 1);
+        }
 }
 
 .popular-img {
 width:64px;
 height: 64px;
-cursor: pointer;
 border-radius: 8px;
 }
 

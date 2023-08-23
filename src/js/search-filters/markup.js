@@ -1,5 +1,6 @@
 import getFilterRefs from './refs';
 import { getRequestsService } from '../API/api-service';
+import sprite from '../../public/sprite.svg';
 
 const { areaFilter, ingredientsFilter, recipeList, loader } = getFilterRefs();
 
@@ -45,7 +46,7 @@ const renderFilteredRecipes = results => {
             <div class="recipe-wrap">
                 <div class="top-wrap">
                     <button type="button" aria-label="add to favorite" class="recipe-favorite-btn">
-                        <svg class="recipe-favorite-icon" width="22" height="22"><use class="heart-icon" href="images/sprite.svg#icon-heart"></use></svg>
+                        <svg class="recipe-favorite-icon" width="22" height="22"><use class="heart-icon" href="${sprite}#icon-heart"></use></svg>
                     </button>
                 </div>
                 <div class="bottom-wrap">
@@ -53,9 +54,9 @@ const renderFilteredRecipes = results => {
                     <p class="recipe-description">${description}</p>
                     <div class="recipe-rating-wrap">
                         <p class="recipe-rating">${rating}<span class="recipe-stars">
-                        <svg class="recipe-stars-icon" width="84" height="18"><use class="stars-icon" href="images/sprite.svg#icon-${Math.round(
-                          rating - 0.1
-                        )}-stars"></use></svg>
+                        <svg class="recipe-stars-icon" width="84" height="18"><use class="stars-icon" href="${sprite}#icon-${Math.round(
+        rating - 0.1
+      )}-stars"></use></svg>
                         </span></p>
                         <button class="recipe-see" type="button">See recipe</button>
                 </div>

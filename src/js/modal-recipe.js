@@ -2,43 +2,33 @@ import axios from 'axios';
 import { Toast } from './utilities/sweetalert.js';
 import { getRequestsService } from './API/api-service';
 import '@justinribeiro/lite-youtube';
-
-
+import sprite from '../public/sprite.svg';
 
 const modalRecipeBackDrop = document.querySelector('.recipe-backdrop');
 const modalRecipe = document.getElementById('modal-recipe');
 const modal = document.querySelector('.modal');
 const closeModalButton = document.querySelector('.recipe-btn-close');
 const giveRatingBtn = document.querySelector('.give-rating-btn');
-const videoPlayer = document.querySelector('.recipe-video');
-const liteYoutubeElement = document.querySelector('.recipe-video');
 
-
-function openModal(recipeID) { 
-  modalRecipeBackDrop.style.display = 'block'; 
-  document.body.style.overflow = 'hidden'; 
-  handleRecipeDetails(recipeID); 
-}
-
-function pauseLiteYoutubeVideo() {
-  if (liteYoutubeElement) {
-    const iframe = liteYoutubeElement.shadowRoot.querySelector('iframe');
-    if (iframe) {
-       iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'mute' }), '*');
-      iframe.contentWindow.postMessage(JSON.stringify({ event: 'command', func: 'pauseVideo' }), '*');
-    }
-  }
+function openModal(recipeID) {
+  modal?.classList.replace('hidden-modal', 'opened-modal');
+  modalRecipeBackDrop?.classList.replace('hidden-backdrop', 'opened-backdrop');
+  handleRecipeDetails(recipeID);
+  document.body.style.overflow = 'hidden';
 }
 
 function closeModal() {
-  modalRecipeBackDrop.style.display = 'none';
-  document.body.style.overflow = 'auto';
-  pauseLiteYoutubeVideo();
+  modal?.classList.replace('opened-modal', 'hidden-modal');
+  modalRecipeBackDrop?.classList.replace('opened-backdrop', 'hidden-backdrop');
+  document.body.style.overflow = '';
+
+  const videoElem = modal?.querySelector('lite-youtube');
+  videoElem?.remove();
 }
 
-closeModalButton.addEventListener('click', closeModal);
+closeModalButton?.addEventListener('click', closeModal);
 
-modalRecipeBackDrop.addEventListener('click', modalBackDrop);
+modalRecipeBackDrop?.addEventListener('click', modalBackDrop);
 
 function modalBackDrop(event) {
   if (event.target === modalRecipeBackDrop) {
@@ -49,20 +39,23 @@ function modalBackDrop(event) {
 document.addEventListener('keydown', closeEsc);
 
 function closeEsc(event) {
-  if (event.key === 'Escape' && modalRecipeBackDrop.style.display === 'block') {
+  if (
+    event.key === 'Escape' &&
+    modalRecipeBackDrop?.classList.contains('opened-backdrop')
+  ) {
     closeModal();
   }
 }
 
 export {
-   modalRecipe,
+  modalRecipe,
   modal,
   closeModalButton,
+  giveRatingBtn,
   closeEsc,
   modalBackDrop,
   closeModal,
   openModal,
-  pauseLiteYoutubeVideo,
 };
 
 const URL = 'recipes/';
@@ -70,10 +63,8 @@ const URL = 'recipes/';
 const getRecipeDetails = async recipeID => {
   try {
     const recipeData = await getRequestsService(`${URL}${recipeID}`);
-    console.log(recipeData);
     return recipeData;
   } catch (error) {
-    console.error(error);
     return null;
   }
 };
@@ -89,9 +80,10 @@ const createRecipeMarkup = recipeData => {
       `
     )
     .join('');
-  
-const youtubeLink = recipeData.youtube;
-var videoId = youtubeLink.match(/v=([a-zA-Z0-9_-]+)/)[1];
+
+  const youtubeLink = recipeData.youtube;
+  var videoId = youtubeLink.match(/v=([a-zA-Z0-9_-]+)/)[1];
+
   const markup = `
     <div class="recipe-details">
 
@@ -103,7 +95,7 @@ var videoId = youtubeLink.match(/v=([a-zA-Z0-9_-]+)/)[1];
         <div class="modal-recipe-cooking">
             <p class="modal-recipe-rating">${
               recipeData.rating
-            } <svg class="modal-stars-icon" width="84" height="18"><use class="stars-icon" href="images/sprite.svg#icon-${Math.round(
+            } <svg class="modal-stars-icon" width="84" height="18"><use class="stars-icon" href="${sprite}#icon-${Math.round(
     recipeData.rating - 0.1
   )}-stars"></use></svg>
             </span></p>
@@ -127,10 +119,9 @@ var videoId = youtubeLink.match(/v=([a-zA-Z0-9_-]+)/)[1];
   return markup;
 };
 
-
-
 async function handleRecipeDetails(recipeID) {
   const markUpElement = document.querySelector('.markUp');
+  const favoriteBtn = document.querySelector('.favorite-btn');
 
   try {
     const recipeData = await getRecipeDetails(recipeID);
@@ -139,8 +130,14 @@ async function handleRecipeDetails(recipeID) {
       const recipeMarkup = createRecipeMarkup(recipeData);
       markUpElement.innerHTML = recipeMarkup;
 
-      const favoriteBtn = document.querySelector('.favorite-btn');
-      const isRecipeInFavorites = checkIfRecipeInFavorites(recipeData._id);
+      // Завантажити обрані з локального сховища
+      const existingFavorites =
+        JSON.parse(localStorage.getItem('favorites')) || [];
+
+      const isRecipeInFavorites = checkIfRecipeInFavorites(
+        existingFavorites,
+        recipeData._id
+      );
 
       if (isRecipeInFavorites) {
         favoriteBtn.textContent = 'Remove from Favorite';
@@ -148,21 +145,13 @@ async function handleRecipeDetails(recipeID) {
         favoriteBtn.textContent = 'Add to Favorite';
       }
 
-      favoriteBtn.addEventListener('click', async () => {
-        const existingFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
+      // Видалимо попередні обробники подій, щоб уникнути накопичення
+      favoriteBtn.removeEventListener('click', handleFavoriteButtonClick);
 
-        if (isRecipeInFavorites) {
-          removeFromFavorites(existingFavorites, recipeData._id);
-          favoriteBtn.textContent = 'Add to Favorite';
-        } else {
-          await addToFavorites(existingFavorites, recipeData);
-          favoriteBtn.textContent = 'Remove from Favorite';
-        }
-
-        // Оновити локальне сховище
-        localStorage.setItem('favorites', JSON.stringify(existingFavorites));
+      // Додамо новий обробник події
+      favoriteBtn.addEventListener('click', () => {
+        handleFavoriteButtonClick(existingFavorites, recipeData, favoriteBtn);
       });
-
     } else {
       Toast.fire({
         icon: 'error',
@@ -174,26 +163,34 @@ async function handleRecipeDetails(recipeID) {
   }
 }
 
-// localStorage
+function handleFavoriteButtonClick(existingFavorites, recipeData, favoriteBtn) {
+  const isRecipeInFavorites = checkIfRecipeInFavorites(
+    existingFavorites,
+    recipeData._id
+  );
 
-function checkIfRecipeInFavorites(recipeID) {
-  const storedFavorites = JSON.parse(localStorage.getItem('favorites')) || [];
-  return storedFavorites.some(favorite => favorite._id === recipeID);
-
+  if (isRecipeInFavorites) {
+    removeFromFavorites(existingFavorites, recipeData._id);
+    favoriteBtn.textContent = 'Add to Favorite';
+  } else {
+    addToFavorites(existingFavorites, recipeData);
+    favoriteBtn.textContent = 'Remove from Favorite';
+  }
 }
 
-
+function checkIfRecipeInFavorites(existingFavorites, recipeID) {
+  return existingFavorites.some(favorite => favorite._id === recipeID);
+}
 async function addToFavorites(existingFavorites, recipeData) {
   const isRecipeInFavorites = existingFavorites.some(
-    (favorite) => favorite._id === recipeData._id
+    favorite => favorite._id === recipeData._id
   );
 
   if (!isRecipeInFavorites) {
     existingFavorites.push(recipeData);
-
-    const favoriteBtn = document.querySelector('.favorite-btn');
-    favoriteBtn.classList.add('favorited');
-
+    localStorage.setItem('favorites', JSON.stringify(existingFavorites));
+    const event = new Event('favoritesUpdated');
+    window.dispatchEvent(event);
     Toast.fire({
       icon: 'success',
       title: 'Added to favorites!',
@@ -206,22 +203,20 @@ async function addToFavorites(existingFavorites, recipeData) {
   }
 }
 
-
 async function removeFromFavorites(existingFavorites, recipeID) {
-  const recipeIndex = existingFavorites.findIndex(favorite => favorite._id === recipeID);
+  const recipeIndex = existingFavorites.findIndex(
+    favorite => favorite._id === recipeID
+  );
 
   if (recipeIndex !== -1) {
     existingFavorites.splice(recipeIndex, 1);
+    localStorage.setItem('favorites', JSON.stringify(existingFavorites));
+    const event = new Event('favoritesUpdated');
+    window.dispatchEvent(event);
+
     Toast.fire({
-      icon: 'success',
+      icon: 'info',
       title: 'Removed from favorites!',
     });
-  } 
+  }
 }
-
-
-
-
-
-
-

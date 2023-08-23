@@ -7,6 +7,7 @@ const refs = {
   openButtonHeroEl: document.querySelector('.hero-btn'),
   closeButtonEl: document.querySelector('.order-now-modal-close-btn'),
   backdropEl: document.querySelector('.order-now-backdrop'),
+  modalEl: document.querySelector('.order-now-modal'),
 };
 
 refs.openButtonEl?.addEventListener('click', onModalOpen, { passive: true });
@@ -19,16 +20,18 @@ refs.modalOrderNowForm?.addEventListener('submit', onSubmitForm, {
 
 function onModalOpen() {
   window.addEventListener('keydown', onEscKeyPress, { passive: true });
-  document.body.classList.add('show-modal-order-now');
+  refs.backdropEl?.classList.replace('hidden-backdrop', 'opened-backdrop');
+  refs.modalEl?.classList.replace('hidden-modal', 'opened-modal');
 }
 
 function onModalRemove() {
   window.removeEventListener('keydown', onEscKeyPress);
-  document.body.classList.remove('show-modal-order-now');
+  refs.backdropEl?.classList.replace('opened-backdrop', 'hidden-backdrop');
+  refs.modalEl?.classList.replace('opened-modal', 'hidden-modal');
 }
 
 function onBackdropClick(event) {
-  if (event.currentTarget === refs.backdropEl) {
+  if (event.target === refs.backdropEl) {
     onModalRemove();
   }
 }
@@ -57,35 +60,37 @@ function onSubmitForm(e) {
 
   const formData = extractFormData(refs.modalOrderNowForm);
 
-  // const { name, phone, email, comment } = formData;
+  const { name, phone, email, comment } = formData;
 
-  // const options = {
-  //   name,
-  //   phone,
-  //   email,
-  //   comment,
-  // };
+  const options = {
+    name,
+    phone,
+    email,
+    comment,
+  };
 
-  // postOrder(options)
-  //   .then(() => {
-  //     if (localStorage.getItem('patch-rating') !== 'error') {
-  //       onModalRemove();
-  //       setTimeout(() => {
-  //         Swal.fire({
-  //           icon: 'success',
-  //           title: 'Thank you for your order!',
-  //           timer: 1500,
-  //           showConfirmButton: false,
-  //         });
-  //       }, 500);
-  //       refs.modalOrderNowForm.reset();
-  //     }
-  //     return;
-  //   })
-  //   .catch(error => console.log(error))
-  //   .finally(
-  //     setTimeout(() => {
-  //       Loading.remove();
-  //     }, 500)
-  //   );
+  postOrder(options)
+    .then(() => {
+      if (localStorage.getItem('patch-rating') !== 'error') {
+        onModalRemove();
+        setTimeout(() => {
+          Swal.fire({
+            icon: 'success',
+            title: 'Thank you for your order!',
+            timer: 1500,
+            showConfirmButton: false
+          });
+        }, 500);
+        refs.modalOrderNowForm.reset();
+      }
+      return;
+    })
+    .catch(error => console.log(error))
+    .finally(
+      setTimeout(() => {
+        Loading.remove();
+      }, 500)
+    );
 }
+
+export { onModalOpen };

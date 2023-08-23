@@ -1,18 +1,21 @@
 import { Toast } from './utilities/sweetalert';
 import { getRequestsService } from './API/api-service';
 import { onListClick } from './add-to-favorite';
+import sprite from '../public/sprite.svg';
+
 let page = 1;
 let totalPages;
 let limit = window.innerWidth < 768 ? 6 : 9;
 
-
 export async function renderRecipes() {
   try {
-    const response = await getRequestsService(`recipes?page=${page}&limit=${limit}`);
+    const response = await getRequestsService(
+      `recipes?page=${page}&limit=${limit}`
+    );
     const recipesArr = response.results;
     totalPages = response.totalPages;
     const markup = recipesArr
-      .map(({ rating, title, description, preview, _id}) => {
+      .map(({ rating, title, description, preview, _id }) => {
         return `
         <li class="recipe-item" data-title="${title}">
             <img class="recipe-img" loading="lazy"
@@ -24,7 +27,7 @@ export async function renderRecipes() {
             <div class="recipe-wrap">
                 <div class="top-wrap">
                     <button type="button" aria-label="add to favorite" class="recipe-favorite-btn">
-                        <svg class="recipe-favorite-icon" width="22" height="22"><use id="${_id}" class="heart-icon js-added" href="./images/sprite.svg#icon-heart"></use></svg>
+                        <svg class="recipe-favorite-icon" width="22" height="22"><use id="${_id}" class="heart-icon" href="${sprite}#icon-heart"></use></svg>
                     </button>
                 </div>
                 <div class="bottom-wrap">
@@ -32,9 +35,9 @@ export async function renderRecipes() {
                     <p class="recipe-description">${description}</p>
                     <div class="recipe-rating-wrap">
                         <p class="recipe-rating">${rating}<span class="recipe-stars">
-                        <svg class="recipe-stars-icon" width="84" height="18">
-                        <use class="stars-icon" href="./images/sprite.svg#icon-${Math.round(rating - 0.1)}-stars">
-                        </use></svg>
+                        <svg class="recipe-stars-icon" width="84" height="18"><use class="stars-icon" href="${sprite}#icon-${Math.round(
+          rating - 0.1
+        )}-stars"></use></svg>
                         </span></p>
                         <button class="recipe-see" type="button">See recipe</button>
                 </div>
@@ -44,7 +47,7 @@ export async function renderRecipes() {
       })
       .join('');
     const recipeListEl = document.querySelector('.recipe-list');
-    recipeListEl.addEventListener('click', onListClick)
+    recipeListEl.addEventListener('click', onListClick);
     recipeListEl.insertAdjacentHTML('beforeend', markup);
   } catch (error) {
     const defaultWindowEl = document.querySelector('.resipe-list-empty');
@@ -53,11 +56,13 @@ export async function renderRecipes() {
     paginationEl.classList.add('is-hidden');
     Toast.fire({
       icon: 'error',
-      title: 'Something went wrong, we found 0 recipes. Try reloading the page!',
+      title:
+        'Something went wrong, we found 0 recipes. Try reloading the page!',
     });
   }
 }
 renderRecipes();
+
 //PAGINATION//
 const recipeListEl = document.querySelector('.recipe-list');
 const firstPageBtnEl = document.querySelector('.first-page');
@@ -275,4 +280,3 @@ prevPageBtnEl.addEventListener('click', (e) => {
     thirdPageBtnEl.textContent = page + 1;
   }
 })
-
