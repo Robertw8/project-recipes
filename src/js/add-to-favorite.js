@@ -24,3 +24,4 @@ export function onListClick(e) {
     console.log(favoriteArr);
     localStorage.setItem('favoriteList', JSON.stringify(favoriteArr));
   }
+}
