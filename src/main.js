@@ -31,3 +31,6 @@ import './js/scrollup-btn.js';
 
 //?Footer
 import './js/footer-modal.js';
+
+//? Aos
+import './js/utilities/aos.js';
