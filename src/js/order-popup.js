@@ -1,4 +1,3 @@
-// import { postOrder } from '../api';
 import Swal from 'sweetalert2';
 
 const refs = {
@@ -78,7 +77,7 @@ function onSubmitForm(e) {
             icon: 'success',
             title: 'Thank you for your order!',
             timer: 1500,
-            showConfirmButton: false
+            showConfirmButton: false,
           });
         }, 500);
         refs.modalOrderNowForm.reset();
