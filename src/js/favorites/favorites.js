@@ -24,8 +24,11 @@ function favorites() {
     hideElement(phoneHat, 'd-none');
   }
   if (dishesList?.innerHTML) {
-    hideElement(favoritesInstead, 'is-hidden');
+    hideElement(favoritesInstead, 'd-none');
   }
 }
 favorites();
+
 export { favorites };
+import { onListClick } from '../add-to-favorite';
+dishesList.addEventListener('click', onListClick);

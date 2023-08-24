@@ -6,7 +6,7 @@ export function putFavorites(element) {
   const buffer = localArray
     .map(({ rating, title, description, preview, _id, category }) => {
       return `
-    <li class="recipe-item" data-title="${title}" data-category="${category}">
+    <li class="recipe-item recipe-item-favorites" data-title="${title}" data-category="${category}">
         <img class="recipe-img" loading="lazy"
             src="${preview}"
             alt="${title}"
@@ -30,7 +30,7 @@ export function putFavorites(element) {
       )}-stars">
                     </use></svg>
                     </span></p>
-                    <button class="recipe-see" type="button">See recipe</button>
+                    <button data-id=${_id} class="recipe-see" type="button" >See recipe</button>
             </div>
             </div>
         </div>
