@@ -1,17 +1,10 @@
 import axios from 'axios';
+import { queryParams } from '../API/query-params';
 import { renderFilteredRecipes } from './markup';
 import { Toast } from '../utilities/sweetalert';
 import getFilterRefs from './refs';
 
 const { loader } = getFilterRefs();
-
-const queryParams = {
-  areaQuery: '',
-  category: '',
-  ingredientQuery: '',
-  timeQuery: '',
-  searchQuery: '',
-};
 
 const buildQueryParam = () => {
   const params = [];
@@ -47,7 +40,7 @@ const executeRequest = async () => {
     const queryParam = buildQueryParam();
 
     const response = await axios.get(
-      `https://tasty-treats-backend.p.goit.global/api/recipes?&limit=9&${queryParam}`
+      `https://tasty-treats-backend.p.goit.global/api/recipes?page=${queryParams.page}&limit=9&${queryParam}`
     );
 
     renderFilteredRecipes(response.data.results);
@@ -61,4 +54,4 @@ const executeRequest = async () => {
   loader?.classList.add('d-none');
 };
 
-export { queryParams, executeRequest, buildQueryParam };
+export { executeRequest, buildQueryParam };

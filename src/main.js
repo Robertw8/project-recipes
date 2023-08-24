@@ -13,6 +13,8 @@ import './js/header.js';
 
 //? Recipes list
 import { renderRecipes, displayPaginationBtns, minPagination, checkLimit } from './js/recipes-render.js';
+
+
 import { onListClick } from './js/add-to-favorite.js';
 
 //? Recipes modal
@@ -30,4 +32,3 @@ import './js/scrollup-btn.js';
 
 //Footer
 import './js/footer-modal.js';
-
