@@ -3,7 +3,7 @@ import { renderElement } from './js/popular-recipes.js';
 renderElement();
 
 //? Theme switch
-import { setLocalStorageTheme, setThemeOnClick } from './js/dark-theme.js';
+import './js/dark-theme.js';
 
 //? Slider
 import './js/slider-events.js';
@@ -12,11 +12,14 @@ import './js/slider-events.js';
 import './js/header.js';
 
 //? Recipes list
-import { renderRecipes } from './js/recipes-render';
+import { renderRecipes, displayPaginationBtns, minPagination, checkLimit } from './js/recipes-render.js';
 
-// updatePageButtons();
+
+import { onListClick } from './js/add-to-favorite.js';
+
 //? Recipes modal
 import './js/modal-recipe';
+import './js/order-popup.js';
 
 //? Search filters
 import './js/search-filters/handlers.js';
@@ -29,4 +32,3 @@ import './js/scrollup-btn.js';
 
 //Footer
 import './js/footer-modal.js';
-

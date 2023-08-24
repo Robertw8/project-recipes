@@ -6,9 +6,14 @@
   display: inline-block;
   box-sizing: border-box;
   position: absolute;
-  top: -35px;
-  left: 40%;
+  top: -50px;
+  left: 50%;
   animation: pulse 1s linear infinite;
+
+  @media screen and (max-width: $tablet) {
+    top: -55px;
+    left: 40%;
+  }
 }
 
 .loader:after {

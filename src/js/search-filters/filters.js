@@ -1,5 +1,5 @@
 import getFilterRefs from './refs';
-import { queryParams } from './requests';
+import { queryParams } from '../API/query-params';
 import { executeRequest } from './requests';
 
 const {

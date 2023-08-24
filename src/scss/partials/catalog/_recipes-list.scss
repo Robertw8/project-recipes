@@ -2,10 +2,15 @@
   position: relative;
   margin-top: 20px;
   margin-bottom: 40px;
+  min-height: 2130px;
 
   @media screen and (min-width: $tablet) {
     margin-top: 14px;
     margin-bottom: 64px;
+    min-height: 1104px;
+  }
+  @media screen and (min-width: $desktop) {
+    min-height: 957px;
   }
   .recipe-list {
     display: flex;
@@ -75,15 +80,8 @@
     background-color: transparent;
     border: 0px;
   }
-  .heart-icon {
-    fill: transparent;
-    opacity: 0.5;
-    transition-duration: $dur-primary;
-    &:is(:hover, :focus) {
-    fill: $color-white;
-    opacity: none;
-    }
-  }
+
+
   .recipe-name {
     color: $color-white;
     font-size: 14px;
@@ -172,7 +170,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 14px;
+  gap: 3px;
   @media screen and (min-width: $tablet) {
   gap: 24px;
   }
@@ -180,7 +178,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 4px;
+    gap: 2px;
     @media screen and (min-width: $tablet) {
       gap: 8px;
     }
@@ -191,7 +189,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 2px;
   @media screen and (min-width: $tablet) {
     gap: 10px;
   }
@@ -267,3 +265,39 @@
     border: 1px solid $color-black;
   }
 }
+.current-pagi-page {
+  background-color: $color-green;
+}
+.dark-theme .current-pagi-page {
+  background-color: $color-green;
+}
+
+.resipe-list-empty {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+  @media screen and (min-width: $tablet) {
+    margin-top: 20px;
+    flex-direction: column;
+    gap: 80px;
+    }
+}
+.dark-theme .resipe-list-message {
+  color: $color-white;
+}
+  .heart-icon {
+    fill: transparent;
+    opacity: 0.5;
+    transition-duration: $dur-primary;
+    &:is(:hover, :focus) {
+    fill: $color-white;
+    opacity: 1;
+   }  
+}
+.added-heart-icon {
+  fill: $color-white;
+  opacity: 1;
+}
+//loader
+

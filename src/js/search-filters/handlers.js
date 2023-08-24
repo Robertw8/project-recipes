@@ -1,7 +1,8 @@
+import { getRequestsService } from '../API/api-service';
 import getFilterRefs from './refs';
-import { getRecipes } from '../API/api-recipes';
 import { renderFilteredRecipes } from './markup';
-import { queryParams, executeRequest } from './requests';
+import { queryParams } from '../API/query-params';
+import { executeRequest } from './requests';
 import { Toast } from '../utilities/sweetalert';
 import debounce from 'lodash.debounce';
 
@@ -33,14 +34,15 @@ const onResetBtnClick = async () => {
   queryParams.timeQuery = '';
   queryParams.searchQuery = '';
   queryParams.ingredientQuery = '';
-  queryParams.queryParam = '';
 
   selectedTime.textContent = 'Select';
   selectedArea.textContent = 'Select';
   selectedIngredient.textContent = 'Select';
 
-  const data = await getRecipes();
-  renderFilteredRecipes(data?.data.results);
+  const data = await getRequestsService(
+    `recipes?page=${queryParams.page}&limit=9`
+  );
+  renderFilteredRecipes(data.results);
 
   const items = recipeList?.querySelectorAll('.recipe-item');
   items?.forEach(item => item.classList.remove('d-none'));

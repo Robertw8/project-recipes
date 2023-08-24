@@ -39,4 +39,4 @@ function listenMobileThemeSwitcher() {
   }
 }
 
-export { setLocalStorageTheme, setThemeOnClick, listenMobileThemeSwitcher };
+export { listenMobileThemeSwitcher };

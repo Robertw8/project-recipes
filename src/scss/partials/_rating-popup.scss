@@ -28,7 +28,7 @@ body.show-modal-rating .rating-modal-backdrop {
   padding: 20px;
   border-radius: 15px;
   position: relative;
-  background-color: $color-black;
+  background-color: $color-white;
 }
 
 @media screen and (min-width: 375px) {
@@ -89,7 +89,7 @@ body.show-modal-rating .rating-modal-backdrop {
 }
 
 .dark-theme .rating-modal-btn-icon {
-  stroke: $color-black;
+  stroke: $color-white;
 }
 
 .rating-modal-title {
@@ -126,7 +126,7 @@ body.show-modal-rating .rating-modal-backdrop {
 }
 
 .dark-theme .live-rating {
-  color: $color-black;
+  color: $color-white;
 }
 
 .rating-modal-form-input::placeholder {

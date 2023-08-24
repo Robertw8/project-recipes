@@ -8,6 +8,7 @@ html {
 body {
   font-family: 'Inter', sans-serif;
   color: $color-black;
+  transition-duration: $dur-secondary;
 }
 
 body.dark-theme {
@@ -37,6 +38,7 @@ body.dark-theme {
     padding: 64px 0;
   }
 }
+
 .d-none {
   display: none !important;
 }
@@ -55,7 +57,34 @@ body.dark-theme {
   overflow: hidden;
 }
 
-//kjsvnkidsjbvksdhfbv
-.recipe-backdrop {
-  display: none;
+.hidden-backdrop {
+  opacity: 0;
+  pointer-events: none;
+  visibility: hidden;
+  transition-duration: $dur-primary;
+}
+
+.hidden-modal {
+  transform: translate(-50%, -50%) scale(0.9) !important;
+  -webkit-transform: translate(-50%, -50%) scale(0.9) !important;
+  -moz-transform: translate(-50%, -50%) scale(0.9) !important;
+  -ms-transform: translate(-50%, -50%) scale(0.9) !important;
+  -o-transform: translate(-50%, -50%) scale(0.9) !important;
+  transition-duration: $dur-primary;
+}
+
+.opened-backdrop {
+  opacity: 1;
+  pointer-events: all;
+  visibility: visible;
+  transition-duration: $dur-primary;
+}
+
+.opened-modal {
+  transform: translate(-50%, -50%) scale(1) !important;
+  -webkit-transform: translate(-50%, -50%) scale(1) !important;
+  -moz-transform: translate(-50%, -50%) scale(1) !important;
+  -ms-transform: translate(-50%, -50%) scale(1) !important;
+  -o-transform: translate(-50%, -50%) scale(1) !important;
+  transition-duration: $dur-primary;
 }
