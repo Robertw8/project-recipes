@@ -31,7 +31,6 @@ const buildQueryParam = () => {
     params.push(`title=${encodeURIComponent(queryParams.searchQuery)}`);
   }
 
-  console.log(params.join('&'));
   return params.join('&');
 };
 

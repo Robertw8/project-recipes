@@ -1,6 +1,7 @@
 import getFilterRefs from './refs';
 import { getRequestsService } from '../API/api-service';
 import sprite from '../../public/sprite.svg';
+import { minPagination } from '../recipes-render';
 
 const { areaFilter, ingredientsFilter, recipeList, loader } = getFilterRefs();
 
@@ -35,6 +36,8 @@ const renderIngredientsOptions = data => {
 const renderFilteredRecipes = results => {
   const markup = results
     .map(({ rating, title, description, preview, _id }) => {
+      minPagination(results);
+
       return `
         <li class="recipe-item" id="${_id} data-title="${title}">
             <img class="recipe-img" loading="lazy"
@@ -65,6 +68,8 @@ const renderFilteredRecipes = results => {
         `;
     })
     .join('');
+
+  minPagination(results);
 
   if (recipeList) {
     recipeList.innerHTML = '';
