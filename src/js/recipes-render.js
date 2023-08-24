@@ -2,10 +2,11 @@ import { Toast } from './utilities/sweetalert';
 import { getRequestsService } from './API/api-service';
 import { onListClick } from './add-to-favorite';
 import sprite from '../public/sprite.svg';
-
+import { checkIfRecipeInFav } from './add-to-favorite';
 let page = 1;
 let totalPages;
-let limit = window.innerWidth < 768 ? 6 : 9;
+let limit;
+checkLimit();
 let totalResults;
 export async function renderRecipes() {
   try {
@@ -14,40 +15,73 @@ export async function renderRecipes() {
     );
     const recipesArr = response.results;
     totalResults = recipesArr.length;
-    if (totalResults < 9) {
-      paginationWrap.classList.add('is-hidden');
-    }
     totalPages = response.totalPages;
-    const markup = recipesArr
-      .map(({ rating, title, description, preview, _id }) => {
-        return `
-        <li class="recipe-item" id="${_id} data-title="${title}">
-            <img class="recipe-img" loading="lazy"
-                src="${preview}"
-                alt="${title}"
-                width="335"
-                height="335"
-                >
-            <div class="recipe-wrap">
-                <div class="top-wrap">
-                    <button type="button" aria-label="add to favorite" class="recipe-favorite-btn">
-                        <svg class="recipe-favorite-icon" width="30" height="30"><use data-id="${_id}" class="heart-icon" href="${sprite}#icon-heart"></use></svg>
-                    </button>
-                </div>
-                <div class="bottom-wrap">
-                    <h2 class="recipe-name">${title}</h2>
-                    <p class="recipe-description">${description}</p>
-                    <div class="recipe-rating-wrap">
-                        <p class="recipe-rating">${rating}<span class="recipe-stars">
-                        <svg class="recipe-stars-icon" width="84" height="18"><use class="stars-icon" href="${sprite}#icon-${Math.round(
-          rating - 0.1
-        )}-stars"></use></svg>
-                        </span></p>
-                        <button data-id="${_id}" class="recipe-see" type="button">See recipe</button>
-                </div>
-                </div>
-            </div>
-        `;
+    let markup;
+    markup = recipesArr
+      .map(({ rating, title, description, preview, _id }) => { 
+        const existingFvrts = JSON.parse(localStorage.getItem('favorites')) || [];
+        const isRecipeInFvrts = checkIfRecipeInFav(
+        existingFvrts,
+        _id);  
+        if (isRecipeInFvrts) {
+          return `
+          <li class="recipe-item" id="${_id} data-title="${title}">
+              <img class="recipe-img" loading="lazy"
+                  src="${preview}"
+                  alt="${title}"
+                  width="335"
+                  height="335"
+                  >
+              <div class="recipe-wrap">
+                  <div class="top-wrap">
+                      <button type="button" aria-label="add to favorite" class="recipe-favorite-btn">
+                          <svg class="recipe-favorite-icon" width="30" height="30"><use data-id="${_id}" class="added-heart-icon" href="${sprite}#icon-heart"></use></svg>
+                      </button>
+                  </div>
+                  <div class="bottom-wrap">
+                      <h2 class="recipe-name">${title}</h2>
+                      <p class="recipe-description">${description}</p>
+                      <div class="recipe-rating-wrap">
+                          <p class="recipe-rating">${rating}<span class="recipe-stars">
+                          <svg class="recipe-stars-icon" width="84" height="18"><use class="stars-icon" href="${sprite}#icon-${Math.round(
+            rating - 0.1
+          )}-stars"></use></svg>
+                          </span></p>
+                          <button data-id="${_id}" class="recipe-see" type="button">See recipe</button>
+                  </div>
+                  </div>
+              </div>
+          `;
+        } else {
+          return `
+          <li class="recipe-item" id="${_id} data-title="${title}">
+              <img class="recipe-img" loading="lazy"
+                  src="${preview}"
+                  alt="${title}"
+                  width="335"
+                  height="335"
+                  >
+              <div class="recipe-wrap">
+                  <div class="top-wrap">
+                      <button type="button" aria-label="add to favorite" class="recipe-favorite-btn">
+                          <svg class="recipe-favorite-icon" width="30" height="30"><use data-id="${_id}" class="heart-icon" href="${sprite}#icon-heart"></use></svg>
+                      </button>
+                  </div>
+                  <div class="bottom-wrap">
+                      <h2 class="recipe-name">${title}</h2>
+                      <p class="recipe-description">${description}</p>
+                      <div class="recipe-rating-wrap">
+                          <p class="recipe-rating">${rating}<span class="recipe-stars">
+                          <svg class="recipe-stars-icon" width="84" height="18"><use class="stars-icon" href="${sprite}#icon-${Math.round(
+            rating - 0.1
+          )}-stars"></use></svg>
+                          </span></p>
+                          <button data-id="${_id}" class="recipe-see" type="button">See recipe</button>
+                  </div>
+                  </div>
+              </div>
+          `;
+        }
       })
       .join('');
     const recipeListEl = document.querySelector('.recipe-list');
@@ -79,6 +113,16 @@ const morePageBtnEl = document.querySelector('.page-5');
 const nextPageBtnEl = document.querySelector('.next-page');
 const lastPageBtnEl = document.querySelector('.last-page');
 
+export function checkLimit() {
+  if (window.innerWidth < 768) {
+    return limit = 6;
+  } else if (window.innerWidth < 1280) {
+    return limit = 8;
+  } else {
+    return limit = 9;
+  }
+} // ЛИМИТ ЭЛЕМЕНТОВ MOBILE/TABLET/DESKTOP
+
 
 export function displayPaginationBtns(value) {
   if (totalPages <= 1) {
@@ -93,12 +137,20 @@ export function displayPaginationBtns(value) {
     thirdPageBtnEl.classList.remove('is-hidden');
     morePageBtnEl.classList.remove('is-hidden');
   }
-}
+} // ОТОБРАЖЕНИЕ КНОПОК PAGE 1/2/3 В ЗАВИСИМОСТИ ОТ КОЛЛ-ВА СТРАНИЦ
 displayPaginationBtns(totalPages);
-export function minPagination() {
-  window.innerWidth < 768 ? morePageBtnEl.classList.add('is-hidden') : morePageBtnEl.classList.remove('is-hidden');
-}
-minPagination();
+
+export function minPagination(results) { 
+  if (window.innerWidth < 768 && totalResults < 6) {
+    paginationWrap.classList.add('is-hidden');
+} else if (window.innerWidth < 1280 && totalResults < 8) {
+  paginationWrap.classList.add('is-hidden');
+} else if (totalResults < 9) {
+  paginationWrap.classList.add('is-hidden');
+} else 
+  return;
+} // ОТОБОРАЖЕНИЕ ПАГИНАЦИИ В ЗАВИСИМОСТИ ОТ КОЛЛ-ВА СТРАНИЦ
+minPagination(totalResults);
 
 
 // PAGE 1; --DONE;
@@ -109,6 +161,8 @@ if (page === 1) {
     title: 'You already on this page!',
   });
 } else if (page === 2) {
+  secondPageBtnEl.classList.remove('current-pagi-page');
+  currentFirstPageBtnEl.classList.add('current-pagi-page');
   recipeListEl.innerHTML = '';
   page = Number(e.target.innerText);
   renderRecipes();
@@ -133,6 +187,8 @@ if (page === 1) {
 secondPageBtnEl.addEventListener('click', (e) => {
   if (page === 1) {
     recipeListEl.innerHTML = '';
+    secondPageBtnEl.classList.add('current-pagi-page');
+    currentFirstPageBtnEl.classList.remove('current-pagi-page');
     page = Number(e.target.innerText);
     renderRecipes();
   } else if (page !== Number(e.target.innerText)) {
@@ -151,12 +207,19 @@ thirdPageBtnEl.addEventListener('click', (e) => {
   if (page <= 2) {
     recipeListEl.innerHTML = '';
     page = Number(e.target.innerText);
+    currentFirstPageBtnEl.classList.remove('current-pagi-page');
+    secondPageBtnEl.classList.add('current-pagi-page');
     renderRecipes();
     e.target.innerText = (Number(e.target.innerText) + 1);
     secondPageBtnEl.textContent = page;
     currentFirstPageBtnEl.textContent = page - 1;
-  } else if (Number(e.target.innerText) === totalPages) {
+  } else if (Number(e.target.innerText) === totalPages - 1) {
     morePageBtnEl.classList.add('is-hidden');
+    page = totalPages - 1;
+    renderRecipes();
+    thirdPageBtnEl.textContent = page;
+    secondPageBtnEl.textContent = page - 1;
+    currentFirstPageBtnEl.textContent = page - 2;
     return Toast.fire({
       icon: 'info',
       title: 'That was the last page',
@@ -180,10 +243,14 @@ morePageBtnEl.addEventListener('click', (e) => {
     secondPageBtnEl.textContent = page - 1;
     thirdPageBtnEl.textContent = page;
     morePageBtnEl.classList.add('is-hidden');
+    currentFirstPageBtnEl.classList.remove('current-pagi-page');
+    secondPageBtnEl.classList.add('current-pagi-page');
   } else if ((page + 2) === totalPages) {
     page += 1;
     recipeListEl.innerHTML = '';
     renderRecipes();
+    currentFirstPageBtnEl.classList.remove('current-pagi-page');
+    secondPageBtnEl.classList.add('current-pagi-page');
     currentFirstPageBtnEl.textContent = page - 2;
     secondPageBtnEl.textContent = page - 1;
     thirdPageBtnEl.textContent = page;
@@ -192,6 +259,8 @@ morePageBtnEl.addEventListener('click', (e) => {
   page += 2;
   recipeListEl.innerHTML = '';
   renderRecipes();
+  currentFirstPageBtnEl.classList.remove('current-pagi-page');
+    secondPageBtnEl.classList.add('current-pagi-page');
   currentFirstPageBtnEl.textContent = page - 1;
   secondPageBtnEl.textContent = page;
   thirdPageBtnEl.textContent = page + 1;
@@ -202,19 +271,23 @@ nextPageBtnEl.addEventListener('click', (e) => {
   if (page === 1) {
   recipeListEl.innerHTML = '';
   page += 1;
+  secondPageBtnEl.classList.add('current-pagi-page');
+  currentFirstPageBtnEl.classList.remove('current-pagi-page');
   renderRecipes();
-  } else if (page === totalPages - 1) {
-    recipeListEl.innerHTML = '';
-    page += 1;
-    renderRecipes();
-    morePageBtnEl.classList.remove('is-hidden');
+  } else if (page + 1 === totalPages ) {
+    // recipeListEl.innerHTML = '';
+    // page += 1;
+    // renderRecipes();
+    // morePageBtnEl.classList.remove('is-hidden');
     currentFirstPageBtnEl.textContent = page - 2;
-    secondPageBtnEl.textContent = page -1;
+    secondPageBtnEl.textContent = page - 1;
     thirdPageBtnEl.textContent = page;
     morePageBtnEl.classList.add('is-hidden')
   } else {
     recipeListEl.innerHTML = '';
     page += 1;
+    secondPageBtnEl.classList.add('current-pagi-page');
+    currentFirstPageBtnEl.classList.remove('current-pagi-page');
     renderRecipes();
     morePageBtnEl.classList.remove('is-hidden');
     currentFirstPageBtnEl.textContent = page - 1;
@@ -231,6 +304,8 @@ lastPageBtnEl.addEventListener('click', (e) => {
     recipeListEl.innerHTML = '';
     page = totalPages;
     renderRecipes();
+    currentFirstPageBtnEl.classList.remove('current-pagi-page');
+    thirdPageBtnEl.classList.add('current-pagi-page');
     morePageBtnEl.classList.add('is-hidden');
     currentFirstPageBtnEl.textContent = page - 2;
     secondPageBtnEl.textContent = page -1;
@@ -245,6 +320,9 @@ firstPageBtnEl.addEventListener('click', (e) => {
     recipeListEl.innerHTML = '';
     page = 1;
     renderRecipes();
+    currentFirstPageBtnEl.classList.add('current-pagi-page');
+    secondPageBtnEl.classList.remove('current-pagi-page');
+    thirdPageBtnEl.classList.remove('current-pagi-page');
     morePageBtnEl.classList.remove('is-hidden');
     currentFirstPageBtnEl.textContent = page;
     secondPageBtnEl.textContent = page + 1;
@@ -266,6 +344,8 @@ prevPageBtnEl.addEventListener('click', (e) => {
     recipeListEl.innerHTML = '';
     page = 1;
     renderRecipes();
+    currentFirstPageBtnEl.classList.add('current-pagi-page');
+    secondPageBtnEl.classList.remove('current-pagi-page');
     currentFirstPageBtnEl.textContent = page;
     secondPageBtnEl.textContent = page + 1;
     thirdPageBtnEl.textContent = page + 2;
