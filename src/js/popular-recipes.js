@@ -9,9 +9,9 @@ export function createMarkup(data) {
     const { preview, _id, description, title } = data;
     return `
       
-<li class="popular-recipes-list">
+<li class="popular-recipes-list"id='${_id}'>
   
-     <img id='${_id}' class="popular-img" src=${preview} alt="${title}" width="64px" height="64px">
+     <img class="popular-img" src=${preview} alt="${title}" width="64px" height="64px">
   <div class="popular-wrapper">
     <h3 class="popular-title">${title}</h3>
     <p class="popular-recipes-text">${description}</p>
@@ -37,9 +37,11 @@ export async function renderElement() {
     }
 }
  
+
+
 async function onClickPopularCard() {
     galeryPopularRecipes.addEventListener('click', async event => {
-        const clickedImg = event.target.closest('.popular-img');
+        const clickedImg = event.target.closest('.popular-recipes-list');
         
         if (clickedImg) {
             try {

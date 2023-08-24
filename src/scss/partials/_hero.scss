@@ -56,6 +56,10 @@
     font-size: 36px;
     margin-bottom: 16px;
   }
+
+  @media screen and (min-width: $desktop) {
+    width: 446px;
+  }
 }
 
 .dark-theme .hero-title {
@@ -108,7 +112,7 @@
 
 .dark-theme .hero-btn {
   color: $color-white;
-  background-color: $color-black;
+  background-color: $color-darkgrey;
   transition: background-color, color, 250ms cubic-bezier(0.4, 0, 0.2, 1);
 
   &:focus, &:hover {

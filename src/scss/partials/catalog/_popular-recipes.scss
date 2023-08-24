@@ -17,16 +17,33 @@
 
 .popular-recipes-list {
   flex-flow: row;
-  align-items: flex-start;
+  align-items: center;
   display: flex;
   column-gap: 16px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition-duration: $dur-primary;
+  max-width: 235px;
+
+  &:is(:hover, :focus) {
+    scale: 1.01;
+      -webkit-box-shadow: -12px 12px 5px 0px rgba(5, 5, 5, 0.30);
+      -moz-box-shadow: -12px 12px 5px 0px rgba(5, 5, 5, 0.30);
+      box-shadow: -12px 12px 5px 0px rgba(5, 5, 5, 0.30);
+    }
+        .dark-theme &:is(:hover, :focus) {
+          scale: 1.01;
+          -webkit-box-shadow: 0px 0px 35px -4px rgba(155, 181, 55, 1);
+          -moz-box-shadow: 0px 0px 35px -4px rgba(155, 181, 55, 1);
+          box-shadow: 0px 0px 35px -4px rgba(155, 181, 55, 1);
+        }
 }
 
 .popular-img {
 width:64px;
 height: 64px;
-cursor: pointer;
 border-radius: 8px;
+margin-left: 16px;
 }
 
 .popular-title {
@@ -87,6 +104,9 @@ overflow: hidden;
     line-height: calc(14/10);
   }
 
+  .popular-img {
+    margin-left: 8px;
+  }
 }
 
 @media screen and (min-width: $tablet) and (max-width:$desktop){
@@ -115,5 +135,9 @@ overflow: hidden;
 .gallery-popular-recipes {
     gap: 32px;
   }
+
+.popular-img {
+  margin-left: 0px;
+}
 }
 

@@ -1,5 +1,5 @@
 //? Theme switch
-import { setLocalStorageTheme, setThemeOnClick } from './js/dark-theme.js';
+import './js/dark-theme.js';
 
 //? Header
 import './js/header.js';
@@ -11,8 +11,12 @@ import './js/modal-recipe';
 import './js/scrollup-btn.js';
 
 //? Favorites
-import { favorites } from './js/favorites.js';
+
+import { favorites } from './js/favorites/favorites.js';
+
 favorites();
+
+import './js/order-popup.js';
 
 //Footer
 import './js/footer-modal.js';

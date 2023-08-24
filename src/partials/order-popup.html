@@ -1,34 +1,65 @@
-<div class="order-now-backdrop js-backdrop">
-    <div class="order-now-modal">
-        <h2 class="order-now-modal-title">Order Now</h2>
-        <button class="order-now-modal-close-btn" type="button" aria-label="Open order window">
-            <svg class="order-now-modal-close-img" width="32" height="32">
-                <use href="images/sprite.svg#icon-cross"></use>
-            </svg>
-        </button>
-        <div class="order-now-form-wrap">
-            <form class="order-now-modal-form">
-                <label for="name">
-                    <span class="label-name-order-now">Name</span>
-                    <input class="order-now-modal-form-input" id="name" name="name" type="text" placeholder="Your name" value=""
-                        required >
-                </label>
-                <label for="phone">
-                    <span class="label-phone-order-now">Phone number</span>
-                    <input class="order-now-modal-form-input" id="phone" type="tel" name="phone" value=""
-                        placeholder="+38 (000) 000 00 00" pattern="\+38\d{10}" required >
-                </label>
-                <label for="email">
-                    <span class="label-email-order-now">Email</span>
-                    <input class="order-now-modal-form-input" id="email" name="email" type="email" placeholder="Your email"
-                        value="" required >
-                </label>
-                <label for="comment">
-                    <span class="label-comment-order-now">Comment</span>
-                    <textarea class="comment-textarea" id="comment" name="comment" placeholder="Text input"></textarea>
-                </label>
-                <button type="submit">Send</button>
-            </form>
-        </div>
+<div class="order-now-backdrop js-backdrop hidden-backdrop">
+  <div class="order-now-modal hidden-modal">
+    <h2 class="order-now-modal-title">Order Now</h2>
+    <button
+      class="order-now-modal-close-btn"
+      type="button"
+      aria-label="Open order window"
+    >
+      <svg class="order-now-modal-close-img" width="32" height="32">
+        <use href="/sprite.svg#icon-cross"></use>
+      </svg>
+    </button>
+    <div class="order-now-form-wrap">
+      <form class="order-now-modal-form">
+        <label for="name">
+          <span class="label-name-order-now">Name</span>
+          <input
+            class="order-now-modal-form-input"
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Your name"
+            value=""
+            required
+          />
+        </label>
+        <label for="phone">
+          <span class="label-phone-order-now">Phone number</span>
+          <input
+            class="order-now-modal-form-input"
+            id="phone"
+            type="tel"
+            name="phone"
+            value=""
+            placeholder="+38 (000) 000 00 00"
+            pattern="\+38\d{10}"
+            required
+          />
+        </label>
+        <label for="email">
+          <span class="label-email-order-now">Email</span>
+          <input
+            class="order-now-modal-form-input"
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Your email"
+            value=""
+            required
+          />
+        </label>
+        <label for="comment">
+          <span class="label-comment-order-now">Comment</span>
+          <textarea
+            class="comment-textarea"
+            id="comment"
+            name="comment"
+            placeholder="Text input"
+          ></textarea>
+        </label>
+        <button type="submit" class="order-submit-btn">Send</button>
+      </form>
     </div>
+  </div>
 </div>
