@@ -139,6 +139,7 @@
 
 .dark-theme .order-now-modal-form textarea:is(:hover, :focus) {
   border: 1px solid $color-green;
+  color: $color-white;
 }
 
 input {
