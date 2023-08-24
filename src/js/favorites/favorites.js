@@ -1,5 +1,6 @@
+import { favoriteCategorisFilter } from './favorites-categoris-filter';
 import { putFavorites } from './put-favorites';
-
+const categorisList = document.querySelector('.favorites-categoris-list');
 const dishesList = document.querySelector('.favorites-dishes');
 const favoritsHero = document.querySelector('.favorites-heroImg');
 const favoritesInstead = document.querySelector('.favorites-instead');
@@ -10,8 +11,10 @@ function hideElement(element, className) {
   element?.classList.add(className);
 }
 
-putFavorites(dishesList);
 function favorites() {
+  putFavorites(dishesList);
+  favoriteCategorisFilter(categorisList);
+
   if (!dishesList?.innerHTML && window.innerWidth < 768) {
     hideElement(favoritsHero, 'd-none');
     hideElement(tabletHat, 'd-none');
@@ -24,5 +27,5 @@ function favorites() {
     hideElement(favoritesInstead, 'is-hidden');
   }
 }
-
+favorites();
 export { favorites };

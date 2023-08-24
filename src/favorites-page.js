@@ -12,9 +12,7 @@ import './js/scrollup-btn.js';
 
 //? Favorites
 
-import { favorites } from './js/favorites/favorites.js';
-
-favorites();
+import './js/favorites/favorites.js';
 
 import './js/order-popup.js';
 
