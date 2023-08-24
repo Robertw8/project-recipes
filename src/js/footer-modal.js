@@ -11,8 +11,8 @@ closeModal?.addEventListener('click', () => {
   modal3.style.display = 'none';
 });
 
-window.addEventListener('click', event => {
-  if (event.target === modal3) {
-    modal3.style.display = 'none';
-  }
+window.addEventListener("click", (event) => {
+    if (event.target === modal3) {
+        modal3.style.display = "none";
+    }
 });
