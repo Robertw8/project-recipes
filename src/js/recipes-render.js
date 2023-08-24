@@ -197,7 +197,15 @@ secondPageBtnEl.addEventListener('click', e => {
     recipeListEl.innerHTML = '';
     queryParams.page = Number(e.target.innerText);
     renderRecipes();
-  } else {
+  } else if (secondPageBtnEl.innerText === queryParams.page - 1) {
+    queryParams.page -= 1;
+    renderRecipes();
+    currentFirstPageBtnEl.textContent = queryParams.page - 1;
+    secondPageBtnEl.textContent = queryParams.page;
+    thirdPageBtnEl.textContent = queryParams.page + 1;
+    thirdPageBtnEl.classList.remove('current-pagi-page');
+    secondPageBtnEl.classList.add('current-pagi-page');
+  } else{
     return Toast.fire({
       icon: 'info',
       title: 'You already on this page!',
@@ -215,13 +223,7 @@ thirdPageBtnEl.addEventListener('click', e => {
     e.target.innerText = Number(e.target.innerText) + 1;
     secondPageBtnEl.textContent = queryParams.page;
     currentFirstPageBtnEl.textContent = queryParams.page - 1;
-  } else if (Number(e.target.innerText) === totalPages - 1) {
-    morePageBtnEl.classList.add('is-hidden');
-    queryParams.page = totalPages - 1;
-    renderRecipes();
-    thirdPageBtnEl.textContent = queryParams.page;
-    secondPageBtnEl.textContent = queryParams.page - 1;
-    currentFirstPageBtnEl.textContent = queryParams.page - 2;
+  } else if (Number(e.target.innerText) === totalPages) {
     return Toast.fire({
       icon: 'info',
       title: 'That was the last page',
@@ -277,10 +279,6 @@ nextPageBtnEl.addEventListener('click', e => {
     currentFirstPageBtnEl.classList.remove('current-pagi-page');
     renderRecipes();
   } else if (queryParams.page + 1 === totalPages) {
-    // recipeListEl.innerHTML = '';
-    // page += 1;
-    // renderRecipes();
-    // morePageBtnEl.classList.remove('is-hidden');
     currentFirstPageBtnEl.textContent = queryParams.page - 2;
     secondPageBtnEl.textContent = queryParams.page - 1;
     thirdPageBtnEl.textContent = queryParams.page;
@@ -335,6 +333,10 @@ firstPageBtnEl.addEventListener('click', e => {
   } else {
     recipeListEl.innerHTML = '';
     queryParams.page = 1;
+    currentFirstPageBtnEl.classList.add('current-pagi-page');
+    secondPageBtnEl.classList.remove('current-pagi-page');
+    thirdPageBtnEl.classList.remove('current-pagi-page');
+    morePageBtnEl.classList.remove('is-hidden');
     renderRecipes();
     currentFirstPageBtnEl.textContent = queryParams.page;
     secondPageBtnEl.textContent = queryParams.page + 1;
