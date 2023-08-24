@@ -11,6 +11,7 @@ export function onListClick(e) {
     e.target.classList.add('added-heart-icon');
     let favoriteId = e.target.dataset.id;
 
+
     async function getInfo() {
       try {
         const recipeInfo = await getRequestsService(`recipes/${favoriteId}`);
@@ -51,34 +52,10 @@ export function onListClick(e) {
     let idForModal = e.target.dataset.id;
     openModal(idForModal);
   } else {
-    return;
+    return; 
+  }}
+
+  export function checkIfRecipeInFav(existingFavorites, recipeID) {
+    return existingFavorites.some(favorite => favorite._id === recipeID);
   }
-}
 
-function checkIfRecipeInFav(existingFavorites, recipeID) {
-  return existingFavorites.some(favorite => favorite._id === recipeID);
-}
-
-//!!!! Нужен фикс, в слаке описал
-// const elClass = e.target.classList.value;
-// if (!e.target.classList.contains('js-added')) {
-//   return;
-// }
-// if (e.target.classList.contains('added-heart-icon')) {
-//   e.target.classList.remove('added-heart-icon');
-//   e.target.classList.add('heart-icon');
-//   let valueToRemove = e.target.id;
-//   let index = favoriteArr.indexOf(valueToRemove);
-
-//   if (index !== -1) {
-//     favoriteArr.splice(index, 1);
-//     console.log(favoriteArr);
-//     localStorage.setItem('favoriteList', JSON.stringify(favoriteArr));
-//   }
-// } else {
-//   e.target.classList.remove('heart-icon');
-//   e.target.classList.add('added-heart-icon');
-//   favoriteArr.push(e.target.id);
-//   console.log(favoriteArr);
-//   localStorage.setItem('favoriteList', JSON.stringify(favoriteArr));
-// }
