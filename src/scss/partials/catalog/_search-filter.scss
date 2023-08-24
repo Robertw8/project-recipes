@@ -120,6 +120,7 @@
 }
 
 .extra-wrapper {
+  z-index: 100 !important;
   @media screen and (min-width: $desktop) {
     margin-left: 16px;
   }

@@ -16,5 +16,8 @@ import './js/favorites/favorites.js';
 
 import './js/order-popup.js';
 
-//Footer
+//? Footer
 import './js/footer-modal.js';
+
+//? AOS
+import './js/utilities/aos.js';
