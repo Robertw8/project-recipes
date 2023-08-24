@@ -28,18 +28,17 @@ getRequestsService('events')
   .then(data => {
     renderGallery(data);
     swiper();
-  }).catch(error => {
-  Toast.fire({
-    icon: 'error',
-    title: 'Something went wrong. Reload the page and try again',
+  })
+  .catch(error => {
+    Toast.fire({
+      icon: 'error',
+      title: 'Something went wrong. Reload the page and try again',
+    });
   });
-});
-
 
 function renderGallery(data) {
   const img = data
     .map(itm => {
-      // console.log(itm);
       return `
     <div class='swiper-slide'>
       <div class='swiper-slide-wrp'>
