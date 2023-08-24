@@ -12,7 +12,7 @@ closeModal.addEventListener("click", () => {
 });
 
 window.addEventListener("click", (event) => {
-    if (event.target === modal) {
+    if (event.target === modal3) {
         modal3.style.display = "none";
     }
 });
