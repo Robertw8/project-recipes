@@ -27,6 +27,8 @@
     }
     @media screen and (min-width: $desktop) {
       gap: 20px 16px;
+      width: 782px;
+      margin-left: auto;
     }
   }
 }
@@ -302,4 +304,3 @@
   opacity: 1;
 }
 //loader
-

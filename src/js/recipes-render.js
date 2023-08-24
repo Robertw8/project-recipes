@@ -10,6 +10,7 @@ let totalPages;
 let limit;
 checkLimit();
 let totalResults;
+minPagination(totalResults);
 export async function renderRecipes() {
   try {
     const response = await getRequestsService(
