@@ -16,13 +16,11 @@ function openModal(recipeID) {
   modal?.classList.replace('hidden-modal', 'opened-modal');
   modalRecipeBackDrop?.classList.replace('hidden-backdrop', 'opened-backdrop');
   handleRecipeDetails(recipeID);
-  // document.body.style.overflow = 'hidden';
 }
 
 function closeModal() {
   modal?.classList.replace('opened-modal', 'hidden-modal');
   modalRecipeBackDrop?.classList.replace('opened-backdrop', 'hidden-backdrop');
-  // document.body.style.overflow = '';
 
   const videoElem = modal?.querySelector('lite-youtube');
   videoElem?.remove();
@@ -35,8 +33,8 @@ modalRecipeBackDrop?.addEventListener('click', modalBackDrop);
 function modalBackDrop(event) {
   if (event.target === modalRecipeBackDrop) {
     closeModal();
-    document.querySelector('#modal-recipe').classList.remove('is-hidden');
-    document.querySelector('.rating-modal').classList.add('is-hidden');
+    document.querySelector('#modal-recipe')?.classList.remove('is-hidden');
+    document.querySelector('.rating-modal')?.classList.add('is-hidden');
   }
 }
 
@@ -48,8 +46,8 @@ function closeEsc(event) {
     modalRecipeBackDrop?.classList.contains('opened-backdrop')
   ) {
     closeModal();
-    document.querySelector('#modal-recipe').classList.remove('is-hidden');
-    document.querySelector('.rating-modal').classList.add('is-hidden');
+    document.querySelector('#modal-recipe')?.classList.remove('is-hidden');
+    document.querySelector('.rating-modal')?.classList.add('is-hidden');
   }
 }
 

@@ -91,13 +91,12 @@
   color: $color-white;
   border: $color-green;
   font-family: Inter;
-font-size: 14px;
-font-style: normal;
-font-weight: 500;
-line-height: normal;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
   border-radius: 15px;
   padding: 12px 24px;
-  font-size: 14px;
   &:focus, &:hover {
 
     color: $color-black;

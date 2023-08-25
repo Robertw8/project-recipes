@@ -121,17 +121,15 @@
   }
 }
 
-//swiper style
 .hero-img-wrap {
   display: flex;
   flex-direction: row;
   width: 497px;
-  height: 302px; //280 for pagination
-  //margin-bottom: 10px; //del
+  height: 302px;
 
   @media screen and (min-width: $tablet) {
     width: 871px;
-    height: 468px; //442 for pagination
+    height: 468px;
   }
 
   @media screen and (min-width: $desktop) {
@@ -221,10 +219,8 @@
   .dish-big {
     display: block;
     height: 150%;
-    //width: 200%;
     object-fit: cover;
     object-position: 50% 10%;
-    //width: 1500px;
   }
 
   @media screen and (min-width: $tablet) {

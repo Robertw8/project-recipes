@@ -5,7 +5,6 @@ import sprite from '/sprite.svg';
 import { checkIfRecipeInFav } from './add-to-favorite';
 import { queryParams } from './API/query-params';
 
-// let page = 1;
 let totalPages;
 let limit;
 checkLimit();
@@ -92,8 +91,8 @@ export async function renderRecipes() {
   } catch (error) {
     const defaultWindowEl = document.querySelector('.resipe-list-empty');
     const paginationEl = document.querySelector('.recipe-pagination');
-    defaultWindowEl.classList.remove('is-hidden');
-    paginationEl.classList.add('is-hidden');
+    defaultWindowEl?.classList.remove('is-hidden');
+    paginationEl?.classList.add('is-hidden');
     Toast.fire({
       icon: 'error',
       title:

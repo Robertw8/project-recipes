@@ -58,5 +58,5 @@ function renderGallery(data) {
     `;
     })
     .join('');
-  galleryEl.insertAdjacentHTML('beforeend', img);
+  galleryEl?.insertAdjacentHTML('beforeend', img);
 }
