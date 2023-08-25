@@ -30,7 +30,7 @@ export function putFavorites(element) {
       )}-stars">
                     </use></svg>
                     </span></p>
-                    <button data-id=${_id} class="recipe-see" type="button" >See recipe</button>
+                    <button id="recipe-see-favorites" data-id=${_id} class=" recipe-see" type="button" >See recipe</button>
             </div>
             </div>
         </div>

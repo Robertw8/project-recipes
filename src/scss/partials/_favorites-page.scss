@@ -18,10 +18,12 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 728px;
+  //height: 728px;
+  height: 80vh;
   width: 100%;
   @media screen and (min-width: $tablet) {
-    height: 566px;
+    //height: 566px;
+    height: 50vh;
     align-items: initial;
     margin-top: 60px;
   }
@@ -88,6 +90,9 @@
     color: $color-white;
   }
 }
+.favorites-dishes-conteiner {
+  min-height: 623px;
+}
 .favorites-dishes {
   @media screen and (min-width: $tablet) {
     display: flex;
@@ -95,10 +100,31 @@
     gap: 16px;
   }
 }
+.recipe-item-favorites {
+  @media screen and (min-width: $tablet) {
+    justify-content: space-between;
+    width: 224px;
+    height: 244px;
+  }
+  @media screen and (min-width: $desktop) {
+    justify-content: space-between;
+    width: 258px;
+    height: 287px;
+  }
+}
+
 .recipe-item-favorites:not(:first-child) {
   margin-top: 24px;
   @media screen and (min-width: $tablet) {
     margin-top: 0;
+  }
+}
+#recipe-see-favorites {
+  @media screen and (min-width: $tablet) {
+    padding: 8px 6px;
+  }
+  @media screen and (min-width: $desktop) {
+    padding: 8px 14px;
   }
 }
 
@@ -115,8 +141,10 @@
 //   }
 // }
 .favorites-categoris-conteiner {
+  margin-bottom: 6px;
   width: 100%;
   overflow-x: scroll;
+  @include scrollbar-primary;
 }
 
 .favorites-categoris-list {
@@ -124,3 +152,7 @@
   padding: 0;
   list-style: none;
 }
+.dark-theme .favorites-categoris-conteiner {
+  @include scrollbar-dark-theme;
+}
+//
