@@ -1,5 +1,5 @@
 @mixin filter-text {
-  font-family: "Inter", sans-serif;
+  font-family: 'Inter', sans-serif;
   font-weight: 500;
   font-size: 16px;
   line-height: calc(20 / 16);
@@ -16,39 +16,39 @@
 
 @mixin scrollbar-primary {
   &::-webkit-scrollbar {
-      width: 6px;
-    }
+    max-width: 6px;
+  }
 
-    &::-webkit-scrollbar-track {
-      background: transparent;
-      border-radius: 15px;
-      -webkit-border-radius: 15px;
-      -moz-border-radius: 15px;
-      -ms-border-radius: 15px;
-      -o-border-radius: 15px;
-      margin: 10px 0;
-}
+  &::-webkit-scrollbar-track {
+    background: transparent;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+    margin: 10px 0;
+  }
 
-    &::-webkit-scrollbar-thumb {
-      background: $color-black-10;
-      border-radius: 15px;
-      -webkit-border-radius: 15px;
-      -moz-border-radius: 15px;
-      -ms-border-radius: 15px;
-      -o-border-radius: 15px;
-    }
+  &::-webkit-scrollbar-thumb {
+    background: $color-black-10;
+    border-radius: 15px;
+    -webkit-border-radius: 15px;
+    -moz-border-radius: 15px;
+    -ms-border-radius: 15px;
+    -o-border-radius: 15px;
+  }
 
-    &::-webkit-scrollbar-thumb:hover {
-      background: $color-black-30;
-    }
+  &::-webkit-scrollbar-thumb:hover {
+    background: $color-black-30;
+  }
 }
 
 @mixin scrollbar-dark-theme {
-    &::-webkit-scrollbar-thumb {
-      background: $color-white-dark-theme-10;
-    }
+  &::-webkit-scrollbar-thumb {
+    background: $color-white-dark-theme-10;
+  }
 
-    &::-webkit-scrollbar-thumb:hover {
-      background: $color-white-dark-theme-30;
-    }
+  &::-webkit-scrollbar-thumb:hover {
+    background: $color-white-dark-theme-30;
+  }
 }
