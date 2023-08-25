@@ -144,10 +144,6 @@ line-height: normal;
 .recipe-container {
   display: flex;
   flex-direction: column;
-  margin-top: 20px;
-  @media screen and (min-width: $tablet) {
-    margin-top: 0;
-  }
 }
 .video-title{
   display: flex;
