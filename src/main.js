@@ -28,9 +28,6 @@ import './js/categories.js';
 
 import './js/scrollup-btn.js';
 
-//?Footer
 import './js/footer-modal.js';
-
 import './js/rating-popup.js';
-
 import './js/utilities/aos.js';
