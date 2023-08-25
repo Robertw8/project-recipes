@@ -1,4 +1,4 @@
-import{g as J,T as Q,o as nt,c as rt,s as Z,a as at,b as lt,d as ot}from"./aos-d0667b50.js";const Re=document.querySelector(".gallery-popular-recipes");function dt(t){const{preview:e,_id:i,description:s,title:r}=t;return`
+import{g as J,T as Q,o as nt,c as rt,s as Z,a as at,b as lt,d as ot}from"./aos-a11419dc.js";const Re=document.querySelector(".gallery-popular-recipes");function dt(t){const{preview:e,_id:i,description:s,title:r}=t;return`
 
 <li class="popular-recipes-list"id='${i}'>
 
