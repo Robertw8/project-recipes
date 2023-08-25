@@ -1,3 +1,9 @@
+.favorites-page-container {
+  @media screen and (max-width: $mobile) {
+    padding: 0;
+  }
+}
+
 .favorites-conteiner {
   max-width: 375px;
   margin: 40px auto 0;
@@ -18,11 +24,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  //height: 728px;
   height: 80vh;
   width: 100%;
   @media screen and (min-width: $tablet) {
-    //height: 566px;
     height: 50vh;
     align-items: initial;
     margin-top: 60px;
@@ -94,13 +98,25 @@
   min-height: 623px;
 }
 .favorites-dishes {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  justify-content: center;
+  align-items: center;
+
   @media screen and (min-width: $tablet) {
     display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
     gap: 16px;
   }
 }
 .recipe-item-favorites {
+  @media screen and (max-width: $mobile) {
+    width: 300px;
+    height: 300px;
+  }
+
   @media screen and (min-width: $tablet) {
     justify-content: space-between;
     width: 224px;
@@ -128,18 +144,6 @@
   }
 }
 
-// .recipe-item {
-//   @media screen and (min-width: $tablet) {
-//     justify-content: space-between;
-//     width: 224px;
-//     height: 244px;
-//   }
-//   @media screen and (min-width: $desktop) {
-//     justify-content: space-between;
-//     width: 258px;
-//     height: 287px;
-//   }
-// }
 .favorites-categoris-conteiner {
   margin-bottom: 6px;
   width: 100%;
@@ -155,4 +159,14 @@
 .dark-theme .favorites-categoris-conteiner {
   @include scrollbar-dark-theme;
 }
-//
+
+.dark-theme .favorites-categoris-item {
+  color: $color-white;
+}
+
+.favorites-categoris-item {
+  &:hover {
+    color: $color-white;
+    background-color: $color-green;
+  }
+}
