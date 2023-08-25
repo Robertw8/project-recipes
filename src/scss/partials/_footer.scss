@@ -7,6 +7,7 @@
   flex-direction: row;
   justify-content: center;
   align-items: center;
+  z-index: 1000;
 }
 
 .footer-span {
@@ -16,23 +17,18 @@
 .modal-footer {
   display: none;
   position: fixed;
-  top: 0;
+  top: 50%;
   left: 0;
+  transform: translate(0%, -50%);
   width: 100%;
   height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
-  opacity: 1;
-  pointer-events: all;
-  visibility: visible;
-  transition-duration: 300ms
+
 }
 
-
-
-/* Стили для содержимого модального окна */
 .modal-content-footer {
   background-color: white;
-  width: 60%;
+  width: 100%;
   margin: 15% auto;
   padding: 30px;
   border-radius: 5px;
@@ -43,16 +39,35 @@
   justify-content: center; 
 }
 
-/* Стили для кнопки закрытия */
+.title-footer {
+color: $color-black;
+margin-bottom: 20px;
+}
+
+.dark-theme .modal-content-footer {
+  background-color: $color-black;
+}
+
+.dark-theme .title-footer {
+  color: $color-white;
+}
+
+.dark-theme .close3 {
+  color: $color-white;
+  
+}
+
+
 .close3 {
   position: absolute;
   top: 10px;
   right: 15px;
   font-size: 20px;
   cursor: pointer;
+  
 }
 
-/* Стили для списка */
+
 #peopleList {
   list-style: none;
     padding: 0;
@@ -61,11 +76,44 @@
     justify-content: space-between;
 }
 
+
 #peopleList li {
-  width: calc(50% - 10px); 
-  margin: 5px;
-  padding: 10px;
+  font-size: 18px;
+margin-left: auto;
+margin-right: auto;
+margin-bottom: 10px;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: #f5f5f5;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease-in-out;
+    cursor: pointer;
+    width: 200px;
+    text-align: center;
+    text-decoration: none;
+  &:is(:hover, :focus) {
+      scale: 1.01;
+      -webkit-box-shadow: -12px 12px 5px 0px rgba(5, 5, 5, 0.30);
+      -moz-box-shadow: -12px 12px 5px 0px rgba(5, 5, 5, 0.30);
+      box-shadow: -12px 12px 5px 0px rgba(5, 5, 5, 0.30);
+    }
   
+    .dark-theme &:is(:hover, :focus) {
+      scale: 1.01;
+      color: $color-green;
+      -webkit-box-shadow: 0px 0px 35px -4px rgba(155, 181, 55, 1);
+      -moz-box-shadow: 0px 0px 35px -4px rgba(155, 181, 55, 1);
+      box-shadow: 0px 0px 35px -4px rgba(155, 181, 55, 1);
+    }
+  
+}
+
+#peopleList a {
+  color: $color-black;
+    &:is(:hover, :focus) {
+      color: $color-green;
+    }
 }
 
 .glow-on-hover {
@@ -143,5 +191,52 @@
   }
   100% {
     background-position: 0 0;
+  }
+}
+
+#modal3 {
+  display: block;
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  pointer-events: none;
+  visibility: hidden;
+  top: 50%;
+  left: 50%;
+  position: fixed;
+  transform-origin: center center;
+      transform: translate(-50%, -50%) scale(0.9) ;
+        -webkit-transform: translate(-50%, -50%) scale(0.9) ;
+        -moz-transform: translate(-50%, -50%) scale(0.9) ;
+        -ms-transform: translate(-50%, -50%) scale(0.9) ;
+        -o-transform: translate(-50%, -50%) scale(0.9) ;
+        transition-duration: 300ms;
+      
+}
+
+#modal3.modal-open {
+  opacity: 1;
+  max-height: 1000px;
+  padding: 20px;
+  pointer-events: all;
+  visibility: visible;
+  transform: translate(-50%, -50%) scale(1) ;
+    -webkit-transform: translate(-50%, -50%) scale(1) ;
+    -moz-transform: translate(-50%, -50%) scale(1) ;
+    -ms-transform: translate(-50%, -50%) scale(1) ;
+    -o-transform: translate(-50%, -50%) scale(1) ;
+    transition-duration: 300ms;
+}
+
+
+ @media screen and (min-width: $mobile) and (max-width: $tablet){
+   .modal-content-footer {
+     width: 300px;
+   }
+ }
+
+@media screen and (min-width: $tablet) {
+  .modal-content-footer {
+    width: 500px;
   }
 }
