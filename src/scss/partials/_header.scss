@@ -83,7 +83,7 @@ body.no-scroll {
 .dark-theme .header-menu-btn {
   stroke: $color-white;
 }
-/* ======== mobile menu================= */
+
 .mob-menu.is-open {
   display: flex;
   flex-direction: column;
@@ -148,8 +148,6 @@ body.no-scroll {
 .mob-nav-list-item:not(:last-child) {
   margin-bottom: 14px;
 }
-
-/* ==================================================== */
 
 .nav-item {
   &::after {

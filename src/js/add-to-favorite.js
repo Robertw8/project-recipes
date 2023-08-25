@@ -1,6 +1,5 @@
 //ADD TO FAVORITE & SEE RECIPE
 import { getRequestsService } from './API/api-service';
-import axios from 'axios';
 import { openModal } from './modal-recipe';
 import { addToFavorites, removeFromFavorites } from './modal-recipe';
 
@@ -10,7 +9,6 @@ export function onListClick(e) {
     e.target.classList.remove('heart-icon');
     e.target.classList.add('added-heart-icon');
     let favoriteId = e.target.dataset.id;
-
 
     async function getInfo() {
       try {
@@ -52,10 +50,10 @@ export function onListClick(e) {
     let idForModal = e.target.dataset.id;
     openModal(idForModal);
   } else {
-    return; 
-  }}
-
-  export function checkIfRecipeInFav(existingFavorites, recipeID) {
-    return existingFavorites.some(favorite => favorite._id === recipeID);
+    return;
   }
+}
 
+export function checkIfRecipeInFav(existingFavorites, recipeID) {
+  return existingFavorites.some(favorite => favorite._id === recipeID);
+}

@@ -1,6 +1,5 @@
 //? Popular recipes
 import { renderElement } from './js/popular-recipes.js';
-renderElement();
 
 //? Theme switch
 import './js/dark-theme.js';

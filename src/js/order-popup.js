@@ -84,12 +84,7 @@ function onSubmitForm(e) {
       }
       return;
     })
-    .catch(error => console.log(error))
-    .finally(
-      setTimeout(() => {
-        Loading.remove();
-      }, 500)
-    );
+    .catch(error => console.log(error));
 }
 
 export { onModalOpen };
