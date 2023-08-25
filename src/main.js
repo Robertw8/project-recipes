@@ -32,5 +32,5 @@ import './js/scrollup-btn.js';
 import './js/footer-modal.js';
 
 import './js/rating-popup.js';
-//? Aos
+
 import './js/utilities/aos.js';
