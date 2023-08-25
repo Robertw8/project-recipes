@@ -4,9 +4,9 @@ import sprite from '/sprite.svg';
 export function putFavorites(element) {
   const localArray = JSON.parse(localStorage.getItem('favorites'));
   const buffer = localArray
-    .map(({ rating, title, description, preview, _id }) => {
+    .map(({ rating, title, description, preview, _id, category }) => {
       return `
-    <li class="recipe-item" data-title="${title}">
+    <li class="recipe-item recipe-item-favorites" data-title="${title}" data-category="${category}">
         <img class="recipe-img" loading="lazy"
             src="${preview}"
             alt="${title}"
@@ -30,7 +30,7 @@ export function putFavorites(element) {
       )}-stars">
                     </use></svg>
                     </span></p>
-                    <button class="recipe-see" type="button">See recipe</button>
+                    <button id="recipe-see-favorites" data-id=${_id} class=" recipe-see" type="button" >See recipe</button>
             </div>
             </div>
         </div>

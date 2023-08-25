@@ -16,13 +16,13 @@ function openModal(recipeID) {
   modal?.classList.replace('hidden-modal', 'opened-modal');
   modalRecipeBackDrop?.classList.replace('hidden-backdrop', 'opened-backdrop');
   handleRecipeDetails(recipeID);
-  document.body.style.overflow = 'hidden';
+  // document.body.style.overflow = 'hidden';
 }
 
 function closeModal() {
   modal?.classList.replace('opened-modal', 'hidden-modal');
   modalRecipeBackDrop?.classList.replace('opened-backdrop', 'hidden-backdrop');
-  document.body.style.overflow = '';
+  // document.body.style.overflow = '';
 
   const videoElem = modal?.querySelector('lite-youtube');
   videoElem?.remove();

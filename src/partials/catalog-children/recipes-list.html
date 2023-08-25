@@ -1,5 +1,5 @@
 <div class="wrap-recipes-list">
-  <ul class="recipe-list"></ul>
+  <ul class="recipe-list" data-aos="fade-up"></ul>
   <span class="loader d-none"></span>
   <div class="resipe-list-empty is-hidden">
     <p class="resipe-list-message">
@@ -10,7 +10,7 @@
     </svg>
   </div>
 </div>
-<div class="recipe-pagination">
+<div class="recipe-pagination" data-aos="fade-up">
   <div class="wrap left-wrap">
     <button
       type="button"
@@ -35,7 +35,12 @@
     </button>
   </div>
   <div class="inner-wrap">
-    <button type="button" class="current-page-1 pagination-btn">1</button>
+    <button
+      type="button"
+      class="current-page-1 pagination-btn current-pagi-page"
+    >
+      1
+    </button>
     <button type="button" class="page-2 pagination-btn is-hidden">2</button>
     <button type="button" class="page-3 pagination-btn is-hidden">3</button>
     <button

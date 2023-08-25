@@ -2,10 +2,16 @@
   position: relative;
   margin-top: 20px;
   margin-bottom: 40px;
+  min-height: 2130px;
 
   @media screen and (min-width: $tablet) {
     margin-top: 14px;
     margin-bottom: 64px;
+    min-height: 1104px;
+  }
+  @media screen and (min-width: $desktop) {
+    min-height: 957px;
+    margin-bottom: 0;
   }
   .recipe-list {
     display: flex;
@@ -21,6 +27,8 @@
     }
     @media screen and (min-width: $desktop) {
       gap: 20px 16px;
+      width: 782px;
+      margin-left: auto;
     }
   }
 }
@@ -31,6 +39,7 @@
   position: relative;
   overflow: hidden;
   transition-duration: $dur-primary;
+  margin-top: 0 !important;
   &:is(:hover, :focus) {
     scale: 1.01;
     -webkit-box-shadow: -12px 12px 5px 0px rgba(5, 5, 5, 0.30);
@@ -165,7 +174,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 14px;
+  gap: 3px;
   @media screen and (min-width: $tablet) {
   gap: 24px;
   }
@@ -173,7 +182,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 4px;
+    gap: 2px;
     @media screen and (min-width: $tablet) {
       gap: 8px;
     }
@@ -184,7 +193,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 8px;
+  gap: 2px;
   @media screen and (min-width: $tablet) {
     gap: 10px;
   }
@@ -260,6 +269,12 @@
     border: 1px solid $color-black;
   }
 }
+.current-pagi-page {
+  background-color: $color-green;
+}
+.dark-theme .current-pagi-page {
+  background-color: $color-green;
+}
 
 .resipe-list-empty {
   display: flex;
@@ -282,9 +297,10 @@
     &:is(:hover, :focus) {
     fill: $color-white;
     opacity: 1;
-   }  
+   }
 }
 .added-heart-icon {
   fill: $color-white;
   opacity: 1;
 }
+//loader
