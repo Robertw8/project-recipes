@@ -9,7 +9,7 @@ const categoryBox = document.querySelector('.categories ul');
 document.addEventListener('DOMContentLoaded', getAllCategories);
 document.removeEventListener('load', getAllCategories);
 
-categories?.addEventListener('click', onClick);
+categories.addEventListener('click', onClick);
 
 // Функція для отримання усіх категорій при стартовому рендерингу
 async function getAllCategories() {
@@ -42,6 +42,9 @@ function onClick(evt) {
 
   // записуємо значення в об'єкт запиту
   queryParams.category = isAllCategoriesBtn ? '' : elem.textContent;
+
+  // обнуляю пагінацію до 1 сторінки
+  queryParams.page = 1;
 
   // виконуємо запит
   executeRequest();

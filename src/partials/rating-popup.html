@@ -1,32 +1,40 @@
-<div class="rating-modal-backdrop js-backdrop">
-  <div class="rating-modal">
-    <button
-      type="button"
-      class="rating-modal-btn-close"
-      aria-label="Open rating window"
-    >
-      <svg class="rating-modal-btn-icon">
-        <use href="/sprite.svg#icon-cross"></use>
-      </svg>
-    </button>
-    <div class="rating-modal-content">
-      <h2 class="rating-modal-title">Rating</h2>
-      <div class="rating-modal-stars-wrapper">
-        <div class="live-rating">0.0</div>
-        <div class="my-rating-9"></div>
+<div class="rating-modal is-hidden">
+  <button
+    type="button"
+    class="rating-modal-btn-close"
+    aria-label="Open rating window"
+  >
+    <svg class="rating-modal-btn-icon">
+      <use href="/sprite.svg#icon-cross"></use>
+    </svg>
+  </button>
+  <div class="rating-modal-content">
+    <h2 class="rating-modal-title">Rating</h2>
+    <div class="rating-modal-stars-wrapper">
+      <p class="live-rating">0</p>
+      <div class="rate">
+        <input type="radio" id="star5" name="rate" value="5" />
+        <label for="star5" title="text">5 stars</label>
+        <input type="radio" id="star4" name="rate" value="4" />
+        <label for="star4" title="text">4 stars</label>
+        <input type="radio" id="star3" name="rate" value="3" />
+        <label for="star3" title="text">3 stars</label>
+        <input type="radio" id="star2" name="rate" value="2" />
+        <label for="star2" title="text">2 stars</label>
+        <input type="radio" id="star1" name="rate" value="1" />
+        <label for="star1" title="text">1 star</label>
       </div>
-      <form class="rating-modal-form">
-        <input
-          type="email"
-          name="email"
-          id="rating-modal-email"
-          placeholder="Enter email"
-          class="rating-modal-form-input"
-          required
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+.[a-z]{2,4}"
-        />
-        <button type="submit" class="rating-modal-form-btn">Send</button>
-      </form>
     </div>
+    <form class="rating-modal-form">
+      <input
+        type="email"
+        name="email"
+        id="rating-modal-email"
+        placeholder="Enter email"
+        class="rating-modal-form-input"
+        required
+      />
+      <button type="submit" class="rating-modal-form-btn">Send</button>
+    </form>
   </div>
 </div>

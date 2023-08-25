@@ -1,7 +1,7 @@
 import { Toast } from './utilities/sweetalert';
 import { getRequestsService } from './API/api-service';
 import { onListClick } from './add-to-favorite';
-import sprite from '../public/sprite.svg';
+import sprite from '/sprite.svg';
 import { queryParams } from './API/query-params';
 
 let totalPages;

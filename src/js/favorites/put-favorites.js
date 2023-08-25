@@ -1,5 +1,5 @@
 import { makeCategories } from './favorite-categories';
-import sprite from '../../public/sprite.svg';
+import sprite from '/sprite.svg';
 
 export function putFavorites(element) {
   const localArray = JSON.parse(localStorage.getItem('favorites'));

@@ -1,6 +1,6 @@
 import getFilterRefs from './refs';
 import { getRequestsService } from '../API/api-service';
-import sprite from '../../public/sprite.svg';
+import sprite from '/sprite.svg';
 
 const { areaFilter, ingredientsFilter, recipeList, loader } = getFilterRefs();
 

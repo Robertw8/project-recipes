@@ -34,3 +34,5 @@ import './js/scrollup-btn.js';
 
 //Footer
 import './js/footer-modal.js';
+
+import './js/rating-popup.js';

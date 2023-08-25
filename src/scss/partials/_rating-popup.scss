@@ -1,33 +1,37 @@
-body.show-modal-rating .rating-modal-backdrop {
-  transform: scale(1);
-}
+// body.show-modal-rating .rating-modal-backdrop {
+//   transform: scale(1);
+// }
 
-body.show-modal-rating .rating-modal-backdrop {
-  opacity: 1;
-  visibility: visible;
-  pointer-events: initial;
-}
+// body.show-modal-rating .rating-modal-backdrop {
+//   opacity: 1;
+//   visibility: visible;
+//   pointer-events: initial;
+// }
 
-.rating-modal-backdrop {
-  position: fixed;
-  width: 100vw;
-  height: 100vh;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 5;
-  visibility: hidden;
-  background: rgba(22, 22, 22, 0.9);
-}
+// .rating-modal-backdrop {
+//   position: fixed;
+//   width: 100vw;
+//   height: 100vh;
+//   top: 0;
+//   left: 0;
+//   display: flex;
+//   align-items: center;
+//   justify-content: center;
+//   z-index: 5;
+//   visibility: hidden;
+//   background: rgba(22, 22, 22, 0.9);
+// }
 
 .rating-modal {
-  width: 80%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
   margin: 0 auto;
   padding: 20px;
   border-radius: 15px;
-  position: relative;
+
   background-color: $color-white;
 }
 
@@ -93,7 +97,7 @@ body.show-modal-rating .rating-modal-backdrop {
 }
 
 .rating-modal-title {
-  color:$color-black;
+  color: $color-black;
   font-size: 14px;
   font-weight: 600;
   margin-bottom: 4px;
@@ -105,8 +109,7 @@ body.show-modal-rating .rating-modal-backdrop {
 
 .rating-modal-stars-wrapper {
   display: flex;
-  width: 161px;
-  height: 24px;
+  align-items: baseline;
   margin-bottom: 24px;
 }
 
@@ -145,7 +148,7 @@ body.show-modal-rating .rating-modal-backdrop {
 .rating-modal-form-input {
   width: 100%;
   padding: 14px 18px;
-  border: 1px solid rgba(5, 5, 5, 0.20);
+  border: 1px solid rgba(5, 5, 5, 0.2);
   border-radius: 15px;
   outline: none;
   margin-bottom: 14px;
@@ -169,12 +172,12 @@ body.show-modal-rating .rating-modal-backdrop {
 
 .dark-theme .rating-modal-form-input {
   background-color: $color-black;
-  border: 1px solid rgba(255, 255, 255, 0.20);
+  border: 1px solid rgba(255, 255, 255, 0.2);
   color: $color-black;
 }
 
 .dark-theme .rating-modal-form-input::placeholder {
-  color: rgba(255, 255, 255, 0.50);
+  color: rgba(255, 255, 255, 0.5);
 }
 
 .rating-modal-form-btn {
@@ -197,14 +200,45 @@ body.show-modal-rating .rating-modal-backdrop {
   }
 }
 
-
-
 .rating-modal-form-btn:hover,
 .rating-modal-form-btn:focus {
   color: $color-black;
 }
 
-.dark-theme .rating-modal-title{
+.dark-theme .rating-modal-title {
   color: $color-white;
 }
 
+.rate {
+  height: 24px;
+}
+.rate:not(:checked) > input {
+  position: absolute;
+  top: -9999px;
+}
+.rate:not(:checked) > label {
+  float: right;
+  width: 1em;
+  overflow: hidden;
+  white-space: nowrap;
+  cursor: pointer;
+  font-size: 30px;
+  color: #ccc;
+}
+.rate:not(:checked) > label:before {
+  content: '★';
+}
+.rate > input:checked ~ label {
+  color: #ffc700;
+}
+.rate:not(:checked) > label:hover,
+.rate:not(:checked) > label:hover ~ label {
+  color: #deb217;
+}
+.rate > input:checked + label:hover,
+.rate > input:checked + label:hover ~ label,
+.rate > input:checked ~ label:hover,
+.rate > input:checked ~ label:hover ~ label,
+.rate > label:hover ~ input:checked ~ label {
+  color: #c59b08;
+}
