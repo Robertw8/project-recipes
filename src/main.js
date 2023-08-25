@@ -12,8 +12,7 @@ import './js/slider-events.js';
 import './js/header.js';
 
 //? Recipes list
-import { renderRecipes, displayPaginationBtns, minPagination, checkLimit } from './js/recipes-render.js';
-
+import './js/recipes-render.js';
 
 import { onListClick } from './js/add-to-favorite.js';
 
@@ -30,5 +29,8 @@ import './js/categories.js';
 
 import './js/scrollup-btn.js';
 
-//Footer
+//?Footer
 import './js/footer-modal.js';
+
+//? Aos
+import './js/utilities/aos.js';

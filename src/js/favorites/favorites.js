@@ -35,6 +35,7 @@ function favorites() {
   }
 }
 favorites();
+
 export { favorites };
 import { onListClick } from '../add-to-favorite';
 dishesList.addEventListener('click', onListClick);
