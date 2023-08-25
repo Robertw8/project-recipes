@@ -1,39 +1,76 @@
-// import { patchRating } from '../api';
-import Swal from 'sweetalert';
-import sprite from '../public/sprite.svg';
+import axios from 'axios';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import {
+  giveRatingBtn,
+  recipeIdForRaitingPopUp,
+  closeModal,
+} from './modal-recipe';
 
-const refs = {
-  starsEl: document.querySelector('.live-rating'),
-  submitBtnEl: document.querySelector('.rating-modal-form-btn'),
-  inputEl: document.querySelector('.rating-modal-form-input'),
-  openButtonEl: document.querySelector('.give-rating-btn'),
-  closeButtonEl: document.querySelector('.rating-modal-btn-close'),
-  backdropEl: document.querySelector('.js-backdrop'),
-  test: document.querySelector('.my-rating-9'),
-  bodyEl: document.querySelector('body'),
-};
+const modRecipe = giveRatingBtn.closest('#modal-recipe');
+const ratingPopUp = document.querySelector('.rating-modal');
+const rate = document.querySelector('.rate');
+const currentRate = document.querySelector('.live-rating');
+const ratingFormInput = document.querySelector('.rating-modal-form > input');
+const ratingForm = document.querySelector('.rating-modal-form');
+const closeModalBtn = ratingPopUp.querySelector('.rating-modal-btn-close');
 
-refs.openButtonEl.addEventListener('click', function () {
-  refs.bodyEl.style.overflow = 'hidden';
-  refs.backdropEl.style.display = 'block';
-  refs.modalEl.style.display = 'block';
-});
+giveRatingBtn.addEventListener('click', onRatingBtnClick);
+rate.addEventListener('click', onRateClick);
+ratingForm.addEventListener('submit', onFormSubmit);
+closeModalBtn.addEventListener('click', onCloseModal);
 
-refs.closeButtonEl.addEventListener('click', function () {
-  refs.bodyEl.style.overflow = '';
-  refs.backdropEl.style.display = 'none';
-  refs.modalEl.style.display = 'none';
-});
+function onRatingBtnClick() {
+  // ховаємо modal-recipe
+  modRecipe.classList.add('is-hidden');
 
-$('.my-rating-9').starRating({
-  initialRating: 0.0,
-  disableAfterRate: true,
+  // показуємо rating-popup
+  ratingPopUp.classList.remove('is-hidden');
+}
 
-  starSize: 24,
-  onHover: function (currentIndex) {
-    $('.live-rating').text(currentIndex);
-  },
-  onLeave: function (currentRating) {
-    $('.live-rating').text(currentRating + '/' + currentRating);
-  },
-});
+function hideRatingPopUp() {
+  modRecipe.classList.remove('is-hidden');
+  ratingPopUp.classList.add('is-hidden');
+}
+
+function onCloseModal() {
+  closeModal();
+  hideRatingPopUp();
+}
+
+function onRateClick(e) {
+  if (e.target.nodeName !== 'INPUT') {
+    return;
+  }
+  currentRate.textContent = e.target.value;
+  ratingFormInput.setAttribute('rate', e.target.value);
+}
+
+function onFormSubmit(e) {
+  e.preventDefault();
+  const obj = {
+    email: e.target.elements.email.value,
+    rate: Number(e.target.elements.email.attributes.rate.value),
+  };
+  patchRating(obj);
+  e.target.reset();
+}
+
+async function patchRating(obj) {
+  try {
+    const URL = `https://tasty-treats-backend.p.goit.global/api/recipes/${recipeIdForRaitingPopUp}/rating`;
+
+    await axios.patch(URL, obj);
+
+    Notify.success(
+      'Your rating was successfully added,please enter a new Email'
+    );
+    onCloseModal();
+  } catch (err) {
+    if (err.response.status === 409) {
+      Notify.failure('You have already rated this recipe', err.message);
+    }
+    if (err.response.status === 400) {
+      Notify.failure('An error occured,plase try again', err.message);
+    }
+  }
+}

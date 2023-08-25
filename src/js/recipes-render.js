@@ -1,7 +1,7 @@
 import { Toast } from './utilities/sweetalert';
 import { getRequestsService } from './API/api-service';
 import { onListClick } from './add-to-favorite';
-import sprite from '../public/sprite.svg';
+import sprite from '/sprite.svg';
 import { checkIfRecipeInFav } from './add-to-favorite';
 import { queryParams } from './API/query-params';
 
@@ -205,7 +205,7 @@ secondPageBtnEl.addEventListener('click', e => {
     thirdPageBtnEl.textContent = queryParams.page + 1;
     thirdPageBtnEl.classList.remove('current-pagi-page');
     secondPageBtnEl.classList.add('current-pagi-page');
-  } else{
+  } else {
     return Toast.fire({
       icon: 'info',
       title: 'You already on this page!',

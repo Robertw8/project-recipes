@@ -1,8 +1,7 @@
-import axios from 'axios';
 import { Toast } from './utilities/sweetalert.js';
 import { getRequestsService } from './API/api-service';
 import '@justinribeiro/lite-youtube';
-import sprite from '../public/sprite.svg';
+import sprite from '/sprite.svg';
 
 const modalRecipeBackDrop = document.querySelector('.recipe-backdrop');
 const modalRecipe = document.getElementById('modal-recipe');
@@ -10,7 +9,10 @@ const modal = document.querySelector('.modal');
 const closeModalButton = document.querySelector('.recipe-btn-close');
 const giveRatingBtn = document.querySelector('.give-rating-btn');
 
+let recipeIdForRaitingPopUp;
+
 function openModal(recipeID) {
+  recipeIdForRaitingPopUp = recipeID; // передаю ID в "rating-popup.js"
   modal?.classList.replace('hidden-modal', 'opened-modal');
   modalRecipeBackDrop?.classList.replace('hidden-backdrop', 'opened-backdrop');
   handleRecipeDetails(recipeID);
@@ -33,6 +35,8 @@ modalRecipeBackDrop?.addEventListener('click', modalBackDrop);
 function modalBackDrop(event) {
   if (event.target === modalRecipeBackDrop) {
     closeModal();
+    document.querySelector('#modal-recipe').classList.remove('is-hidden');
+    document.querySelector('.rating-modal').classList.add('is-hidden');
   }
 }
 
@@ -44,10 +48,13 @@ function closeEsc(event) {
     modalRecipeBackDrop?.classList.contains('opened-backdrop')
   ) {
     closeModal();
+    document.querySelector('#modal-recipe').classList.remove('is-hidden');
+    document.querySelector('.rating-modal').classList.add('is-hidden');
   }
 }
 
 export {
+  recipeIdForRaitingPopUp,
   modalRecipe,
   modal,
   closeModalButton,
