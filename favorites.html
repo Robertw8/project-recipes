@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Explore a world of culinary delights with Tasty Treats! Discover a diverse collection of recipes and master-classes showcasing exquisite dishes from around the globe. From savory to sweet, our platform offers a delectable array of cooking experiences, bringing the flavors of many different countries to your kitchen."
+    />
+    <link rel="icon" type="image/x-icon" href="/project-recipes/favicon.png" />
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Favorites</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    
+    <script type="module" crossorigin src="/project-recipes/assets/favorites-a59979f8.js"></script>
+    <link rel="modulepreload" crossorigin href="/project-recipes/assets/aos-a32ca2dc.js">
+    <link rel="stylesheet" href="/project-recipes/assets/aos-5fd85eb2.css">
+  </head>
+  <body>
+    <header class="header">
+  <div class="container header-container">
+    <nav class="header-nav" data-aos="fade-right">
+      <ul class="nav-list list">
+        <li class="nav-item">
+          <a href="./index.html" id="home-link" class="nav-list-item link"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            href="./favorites.html"
+            id="favorites-link"
+            class="nav-list-item link"
+            >Favorites</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <a href="./index.html" class="logo link" data-aos="fade-down"
+      ><span>tasty</span>treats</a
+    >
+    <div class="header-buttons" data-aos="fade-left">
+      <button
+        type="button"
+        class="header-order-btn btn"
+        aria-expanded="false"
+        aria-label="order now"
+      >
+        <svg width="24px" height="24px">
+          <use href="/project-recipes/sprite.svg#icon-cart"></use>
+        </svg>
+      </button>
+      <button
+        type="button"
+        class="header-menu-btn btn js-open-menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="open mobile menu"
+      >
+        <svg width="32px" height="32px">
+          <use href="/project-recipes/sprite.svg#icon-burger"></use>
+        </svg>
+      </button>
+      <label id="theme-switcher" class="checkbox-theme">
+        <input type="checkbox" />
+        <span></span>
+      </label>
+    </div>
+    <div class="mob-menu js-menu-container" id="mobile-menu">
+  <button
+    type="button"
+    class="mob-close-btn js-close-menu"
+    aria-label="close mobile menu"
+  >
+    <svg class="icon-x" width="32px" height="32px">
+      <use href="/project-recipes/sprite.svg#icon-x"></use>
+    </svg>
+  </button>
+
+  <nav class="mob-header-nav">
+    <ul class="mob-nav-list list">
+      <li class="mob-nav-list-item">
+        <a
+          href="./index.html"
+          id="mobile-home-link"
+          class="mob-nav-list-item link"
+          >Home</a
+        >
+      </li>
+      <li class="mob-nav-list-item">
+        <a
+          href="./favorites.html"
+          id="mobile-favorites-link"
+          class="mob-nav-list-item link"
+          >Favorites</a
+        >
+      </li>
+    </ul>
+  </nav>
+  <label id="mob-theme-switcher">
+    <input type="checkbox" />
+    <span></span>
+  </label>
+</div>
+
+  </div>
+</header>
+
+
+    <main class="main">
+      <section class="favorites-hero" data-aos="fade-up">
+  <div class="favorites-conteiner">
+    <div class="favorites-heroImg">
+      <picture>
+        <source
+          media="(min-width: 1280px)"
+          srcset="/project-recipes/assets/1080-bec5e18b.jpg 1x, /project-recipes/assets/2160-d812a906.jpg 2x"
+        />
+        <source
+          media="(min-width: 768px)"
+          srcset="/project-recipes/assets/704-80c1b7d4.jpg 1x, /project-recipes/assets/1408-89bd54df.jpg 2x"
+        />
+        <source
+          media="(min-width: 375px)"
+          srcset="/project-recipes/assets/335-8a199ff9.jpg 1x, /project-recipes/assets/670-3e1a225d.jpg 2x"
+        />
+        <img class="favorites-img" src="/project-recipes/assets/335-8a199ff9.jpg" alt="dish" />
+      </picture>
+    </div>
+  </div>
+</section>
+
+      <div class="container favorites-page-container" data-aos="fade-right">
+  <div class="favorites-categoris-conteiner">
+    <ul class="favorites-categoris-list"></ul>
+  </div>
+</div>
+
+      <div class="container favorites-dishes-conteiner">
+  <ul class="favorites-dishes"></ul>
+</div>
+
+      <div class="container">
+  <div class="favorites-instead">
+    <div class="instead-container">
+      <div class="favorites-divSvg">
+        <svg class="favorites-svg phone-favorites-svg" width="68" height="58">
+          <use href="/project-recipes/sprite.svg#icon-hat"></use>
+        </svg>
+        <svg class="favorites-svg tablet-favorites-svg" width="97" height="83">
+          <use href="/project-recipes/sprite.svg#icon-hat"></use>
+        </svg>
+      </div>
+      <div class="hatDescroiption-div">
+        <p class="hatDescroiption">
+          It appears that you haven't added any recipes to your favorites yet.
+          To get started, you can add recipes that you like to your favorites
+          for easier access in the future.
+        </p>
+      </div>
+    </div>
+  </div>
+</div>
+
+    </main>
+    <div class="scrollup-btn-wrapper">
+  <button type="button" class="scrollup-btn d-none" aria-label="Scroll to top">
+    <svg width="30" height="30" class="scrollup-icon">
+      <use href="/project-recipes/sprite.svg#icon-arrow"></use>
+    </svg>
+  </button>
+</div>
+
+    <footer class="footer section" data-aos="fade-up">
+  <div class="container">
+    <div class="footer-container">
+      <button id="openModalLink3" class="glow-on-hover" type="button">
+        <span class="footer-span">© 2023 | All with love |GoIT Students</span>
+      </button>
+      <div id="modal3" class="modal-footer">
+        <div class="modal-content-footer">
+          <span class="close3">&times;</span>
+          <h2 class="title-footer">Development Team</h2>
+          <ul id="peopleList">
+            <li><a href="https://github.com/Robertw8">Бровчук Арсеній</a></li>
+            <li><a href="https://github.com/liussi">Рідько Людмила</a></li>
+            <li><a href="https://github.com/gladja">Гладких Олександр</a></li>
+            <li><a href="https://github.com/UmyaFamilia">Кригуль Роман</a></li>
+            <li><a href="https://github.com/ruden4">Руденко Александр</a></li>
+            <li><a href="https://github.com/LyamzinaVera">Лямзіна Віра</a></li>
+            <li>
+              <a href="https://github.com/valka-andrval">Паллай Валентина</a>
+            </li>
+            <li>
+              <a href="https://github.com/NataliaMazurak">Кукурудза Наталія</a>
+            </li>
+            <li><a href="https://github.com/iyasinsky">Ясінський Ігор</a></li>
+            <li>
+              <a href="https://github.com/Vladymyrdel">Делібазогло Володимир</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <div class="recipe-backdrop hidden-backdrop" id="modalBackdrop">
+  <div id="modal-recipe" class="modal recipe-content hidden-modal">
+    <button type="button" class="recipe-btn-close" aria-label="Close modal">
+      <svg width="14" height="14" class="reciepe-close-icon">
+        <use href="/project-recipes/sprite.svg#icon-x"></use>
+      </svg>
+    </button>
+    <div class="markUp"></div>
+    <div class="modal-recipe-btn">
+      <button type="button" class="favorite-btn" data-is-favorite="false">
+        Add to favorite
+      </button>
+      <button type="button" class="give-rating-btn">Give a rating</button>
+    </div>
+  </div>
+  <div class="rating-modal is-hidden">
+  <button
+    type="button"
+    class="rating-modal-btn-close"
+    aria-label="Open rating window"
+  >
+    <svg class="rating-modal-btn-icon">
+      <use href="/project-recipes/sprite.svg#icon-cross"></use>
+    </svg>
+  </button>
+  <div class="rating-modal-content">
+    <h2 class="rating-modal-title">Rating</h2>
+    <div class="rating-modal-stars-wrapper">
+      <p class="live-rating">0</p>
+      <div class="rate">
+        <input type="radio" id="star5" name="rate" value="5" />
+        <label for="star5" title="text">5 stars</label>
+        <input type="radio" id="star4" name="rate" value="4" />
+        <label for="star4" title="text">4 stars</label>
+        <input type="radio" id="star3" name="rate" value="3" />
+        <label for="star3" title="text">3 stars</label>
+        <input type="radio" id="star2" name="rate" value="2" />
+        <label for="star2" title="text">2 stars</label>
+        <input type="radio" id="star1" name="rate" value="1" />
+        <label for="star1" title="text">1 star</label>
+      </div>
+    </div>
+    <form class="rating-modal-form">
+      <input
+        type="email"
+        name="email"
+        id="rating-modal-email"
+        placeholder="Enter email"
+        class="rating-modal-form-input"
+        required
+      />
+      <button type="submit" class="rating-modal-form-btn">Send</button>
+    </form>
+  </div>
+</div>
+
+</div>
+
+    <div class="rating-modal is-hidden">
+  <button
+    type="button"
+    class="rating-modal-btn-close"
+    aria-label="Open rating window"
+  >
+    <svg class="rating-modal-btn-icon">
+      <use href="/project-recipes/sprite.svg#icon-cross"></use>
+    </svg>
+  </button>
+  <div class="rating-modal-content">
+    <h2 class="rating-modal-title">Rating</h2>
+    <div class="rating-modal-stars-wrapper">
+      <p class="live-rating">0</p>
+      <div class="rate">
+        <input type="radio" id="star5" name="rate" value="5" />
+        <label for="star5" title="text">5 stars</label>
+        <input type="radio" id="star4" name="rate" value="4" />
+        <label for="star4" title="text">4 stars</label>
+        <input type="radio" id="star3" name="rate" value="3" />
+        <label for="star3" title="text">3 stars</label>
+        <input type="radio" id="star2" name="rate" value="2" />
+        <label for="star2" title="text">2 stars</label>
+        <input type="radio" id="star1" name="rate" value="1" />
+        <label for="star1" title="text">1 star</label>
+      </div>
+    </div>
+    <form class="rating-modal-form">
+      <input
+        type="email"
+        name="email"
+        id="rating-modal-email"
+        placeholder="Enter email"
+        class="rating-modal-form-input"
+        required
+      />
+      <button type="submit" class="rating-modal-form-btn">Send</button>
+    </form>
+  </div>
+</div>
+
+    <div class="order-now-backdrop js-backdrop hidden-backdrop">
+  <div class="order-now-modal hidden-modal">
+    <h2 class="order-now-modal-title">Order Now</h2>
+    <button
+      class="order-now-modal-close-btn"
+      type="button"
+      aria-label="Open order window"
+    >
+      <svg class="order-now-modal-close-img" width="32" height="32">
+        <use href="/project-recipes/sprite.svg#icon-cross"></use>
+      </svg>
+    </button>
+    <div class="order-now-form-wrap">
+      <form class="order-now-modal-form">
+        <label for="name">
+          <span class="label-name-order-now">Name</span>
+          <input
+            class="order-now-modal-form-input"
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Your name"
+            value=""
+            required
+          />
+        </label>
+        <label for="phone">
+          <span class="label-phone-order-now">Phone number</span>
+          <input
+            class="order-now-modal-form-input"
+            id="phone"
+            type="tel"
+            name="phone"
+            value=""
+            placeholder="+38 (000) 000 00 00"
+            pattern="\+38\d{10}"
+            required
+          />
+        </label>
+        <label for="email">
+          <span class="label-email-order-now">Email</span>
+          <input
+            class="order-now-modal-form-input"
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Your email"
+            value=""
+            required
+          />
+        </label>
+        <label for="comment">
+          <span class="label-comment-order-now">Comment</span>
+          <textarea
+            class="comment-textarea"
+            id="comment"
+            name="comment"
+            placeholder="Text input"
+          ></textarea>
+        </label>
+        <button type="submit" class="order-submit-btn">Send</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+    
+  </body>
+</html>

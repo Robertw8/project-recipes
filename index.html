@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta
+      name="description"
+      content="Explore a world of culinary delights with Tasty Treats! Discover a diverse collection of recipes and master-classes showcasing exquisite dishes from around the globe. From savory to sweet, our platform offers a delectable array of cooking experiences, bringing the flavors of many different countries to your kitchen."
+    />
+    <link rel="icon" type="image/x-icon" href="/project-recipes/favicon.png" />
+    <meta http-equiv="Permissions-Policy" content="interest-cohort=()" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tasty Treats</title>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+    
+    <script type="module" crossorigin src="/project-recipes/assets/main-4f590572.js"></script>
+    <link rel="modulepreload" crossorigin href="/project-recipes/assets/aos-a32ca2dc.js">
+    <link rel="stylesheet" href="/project-recipes/assets/aos-5fd85eb2.css">
+    <link rel="stylesheet" href="/project-recipes/assets/index-28a683b6.css">
+  </head>
+  <body>
+    <header class="header">
+  <div class="container header-container">
+    <nav class="header-nav" data-aos="fade-right">
+      <ul class="nav-list list">
+        <li class="nav-item">
+          <a href="./index.html" id="home-link" class="nav-list-item link"
+            >Home</a
+          >
+        </li>
+        <li class="nav-item">
+          <a
+            href="./favorites.html"
+            id="favorites-link"
+            class="nav-list-item link"
+            >Favorites</a
+          >
+        </li>
+      </ul>
+    </nav>
+    <a href="./index.html" class="logo link" data-aos="fade-down"
+      ><span>tasty</span>treats</a
+    >
+    <div class="header-buttons" data-aos="fade-left">
+      <button
+        type="button"
+        class="header-order-btn btn"
+        aria-expanded="false"
+        aria-label="order now"
+      >
+        <svg width="24px" height="24px">
+          <use href="/project-recipes/sprite.svg#icon-cart"></use>
+        </svg>
+      </button>
+      <button
+        type="button"
+        class="header-menu-btn btn js-open-menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+        aria-label="open mobile menu"
+      >
+        <svg width="32px" height="32px">
+          <use href="/project-recipes/sprite.svg#icon-burger"></use>
+        </svg>
+      </button>
+      <label id="theme-switcher" class="checkbox-theme">
+        <input type="checkbox" />
+        <span></span>
+      </label>
+    </div>
+    <div class="mob-menu js-menu-container" id="mobile-menu">
+  <button
+    type="button"
+    class="mob-close-btn js-close-menu"
+    aria-label="close mobile menu"
+  >
+    <svg class="icon-x" width="32px" height="32px">
+      <use href="/project-recipes/sprite.svg#icon-x"></use>
+    </svg>
+  </button>
+
+  <nav class="mob-header-nav">
+    <ul class="mob-nav-list list">
+      <li class="mob-nav-list-item">
+        <a
+          href="./index.html"
+          id="mobile-home-link"
+          class="mob-nav-list-item link"
+          >Home</a
+        >
+      </li>
+      <li class="mob-nav-list-item">
+        <a
+          href="./favorites.html"
+          id="mobile-favorites-link"
+          class="mob-nav-list-item link"
+          >Favorites</a
+        >
+      </li>
+    </ul>
+  </nav>
+  <label id="mob-theme-switcher">
+    <input type="checkbox" />
+    <span></span>
+  </label>
+</div>
+
+  </div>
+</header>
+
+    <main class="main">
+      <section class="hero container">
+  <div class="hero-container">
+    <div class="hero-text-wrap">
+      <h1 class="hero-title" data-aos="fade-right">
+        Learn to Cook <span class="hero-item">Tasty Treats'</span> Customizable
+        Masterclass
+      </h1>
+      <p class="hero-text" data-aos="fade-right">
+        TastyTreats - Customize Your Meal with Ingredient Options and
+        Step-by-Step Video Guides.
+      </p>
+      <button
+        class="hero-btn"
+        type="button"
+        data-aos="fade-right"
+        data-aos-duration="1500"
+      >
+        Order now
+      </button>
+    </div>
+    <div class="hero-img-wrap" data-aos="fade-left">
+      <div class="swiper">
+        <div class="swiper-wrapper"></div>
+        <div class="pagination swiper-pagination"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+      <section class="catalog">
+  <div class="container catalog-container">
+    <div class="recipes-column left-column">
+      <div class="categories" data-aos="fade-right">
+  <button type="button" class="all-categories-btn active-category">
+    All categories
+  </button>
+  <ul></ul>
+</div>
+
+      <div class="section-popular-recipes" data-aos="fade-right">
+  <h2 class="popular-recipes-title">POPULAR RECIPES</h2>
+  <ul class="gallery-popular-recipes"></ul>
+</div>
+
+    </div>
+    <div class="recipes-column right-column">
+      <div class="search-filter">
+  <div class="search-input-container" data-aos="fade-left">
+    <label class="search-label" for="search">Search</label>
+    <input
+      type="text"
+      class="search-input"
+      placeholder="Enter Text"
+      name="search"
+      id="search"
+      autocomplete="off"
+    />
+    <svg width="18" height="18" class="search-icon">
+      <use href="/project-recipes/sprite.svg#icon-search"></use>
+    </svg>
+  </div>
+  <div class="extra-wrapper" data-aos="fade-left" data-aos-duration="1500">
+    <ul class="extra-filters-list">
+      <li class="extra-filters-item">
+        <p class="search-label">Time</p>
+        <div class="extra-select">
+          <div class="extra-default">
+            <div class="selected-option" id="selected-time">Select</div>
+            <svg width="18" height="18" class="arrow-down">
+              <use href="/project-recipes/sprite.svg#icon-arrow-down"></use>
+            </svg>
+          </div>
+          <ul class="extra-options-list" id="time-filter">
+            <li class="extra-options-item" data-time="5">5 min</li>
+            <li class="extra-options-item" data-time="10">10 min</li>
+            <li class="extra-options-item" data-time="15">15 min</li>
+            <li class="extra-options-item" data-time="20">20 min</li>
+            <li class="extra-options-item" data-time="25">25 min</li>
+            <li class="extra-options-item" data-time="30">30 min</li>
+            <li class="extra-options-item" data-time="35">35 min</li>
+            <li class="extra-options-item" data-time="40">40 min</li>
+            <li class="extra-options-item" data-time="45">45 min</li>
+            <li class="extra-options-item" data-time="50">50 min</li>
+            <li class="extra-options-item" data-time="55">55 min</li>
+            <li class="extra-options-item" data-time="60">60 min</li>
+            <li class="extra-options-item" data-time="65">65 min</li>
+            <li class="extra-options-item" data-time="70">70 min</li>
+            <li class="extra-options-item" data-time="75">75 min</li>
+            <li class="extra-options-item" data-time="80">80 min</li>
+            <li class="extra-options-item" data-time="85">85 min</li>
+            <li class="extra-options-item" data-time="90">90 min</li>
+            <li class="extra-options-item" data-time="95">95 min</li>
+            <li class="extra-options-item" data-time="100">100 min</li>
+            <li class="extra-options-item" data-time="105">105 min</li>
+            <li class="extra-options-item" data-time="110">110 min</li>
+            <li class="extra-options-item" data-time="115">115 min</li>
+            <li class="extra-options-item" data-time="120">120 min</li>
+          </ul>
+        </div>
+      </li>
+      <li class="extra-filters-item">
+        <p class="search-label">Area</p>
+        <div class="extra-select" id="area-select">
+          <div class="extra-default">
+            <div class="selected-option" id="selected-area">Select</div>
+            <svg width="18" height="18" class="arrow-down">
+              <use href="/project-recipes/sprite.svg#icon-arrow-down"></use>
+            </svg>
+          </div>
+          <ul class="extra-options-list" id="area-filter"></ul>
+        </div>
+      </li>
+      <li class="extra-filters-item">
+        <p class="search-label">Ingredients</p>
+        <div class="extra-select">
+          <div class="extra-default">
+            <div class="selected-option" id="selected-ingredient">Select</div>
+            <svg width="18" height="18" class="arrow-down">
+              <use href="/project-recipes/sprite.svg#icon-arrow-down"></use>
+            </svg>
+          </div>
+          <ul class="extra-options-list" id="ingredients-filter"></ul>
+        </div>
+      </li>
+    </ul>
+    <div class="reset-btn-container">
+      <button type="button" class="reset-btn">
+        <svg width="16" height="16" class="reset-icon">
+          <use href="/project-recipes/sprite.svg#icon-cross"></use>
+        </svg>
+        <span class="reset-text">Reset the filter</span>
+      </button>
+    </div>
+  </div>
+</div>
+
+      <div class="wrap-recipes-list">
+  <ul class="recipe-list" data-aos="fade-up"></ul>
+  <span class="loader d-none"></span>
+  <div class="resipe-list-empty is-hidden">
+    <p class="resipe-list-message">
+      There is no recipes right here. Please try again later!
+    </p>
+    <svg class="message-icon" width="97" height="83">
+      <use href="/project-recipes/sprite.svg#icon-hat"></use>
+    </svg>
+  </div>
+</div>
+<div class="recipe-pagination" data-aos="fade-up">
+  <div class="wrap left-wrap">
+    <button
+      type="button"
+      aria-label="first-page"
+      class="first-page pagination-btn"
+    >
+      <svg class="left-icons" height="24" width="24">
+        <use
+          class="left-icon-itm"
+          href="/project-recipes/sprite.svg#icon-angle-double-left"
+        ></use>
+      </svg>
+    </button>
+    <button
+      type="button"
+      aria-label="previous page"
+      class="previous-page pagination-btn"
+    >
+      <svg class="left-icons" height="24" width="24">
+        <use class="left-icon-itm" href="/project-recipes/sprite.svg#icon-angle-left"></use>
+      </svg>
+    </button>
+  </div>
+  <div class="inner-wrap">
+    <button
+      type="button"
+      class="current-page-1 pagination-btn current-pagi-page"
+    >
+      1
+    </button>
+    <button type="button" class="page-2 pagination-btn is-hidden">2</button>
+    <button type="button" class="page-3 pagination-btn is-hidden">3</button>
+    <button
+      type="button"
+      aria-label="more pages"
+      class="page-5 pagination-btn is-hidden"
+    >
+      ...
+    </button>
+  </div>
+  <div class="wrap right-wrap">
+    <button
+      type="button"
+      aria-label="next page"
+      class="next-page pagination-btn"
+    >
+      <svg class="right-icons" height="24" width="24">
+        <use class="right-icon-itm" href="/project-recipes/sprite.svg#icon-angle-right"></use>
+      </svg>
+    </button>
+    <button
+      type="button"
+      aria-label="last page"
+      class="last-page pagination-btn"
+    >
+      <svg class="right-icons" height="24" width="24">
+        <use
+          class="right-icon-itm"
+          href="/project-recipes/sprite.svg#icon-angle-double-right"
+        ></use>
+      </svg>
+    </button>
+  </div>
+</div>
+
+    </div>
+  </div>
+</section>
+
+    </main>
+    <div class="scrollup-btn-wrapper">
+  <button type="button" class="scrollup-btn d-none" aria-label="Scroll to top">
+    <svg width="30" height="30" class="scrollup-icon">
+      <use href="/project-recipes/sprite.svg#icon-arrow"></use>
+    </svg>
+  </button>
+</div>
+
+    <footer class="footer section" data-aos="fade-up">
+  <div class="container">
+    <div class="footer-container">
+      <button id="openModalLink3" class="glow-on-hover" type="button">
+        <span class="footer-span">© 2023 | All with love |GoIT Students</span>
+      </button>
+      <div id="modal3" class="modal-footer">
+        <div class="modal-content-footer">
+          <span class="close3">&times;</span>
+          <h2 class="title-footer">Development Team</h2>
+          <ul id="peopleList">
+            <li><a href="https://github.com/Robertw8">Бровчук Арсеній</a></li>
+            <li><a href="https://github.com/liussi">Рідько Людмила</a></li>
+            <li><a href="https://github.com/gladja">Гладких Олександр</a></li>
+            <li><a href="https://github.com/UmyaFamilia">Кригуль Роман</a></li>
+            <li><a href="https://github.com/ruden4">Руденко Александр</a></li>
+            <li><a href="https://github.com/LyamzinaVera">Лямзіна Віра</a></li>
+            <li>
+              <a href="https://github.com/valka-andrval">Паллай Валентина</a>
+            </li>
+            <li>
+              <a href="https://github.com/NataliaMazurak">Кукурудза Наталія</a>
+            </li>
+            <li><a href="https://github.com/iyasinsky">Ясінський Ігор</a></li>
+            <li>
+              <a href="https://github.com/Vladymyrdel">Делібазогло Володимир</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <div class="recipe-backdrop hidden-backdrop" id="modalBackdrop">
+  <div id="modal-recipe" class="modal recipe-content hidden-modal">
+    <button type="button" class="recipe-btn-close" aria-label="Close modal">
+      <svg width="14" height="14" class="reciepe-close-icon">
+        <use href="/project-recipes/sprite.svg#icon-x"></use>
+      </svg>
+    </button>
+    <div class="markUp"></div>
+    <div class="modal-recipe-btn">
+      <button type="button" class="favorite-btn" data-is-favorite="false">
+        Add to favorite
+      </button>
+      <button type="button" class="give-rating-btn">Give a rating</button>
+    </div>
+  </div>
+  <div class="rating-modal is-hidden">
+  <button
+    type="button"
+    class="rating-modal-btn-close"
+    aria-label="Open rating window"
+  >
+    <svg class="rating-modal-btn-icon">
+      <use href="/project-recipes/sprite.svg#icon-cross"></use>
+    </svg>
+  </button>
+  <div class="rating-modal-content">
+    <h2 class="rating-modal-title">Rating</h2>
+    <div class="rating-modal-stars-wrapper">
+      <p class="live-rating">0</p>
+      <div class="rate">
+        <input type="radio" id="star5" name="rate" value="5" />
+        <label for="star5" title="text">5 stars</label>
+        <input type="radio" id="star4" name="rate" value="4" />
+        <label for="star4" title="text">4 stars</label>
+        <input type="radio" id="star3" name="rate" value="3" />
+        <label for="star3" title="text">3 stars</label>
+        <input type="radio" id="star2" name="rate" value="2" />
+        <label for="star2" title="text">2 stars</label>
+        <input type="radio" id="star1" name="rate" value="1" />
+        <label for="star1" title="text">1 star</label>
+      </div>
+    </div>
+    <form class="rating-modal-form">
+      <input
+        type="email"
+        name="email"
+        id="rating-modal-email"
+        placeholder="Enter email"
+        class="rating-modal-form-input"
+        required
+      />
+      <button type="submit" class="rating-modal-form-btn">Send</button>
+    </form>
+  </div>
+</div>
+
+</div>
+
+    <div class="order-now-backdrop js-backdrop hidden-backdrop">
+  <div class="order-now-modal hidden-modal">
+    <h2 class="order-now-modal-title">Order Now</h2>
+    <button
+      class="order-now-modal-close-btn"
+      type="button"
+      aria-label="Open order window"
+    >
+      <svg class="order-now-modal-close-img" width="32" height="32">
+        <use href="/project-recipes/sprite.svg#icon-cross"></use>
+      </svg>
+    </button>
+    <div class="order-now-form-wrap">
+      <form class="order-now-modal-form">
+        <label for="name">
+          <span class="label-name-order-now">Name</span>
+          <input
+            class="order-now-modal-form-input"
+            id="name"
+            name="name"
+            type="text"
+            placeholder="Your name"
+            value=""
+            required
+          />
+        </label>
+        <label for="phone">
+          <span class="label-phone-order-now">Phone number</span>
+          <input
+            class="order-now-modal-form-input"
+            id="phone"
+            type="tel"
+            name="phone"
+            value=""
+            placeholder="+38 (000) 000 00 00"
+            pattern="\+38\d{10}"
+            required
+          />
+        </label>
+        <label for="email">
+          <span class="label-email-order-now">Email</span>
+          <input
+            class="order-now-modal-form-input"
+            id="email"
+            name="email"
+            type="email"
+            placeholder="Your email"
+            value=""
+            required
+          />
+        </label>
+        <label for="comment">
+          <span class="label-comment-order-now">Comment</span>
+          <textarea
+            class="comment-textarea"
+            id="comment"
+            name="comment"
+            placeholder="Text input"
+          ></textarea>
+        </label>
+        <button type="submit" class="order-submit-btn">Send</button>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+    
+  </body>
+</html>
