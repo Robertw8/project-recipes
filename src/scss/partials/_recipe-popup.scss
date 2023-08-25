@@ -24,7 +24,8 @@
   overflow-y: auto;
 
   @media screen and (max-width: $mobile) {
-    top: 85%;
+    top: 90%;
+    max-width: 100vw;
   }
 
   @media screen and (min-width: $tablet) {
@@ -122,9 +123,6 @@ line-height: normal;
   flex-direction: column;
 
 }
-
-
-
 
 .recipe-video {
   border-radius: 8px;
