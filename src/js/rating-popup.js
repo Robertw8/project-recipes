@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { Notify } from 'notiflix/build/notiflix-notify-aio';
+import { Toast } from './utilities/sweetalert';
 import {
   giveRatingBtn,
   recipeIdForRaitingPopUp,
@@ -61,16 +61,23 @@ async function patchRating(obj) {
 
     await axios.patch(URL, obj);
 
-    Notify.success(
-      'Your rating was successfully added,please enter a new Email'
-    );
+    Toast.fire({
+      icon: 'success',
+      title: 'Your rating was successfully added,please enter a new Email',
+    });
     onCloseModal();
   } catch (err) {
     if (err.response.status === 409) {
-      Notify.failure('You have already rated this recipe', err.message);
+      Toast.fire({
+        icon: 'info',
+        title: 'You have already rated this recipe',
+      });
     }
     if (err.response.status === 400) {
-      Notify.failure('An error occured,plase try again', err.message);
+      Toast.fire({
+        icon: 'error',
+        title: 'An error occured,plase try again',
+      });
     }
   }
 }

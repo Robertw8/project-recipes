@@ -15,6 +15,7 @@ import './js/scrollup-btn.js';
 import './js/favorites/favorites.js';
 
 import './js/order-popup.js';
+import './js/rating-popup.js';
 
 //? Footer
 import './js/footer-modal.js';

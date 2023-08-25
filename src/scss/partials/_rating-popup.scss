@@ -1,27 +1,3 @@
-// body.show-modal-rating .rating-modal-backdrop {
-//   transform: scale(1);
-// }
-
-// body.show-modal-rating .rating-modal-backdrop {
-//   opacity: 1;
-//   visibility: visible;
-//   pointer-events: initial;
-// }
-
-// .rating-modal-backdrop {
-//   position: fixed;
-//   width: 100vw;
-//   height: 100vh;
-//   top: 0;
-//   left: 0;
-//   display: flex;
-//   align-items: center;
-//   justify-content: center;
-//   z-index: 5;
-//   visibility: hidden;
-//   background: rgba(22, 22, 22, 0.9);
-// }
-
 .rating-modal {
   position: absolute;
   top: 50%;
@@ -186,8 +162,9 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  font-family: "Inter", sans-serif;
   font-size: 14px;
-  color: $color-black-20;
+  color: $color-white;
   background-color: $color-green;
   border-radius: 15px;
   border: none;
