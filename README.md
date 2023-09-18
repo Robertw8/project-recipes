@@ -14,20 +14,20 @@ On this project we strengthened our knowledge of working with API, working with 
 
 - [Robertw8](https://www.github.com/Robertw8)
 
-- [@gladja](https://github.com/gladja)
+- [gladja](https://github.com/gladja)
 
-- [@UmyaFamilia](https://github.com/UmyaFamilia)
+- [UmyaFamilia](https://github.com/UmyaFamilia)
 
-- [@liussi](https://github.com/liussi)
+- [liussi](https://github.com/liussi)
 
-- [@iyasinsky](https://github.com/iyasinsky)
+- [iyasinsky](https://github.com/iyasinsky)
 
-- [@NataliaMazurak](https://github.com/NataliaMazurak)
+- [NataliaMazurak](https://github.com/NataliaMazurak)
 
-- [@ruden4](https://github.com/ruden4)
+- [ruden4](https://github.com/ruden4)
 
-- [@LyamzinaVera](https://github.com/LyamzinaVera)
+- [LyamzinaVera](https://github.com/LyamzinaVera)
 
-- [@Vladymyrdel](https://github.com/Vladymyrdel)
+- [Vladymyrdel](https://github.com/Vladymyrdel)
 
-- [@valka-andrval](https://github.com/valka-andrval)
+- [valka-andrval](https://github.com/valka-andrval)
