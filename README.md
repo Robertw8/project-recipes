@@ -12,7 +12,7 @@ On this project we strengthened our knowledge of working with API, working with 
 **Tools and libraries:** Vite, aos, axios, lodash, sweetalert2, Swiper
 ## Authors
 
-- [@Robertw8](https://www.github.com/octokatherine)
+- [@Robertw8](https://www.github.com/Robertw8)
 
 - [@gladja](https://github.com/gladja)
 
