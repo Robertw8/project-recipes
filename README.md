@@ -1,5 +1,5 @@
 
-# "Tasty Treats" project
+# "Tasty Treats"
 
 A recipe search project where you can browse them, watch video-tutorials and add them to favorites.
 ## Lessons Learned
